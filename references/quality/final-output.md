@@ -598,6 +598,7 @@ Humanization 只做：删除 / 合并 / 调序 / 自然化 / 动作化 / 平台�
 ## 二十六、Final Output Contract（v4.6.2 · 默认 Markdown · 用户格式优先）
 
 **本文件是 Final Output Contract 的 Canonical Source of Truth。** SKILL.md 只保留最小不可丢失规则。
+**输出模板与 MD 文件生成：`references/templates/output-templates.md`（Source of Truth：输出模板与 MD 文件生成契约）。** 本文件管输出内容与内部元数据；模板结构、文件命名、落盘规则见 output-templates.md，两者叠加使用。
 
 ### 26.1 输出格式（Default，不是 Hard Lock）
 
@@ -641,3 +642,13 @@ Angle（角度）与 Closing Family（收口家族）默认保持内部；**唯�
 
 1. 先输出文案
 2. 再单独输出分析部分
+
+### 26.5 强制模板套用 + MD 文件生成（v4.14.0）
+
+**创作完内容之后，强制套用模板并生成 `.md` 文件交付。** 完整模板结构与文件生成规则见 `references/templates/output-templates.md`（Source of Truth：输出模板与 MD 文件生成契约）。
+
+- **强制套用模板**：创作完内容后必须按模板组织输出（单版 / 多版表格 / 多平台），不得自由排版。
+- **强制生成 `.md` 文件**：保存到当前工作目录，命名 `{平台}-{产品}-{行动}-{YYMMDDHHMM}.md`（与 HTML 报告命名规范一致，仅扩展名不同）。
+- **执行时机**：G10 输出净化之后 → 套模板 → 落盘。
+- **例外**：用户明确指定其他格式（JSON / 表格 / 其他宿主格式）时遵从用户格式。
+- **模板是交付外壳，不是内容替代品**：内容层禁止模板化（见 `anti-patternization.md`），交付层强制模板化，两者不冲突。

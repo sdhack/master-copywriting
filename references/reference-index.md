@@ -1,6 +1,6 @@
 ﻿# Reference Index
 
-> Canonical reference index for Master Copywriting v4.11.0
+> Canonical reference index for Master Copywriting v4.14.0
 > Single Source of Truth — no rule duplication across adapters.
 
 ---
@@ -11,9 +11,10 @@
 references/
 ├── core/                          # Core principles (extracted from execution)
 │   └── (see execution/ for hard gates, purpose, expression authority)
-├── modes/                         # 24 modes + platforms
+├── modes/                         # 24 modes + platforms + viral content map
 │   ├── 24-modes.md
-│   └── platforms.md
+│   ├── platforms.md
+│   └── viral-content-map.md       # 2026 爆款内容图谱（三条跨平台规律+平台内容类型+分发机制+电商打法）
 ├── angle/                         # Angle discovery + natural depth
 │   ├── dynamic-angle-discovery.md
 │   └── natural-depth.md
@@ -35,6 +36,8 @@ references/
 │   ├── default-length-engine.md   # Default Length Engine
 │   ├── final-output.md            # Final output polish
 │   └── compliance.md              # Compliance rules
+├── templates/                     # Output templates & MD file generation
+│   └── output-templates.md        # 输出模板结构与 MD 文件生成契约（强制套用）
 ├── account/                       # Account-level content system
 │   └── account-level-system.md
 └── craft/                         # Craft references (hooks, formulas, examples)
@@ -61,8 +64,8 @@ references/
 | 需要放宽价值暗示/痛点翻译 / 健康品类卖不动 / I5 分级 / PARTIAL_PAIN | `execution/implicit-benefit-pain.md` | execution |
 | 需要提高商业表达强度/情绪浓度/隐喻/剧情 / 文案真实但卖不动 / Edge Expression Policy | `execution/commercial-expression-freedom.md` | execution |
 | 需要痛点场景化/焦虑激活/紧迫感 / 痛点太抽象场景不具体 / 品类差异化焦虑强度 | `execution/anxiety-pain-scenification.md` | execution |
-| Platform-specific copy | `modes/24-modes.md` + `modes/platforms.md` | modes |
-| Multi-platform / cross-platform | `modes/24-modes.md` + `modes/platforms.md` + `cross-platform/cross-platform-reconception.md` | modes + cross-platform |
+| Platform-specific copy | `modes/24-modes.md` + `modes/platforms.md` + `modes/viral-content-map.md` | modes |
+| Multi-platform / cross-platform | `modes/24-modes.md` + `modes/platforms.md` + `modes/viral-content-map.md` + `cross-platform/cross-platform-reconception.md` | modes + cross-platform |
 | Seed / Sell / Commercial copy | `execution/purpose-integrity.md` + `craft/cta.md` | execution + craft |
 | IP mode | `craft/ip-naturalness.md` + `execution/expression-authority.md` | craft + execution |
 | Fact boundary / expression authority | `execution/expression-authority.md` | execution |
@@ -73,6 +76,7 @@ references/
 | Anti-patternization / 去模板感 | `quality/anti-patternization.md` | quality |
 | Word count / length | `quality/default-length-engine.md` | quality |
 | Final output polish | `quality/final-output.md` | quality |
+| 创作完内容后强制套用模板 + 生成 MD 文件（任何交付任务） | `templates/output-templates.md` | templates |
 | Compliance review | `quality/compliance.md` | quality |
 | Hook writing | `craft/hooks.md` | craft |
 | Formulas / structures | `craft/formulas.md` | craft |

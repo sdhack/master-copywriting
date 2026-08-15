@@ -640,6 +640,53 @@ def run_static_contract_suite(skill_root):
     else:
         passed("No CTA permission conflicts")
 
+    # ---- Full-caliber implicit CTA contract (v4.12.0) ----
+    if os.path.isfile(cta_path):
+        with open(cta_path, "r", encoding="utf-8") as f:
+            cta_content = f.read()
+        if "全口径默认高级隐式收口" in cta_content or "全口径硬约束" in cta_content:
+            passed("CTA source of truth declares full-caliber implicit closing")
+        else:
+            failed("CTA source of truth missing full-caliber implicit closing contract")
+        stale_caliber = [
+            "显式动作、隐式续接、无指令缺口均可",
+            "显式动作可选",
+            "显式咨询可选",
+            "引导预约",
+            "想不错过本期，下方预约点一下",
+        ]
+        stale_hits = [p for p in stale_caliber if p in cta_content]
+        if stale_hits:
+            failed("CTA caliber table still permits explicit actions", "; ".join(stale_hits))
+        else:
+            passed("CTA caliber table has no explicit-action defaults")
+        if "高级隐式收口" in cta_content and "零动作指令" in cta_content:
+            passed("CTA source of truth defines advanced implicit closing QC")
+        else:
+            failed("CTA source of truth missing advanced implicit closing QC")
+    examples_path = os.path.join(skill_root, "references", "craft", "examples.md")
+    if os.path.isfile(examples_path):
+        with open(examples_path, "r", encoding="utf-8") as f:
+            examples_content = f.read()
+        old_watch_row = "| 看播 | 【价值预告】，想【了解什么】的，进直播间来看"
+        old_reserve_row = "| 预约 | 想不错过【内容主题】，下方预约点一下，开播我提醒你"
+        if old_watch_row in examples_content:
+            failed("examples.md still shows explicit watch-live CTA as positive template")
+        else:
+            passed("examples.md watch-live CTA is implicit-only")
+        if old_reserve_row in examples_content:
+            failed("examples.md still shows explicit reservation CTA as positive template")
+        else:
+            passed("examples.md reservation CTA is implicit-only")
+    skill_path = os.path.join(skill_root, "SKILL.md")
+    if os.path.isfile(skill_path):
+        with open(skill_path, "r", encoding="utf-8") as f:
+            skill_content = f.read()
+        if "全口径默认高级隐式收口" in skill_content:
+            passed("SKILL.md declares full-caliber implicit closing")
+        else:
+            failed("SKILL.md missing full-caliber implicit closing rule")
+
     # ---- Metadata leak (PATCH 30) ----
     leak_found = False
     targets = []

@@ -18,7 +18,7 @@ ERRORS = []
 WARNINGS = []
 
 SECTION = 0
-TOTAL_SECTIONS = 19
+TOTAL_SECTIONS = 24
 
 # Canonical capability names (PATCH 32)
 CANONICAL_CAPABILITIES = {
@@ -1872,6 +1872,171 @@ def check_boundary_is_internal(skill_root):
         error("SKILL.md not found (boundary is internal)")
 
 
+# ---------- Check 24: Never-Filter Efficacy Implications contract (PATCH v4.11.4) ----------
+
+# Stale rule phrases that contradict "功效暗示永不过滤" — must not appear as
+# active rules in canonical content (they may appear only as change descriptions).
+STALE_IMPLICATION_RULES = [
+    r"只能作为受众上下文、不得当主卖点",
+    r"允许出现，但不能当主卖点",
+    r"必须露出边界",
+    r"允许强表达但露出边界",
+    r"PARTIAL_PAIN 必须露出边界",
+    r"CONTEXT_PAIN 只能作为受众上下文",
+]
+
+
+def check_never_filter_implications(skill_root):
+    section("Checking never-filter efficacy implications contract (PATCH v4.11.4)")
+
+    # 1. "功效暗示永不过滤" declared across the four canonical layers
+    ibp_path = os.path.join(skill_root, "references", "execution", "implicit-benefit-pain.md")
+    ca_path = os.path.join(skill_root, "references", "execution", "claim-authority.md")
+    cef_path = os.path.join(skill_root, "references", "execution", "commercial-expression-freedom.md")
+    skill_path = os.path.join(skill_root, "SKILL.md")
+
+    def read_md(path):
+        if os.path.isfile(path):
+            with open(path, "r", encoding="utf-8") as f:
+                return f.read()
+        return None
+
+    ibp = read_md(ibp_path)
+    ca = read_md(ca_path)
+    cef = read_md(cef_path)
+    skill = read_md(skill_path)
+
+    if ibp is None:
+        error("references/execution/implicit-benefit-pain.md not found (never-filter implications)")
+    else:
+        if "功效暗示永不过滤" in ibp:
+            print("  ✓ implicit-benefit-pain.md declares 功效暗示永不过滤")
+        else:
+            error("implicit-benefit-pain.md missing 功效暗示永不过滤 declaration")
+        if "默认保留" in ibp and "I5-B" in ibp and "I5-C" in ibp:
+            print("  ✓ implicit-benefit-pain.md declares I5-B/C 默认保留")
+        else:
+            error("implicit-benefit-pain.md missing I5-B/C 默认保留 declaration")
+        if "可作为主卖点" in ibp and "CONTEXT" in ibp:
+            print("  ✓ implicit-benefit-pain.md declares CONTEXT_PAIN 可作为主卖点 (non-sensitive)")
+        else:
+            error("implicit-benefit-pain.md missing CONTEXT_PAIN-as-main-selling-point declaration")
+
+    if ca is None:
+        error("references/execution/claim-authority.md not found (never-filter implications)")
+    else:
+        if "功效暗示永不过滤" in ca:
+            print("  ✓ claim-authority.md declares 功效暗示永不过滤")
+        else:
+            error("claim-authority.md missing 功效暗示永不过滤 declaration")
+        if "I5-A Hidden Efficacy Implication" in ca:
+            print("  ✓ claim-authority.md narrows Hidden Efficacy Implication to I5-A only")
+        else:
+            error("claim-authority.md missing I5-A-only Hidden Efficacy Implication narrowing")
+
+    if cef is None:
+        error("references/execution/commercial-expression-freedom.md not found (never-filter implications)")
+    else:
+        if "功效暗示默认保留" in cef:
+            print("  ✓ commercial-expression-freedom.md declares 功效暗示默认保留 (Section 25)")
+        else:
+            error("commercial-expression-freedom.md missing 功效暗示默认保留 declaration")
+        if "默认开放" in cef and "AMBER" in cef:
+            print("  ✓ commercial-expression-freedom.md declares AMBER 默认开放")
+        else:
+            error("commercial-expression-freedom.md missing AMBER 默认开放 declaration")
+
+    if skill is None:
+        error("SKILL.md not found (never-filter implications)")
+    else:
+        if "功效暗示永不过滤" in skill:
+            print("  ✓ SKILL.md declares 功效暗示永不过滤")
+        else:
+            error("SKILL.md missing 功效暗示永不过滤 declaration")
+
+    # 2. I5-A hard prohibition must remain declared (never-filter ≠ claim ceiling removal)
+    if ibp and "I5-A" in ibp and "硬禁" in ibp:
+        print("  ✓ I5-A hard prohibition retained (claim ceiling preserved)")
+    else:
+        error("implicit-benefit-pain.md missing I5-A hard prohibition declaration")
+
+    # 3. Stale rule phrases must not appear as active rules in canonical content
+    stale_found = []
+    for path in iter_markdown_files(skill_root):
+        rel = os.path.relpath(path, skill_root).replace("\\", "/")
+        if not is_canonical_content(rel):
+            continue
+        with open(path, "r", encoding="utf-8") as f:
+            content = f.read()
+        for pattern in STALE_IMPLICATION_RULES:
+            for m in re.finditer(pattern, content):
+                stale_found.append(f"{rel}: {m.group(0)[:60]}")
+    if stale_found:
+        for s in stale_found[:5]:
+            error(f"stale implication rule found (contradicts 功效暗示永不过滤): {s}")
+    else:
+        print("  ✓ no stale implication rules (CONTEXT_PAIN main-selling-point / PARTIAL_PAIN boundary)")
+
+
+# ---------- Check 25: Full-Caliber Implicit CTA contract (PATCH v4.12.0) ----------
+
+def check_full_caliber_implicit_cta(skill_root):
+    section("Checking full-caliber implicit CTA contract (PATCH v4.12.0)")
+
+    cta_path = os.path.join(skill_root, "references", "craft", "cta.md")
+    examples_path = os.path.join(skill_root, "references", "craft", "examples.md")
+    skill_path = os.path.join(skill_root, "SKILL.md")
+
+    def read_md(path):
+        if os.path.isfile(path):
+            with open(path, "r", encoding="utf-8") as f:
+                return f.read()
+        return None
+
+    cta = read_md(cta_path)
+    examples = read_md(examples_path)
+    skill = read_md(skill_path)
+
+    if cta is None:
+        error("references/craft/cta.md not found (full-caliber implicit CTA)")
+        return
+
+    if "全口径默认高级隐式收口" in cta or "全口径硬约束" in cta:
+        print("  ✓ cta.md declares full-caliber implicit closing")
+    else:
+        error("cta.md missing full-caliber implicit closing declaration")
+
+    stale = ["显式动作、隐式续接、无指令缺口均可", "显式动作可选", "显式咨询可选", "引导预约"]
+    hits = [s for s in stale if s in cta]
+    if hits:
+        error(f"cta.md caliber table still permits explicit actions: {hits}")
+    else:
+        print("  ✓ cta.md caliber table has no explicit-action defaults")
+
+    if "高级隐式收口" in cta and "零动作指令" in cta:
+        print("  ✓ cta.md defines advanced implicit closing QC")
+    else:
+        error("cta.md missing advanced implicit closing QC")
+
+    if examples is not None:
+        old_watch = "| 看播 | 【价值预告】，想【了解什么】的，进直播间来看"
+        old_reserve = "| 预约 | 想不错过【内容主题】，下方预约点一下，开播我提醒你"
+        if old_watch in examples:
+            error("examples.md still shows explicit watch-live CTA as positive template")
+        else:
+            print("  ✓ examples.md watch-live CTA is implicit-only")
+        if old_reserve in examples:
+            error("examples.md still shows explicit reservation CTA as positive template")
+        else:
+            print("  ✓ examples.md reservation CTA is implicit-only")
+
+    if skill is not None:
+        if "全口径默认高级隐式收口" in skill:
+            print("  ✓ SKILL.md declares full-caliber implicit closing")
+        else:
+            error("SKILL.md missing full-caliber implicit closing rule")
+
+
 # ---------- Main ----------
 
 def main():
@@ -1907,6 +2072,8 @@ def main():
     check_anxiety_pain_scenification(skill_root)
     check_commercial_intensity(skill_root)
     check_boundary_is_internal(skill_root)
+    check_never_filter_implications(skill_root)
+    check_full_caliber_implicit_cta(skill_root)
 
     # Summary
     print("\n" + "=" * 60)

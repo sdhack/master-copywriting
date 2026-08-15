@@ -2866,7 +2866,7 @@ PATCH v4.11.0: Append Commercial Intensity regression cases to regression-tests.
 
 import os
 
-SKILL_ROOT = os.environ.get("MASTER_COPYWRITING_ROOT", os.getcwd())
+SKILL_ROOT = r"path/to/your/master-copywriting"
 TEST_FILE = os.path.join(SKILL_ROOT, "tests", "regression", "regression-tests.md")
 
 CASES = """

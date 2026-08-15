@@ -5,6 +5,90 @@ All notable changes to the Master Copywriting skill.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [4.14.0] - 2026-08-15
+
+### Added
+- **`references/templates/` 模块（核心新增）**：新增输出模板与 MD 文件生成契约。`references/templates/output-templates.md` 定义输出模板结构（单版/多版表格/多平台三种模板）、MD 文件生成规则（文件名 `{平台}-{产品}-{行动}-{YYMMDDHHMM}.md`）、模板填充规则与执行步骤。创作完内容后强制套用模板并生成 `.md` 文件交付。
+- **`SKILL.md` §10.5 强制模板套用 + MD 文件生成（v4.14.0 新增）**：创作完内容之后强制套用模板并生成 `.md` 文件。执行时机：G10 输出净化之后 → 套模板 → 落盘。例外：用户明确指定其他格式时遵从用户格式。引用 `references/templates/output-templates.md` 为 Source of Truth。
+- **`final-output.md` §26.5 强制模板套用 + MD 文件生成**：与 SKILL.md §10.5 同步，补充说明"模板是交付外壳，不是内容替代品"——内容层禁止模板化（anti-patternization.md），交付层强制模板化，两者不冲突。
+
+### Changed
+- **`references/reference-index.md`**：版本号升至 v4.14.0；目录结构注册 `templates/` 模块；Reference Loading Map 新增"创作完内容后强制套用模板 + 生成 MD 文件"行，加载 `templates/output-templates.md`
+- **SKILL.md**：版本号升至 4.14.0；§10 头部新增 Canonical output template 引用行
+
+### Hard Bottom Lines Preserved（硬底线保留）
+- 模板是交付外壳，不是内容替代品（内容层禁止模板化由 anti-patternization.md 管，交付层强制模板化由 output-templates.md 管，两者不冲突）
+- 内部元数据输出规则不变（v4.11.3 例外仍生效）
+- 收口家族任何场景不输出（v4.11.3 硬规则）
+- 用户明确指定格式时遵从用户格式（File Override 不变）
+- 所有内容生成规则（Hard Gates、Humanization、平台原生、真人感）不变
+
+---
+
+## [4.13.0] - 2026-08-15
+
+### Added
+- **`references/modes/viral-content-map.md`（核心新增）**：基于《四大平台爆款内容图谱（2026 信源版）》调研转译的爆款内容图谱。三条跨平台爆款规律（情绪先行信息后置 / 活人感取代精致人设 / 电商爆款=信任×场景而非流量×低价）+ 平台爆款内容类型图谱 + 分发机制适配 + 平台电商打法图谱 + 按目标选平台决策地图。信源窗口 2026-01-01 至 2026-08-15（平台官方年度报告 / 官方战报 / 腾讯财报 / 新榜 / 飞瓜 / 千瓜 / 果集·友望 / QuestMobile 交叉验证）
+
+### Changed
+- **`references/modes/platforms.md`**：平台总览表新增"2026 爆款实证要点"列（抖音：算法赛马+热点广场、完播/互动/转发权重、活人感官方风向标；小红书：70% 月活搜索、笔记长尾、攻略测评长尾之王；视频号：转发权重>点赞、生活类点赞 TOP 43%、300 元+ 占 GMV 一半；公众号：订阅+算法双轨、标题与开头段权重放大、千粉小号出圈机会）；文件头新增对 viral-content-map.md 的引用说明
+- **`references/cross-platform/cross-platform-reconception.md`**：新增"〇、跨平台爆款规律输入（2026）"章节，三条跨平台规律（情绪先行 / 活人感 / 信任×场景）作为每个平台重新立题前的底层输入，分别落到四平台的具体命题检查；文件版本升至 v1.1
+- **SKILL.md**：G7 Platform Native 新增 2026 爆款实证引用（情绪先行、活人感、信任×场景三条跨平台规律；平台内容类型/分发机制/电商打法按图谱适配，但不得成为固定五件套）；Progressive Disclosure 加载表 Platform-specific 与 Multi-platform 行加入 viral-content-map.md；版本号升至 4.13.0
+- **`references/reference-index.md`**：目录结构注册 viral-content-map.md；Reference Loading Map 平台行加入该文件；索引版本升至 v4.13.0
+
+### Hard Bottom Lines Preserved（硬底线保留）
+- 平台内容类型图谱不得成为固定选题五件套（Example Anti-Anchoring 仍生效）；图谱用于拓宽角度搜索空间，不是"每次必须选一篇"的固定栏目
+- 规律三（信任×场景）不改变 Claim Ceiling；信任与场景是表达层，不是主张层
+- 平台功能（粉丝门槛、广告产品、挂载规范）时效性强，投放前必须官方复核
+- 硬底线（未授权疾病/治疗/预防、虚假证据、硬功效偷渡、显式 CTA 全口径隐式）不变
+
+---
+
+## [4.12.0] - 2026-08-15
+
+### Changed
+- **PATCH 01 — 全口径默认高级隐式收口（核心）**：CTA 分口径原则从"看播/预约/成交/留资口径允许显式动作"改为"所有口径默认 NATURAL_STOP 或 IMPLICIT_CLOSE"。显式动作（进直播间 / 点预约 / 点购物车 / 下单 / 去拍 / 去看看 / 点我头像 / 点下方）不属于任何口径的默认选项，只有命中 Closed Explicit CTA Allowlist 才允许
+- **PATCH 02 — 新增"高级隐式收口"定义与六项质检**：零动作指令 / 零目的地 / 零时间限定 / 零直播间行为预告 / 承接本版核心观点 / 同批次句式指纹不重复；附"低质隐式 vs 高级隐式"对照表，禁止万能句（"值不值自己判断"式）
+- **PATCH 03 — 看播/预约口径示例全部隐式化**：分口径表格的预约示例从"下方预约点一下，开播我提醒你"改为"这一场讲透怎么挑，值不值得听，你自己定"；成交/留资口径明确"动作由商品组件/表单组件承接"
+- **PATCH 04 — 48 CTA 模板速查门禁强化**：广告类模板（D7/D8/D9、X5/X6/X7、S5/S6、G4/G5/G6）与成交/留资/私域类模板明确"默认禁止召回，仅 EXPLICIT_ALLOWED 时可召回且须转译自然口语"；种草类模板中"引导动作"同样默认转译隐式
+
+### Added
+- `references/craft/cta.md`：第二节改为"全口径默认高级隐式收口"；新增第二节·五"高级隐式收口定义与质检"；第九节模板门禁强化；文件版本升至 v4.7.0
+- `references/craft/examples.md`：第三节 CTA 结构演示改为全口径隐式，看播/预约示例隐式化，新增两条显式禁止示例
+- SKILL.md 更新 10.4 CTA 最小硬规则（全口径隐式 + 六项质检）；版本号升至 4.12.0
+
+### Hard Bottom Lines Preserved（硬底线保留）
+- Closed Explicit CTA Allowlist 不变：用户明确要求 / 按钮 / 落地页 / 表单场景仍可显式
+- 看播稿免时间限定、不描述直播间行为两条硬约束不变
+- 硬底线（未授权疾病/治疗/预防、虚假证据、硬功效偷渡）不变
+
+---
+
+## [4.11.4] - 2026-08-15
+
+### Changed
+- **PATCH 01 — 功效暗示永不过滤（核心）**：合法边界内的功效暗示（I5-B / I5-C / AMBER）默认保留、默认强化，只有 I5-A 硬禁（疾病/治疗/预防/明确生理结果）才被拦截。I5-B 从"谨慎开放"改为"默认保留"；I5-C 从"仅 AGGRESSIVE 开放"改为"STANDARD 起默认开放（非敏感品类）"；AMBER 灰色区在非敏感品类默认开放、可强化
+- **PATCH 02 — CONTEXT_PAIN 可作为主卖点**：CONTEXT_PAIN（状态差/疲劳/皮肤焦虑/年龄焦虑/熬夜/饮食不规律）从"不能当主卖点"改为"默认保留，非敏感品类可作为主卖点切入，敏感品类仍只作受众上下文"
+- **PATCH 03 — Semantic Destination Test 收窄失败范围**：只有 Back-Translation 后主语义明确变成"产品在治疗/预防/改善生理结果"（I5-A）才算 FAIL；I5-B/C/AMBER 默认保留，不得当作越线删除；拦截后走 CONVERSION_RECOVERY（保留情绪强度与场景冲击力，只替换越线那一跳）
+- **PATCH 04 — Hidden Efficacy Implication 禁止范围收窄为仅 I5-A**：claim-authority.md 第九节"禁止 Hidden Efficacy Implication"明确标注仅 I5-A 硬禁（"以前下午三点就撑不住，现在你懂的 / 女生那几天我都会多来一包 / 熬夜党第二天状态差别很明显 / 脸色这个东西，补没补自己最清楚"），I5-B/C/AMBER 默认保留
+- **PATCH 05 — PARTIAL_PAIN 露出边界残留修复**：commercial-expression-freedom.md 第二十九/三十章与 anxiety-pain-scenification.md 第四十章残留的"PARTIAL_PAIN 必须露出边界 / 允许强表达但露出边界"统一改为"边界体现在不夸大"（v4.11.1 口径）
+
+### Added
+- `references/execution/implicit-benefit-pain.md`：I5-B/C 默认保留、默认强化；CONTEXT_PAIN 非敏感品类可作主卖点；Semantic Destination Test 仅 I5-A 算失败；第二十节最高原则加入"功效暗示永不过滤"
+- `references/execution/claim-authority.md`：COMMERCIAL_INTENSITY 档位联动更新（STANDARD 下 I5-C 默认开放）；第九节 Hidden Efficacy Implication 收窄为仅 I5-A；AMBER ZONE 非敏感品类默认保留；第二十节最高原则加入"功效暗示永不过滤"
+- `references/execution/commercial-expression-freedom.md`：第二十五章新增"功效暗示默认保留，除非属于 I5-A 硬禁"条款；Edge Expression Policy AMBER 区默认开放、可强化；修复 PARTIAL_PAIN 露出边界残留
+- `references/execution/anxiety-pain-scenification.md`：第四十章痛点距离同步（CONTEXT_PAIN 非敏感品类可作主卖点 / PARTIAL_PAIN 边界体现在不夸大）
+- SKILL.md 更新 4.21 Implication Level / 4.22 Pain Distance / 4.32 Commercial Intensity / G6.6 Pain Translation / G6.7 Expression Freedom Validation / G11 Semantic Claim Audit；版本号升至 4.11.4
+- `scripts/validate_skill.py` 新增 Check 24（功效暗示永不过滤契约）
+
+### Hard Bottom Lines Preserved（硬底线保留）
+- I5-A 硬禁（未授权疾病/治疗/预防/明确生理结果）任何档位禁止，不得通过暗示/隐喻/谐音/剧情偷渡
+- 虚假前后对比、虚构证据、硬功效偷渡一律禁止
+- 事实边界（产品真实属性）保留；Truth before strategy 原则不变
+- "功效暗示永不过滤"不等于"未授权功效可偷渡"——放宽的是合法边界内的暗示空间，不是 Claim Ceiling
+
+---
+
 ## [4.11.3] - 2026-08-15
 
 ### Changed

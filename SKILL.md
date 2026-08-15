@@ -1,6 +1,6 @@
 ﻿---
 name: master-copywriting
-version: 4.11.3
+version: 4.14.0
 description: >
   全栈文案决策与生成系统。先做任务类型路由，再按 平台×目的×IP模式
   生成。支持抖音、小红书、公众号、视频号。触发场景：广告文案、产品文案、
@@ -184,10 +184,10 @@ DIRECT / EVIDENCE_BOUNDED / CONDITIONAL / SUBJECTIVE / ATTRIBUTE_ONLY / PROHIBIT
 Sell 每篇必须建立 Problem → Benefit 的购买理由路径（Authorized Function / Convenience / Product Difference / Routine Simplification / Verified Experience / Value / Cost 等）。只有成分/规格/备案号没有用户利益 = Commercial Usefulness FAIL。
 
 ### 4.21 Implication Level
-I1 PRODUCT_EXPERIENCE / I2 LIFESTYLE_BENEFIT / I3 EMOTIONAL_IDENTITY / I4 CONDITIONED_FUNCTIONAL / I5-A HARD_PROHIBITION / I5-B HIGH_RISK_CONTEXTUAL / I5-C ACCEPTABLE_STRONG — 暗示阶梯。I1-I3 完全/开放，I4 谨慎开放（需 Authorized Claim 或充分证据），I5-A 硬禁（疾病/治疗/预防/明确生理结果，任何档位禁止），I5-B 高风险可上下文（状态差/疲劳/皮肤焦虑做受众上下文，落地到产品摩擦），I5-C 可接受强暗示（非敏感品类，主语义仍落合法价值域）。
+I1 PRODUCT_EXPERIENCE / I2 LIFESTYLE_BENEFIT / I3 EMOTIONAL_IDENTITY / I4 CONDITIONED_FUNCTIONAL / I5-A HARD_PROHIBITION / I5-B HIGH_RISK_CONTEXTUAL / I5-C ACCEPTABLE_STRONG — 暗示阶梯。I1-I3 完全/开放，I4 谨慎开放（需 Authorized Claim 或充分证据），I5-A 硬禁（疾病/治疗/预防/明确生理结果，任何档位禁止），I5-B 高风险可上下文（状态差/疲劳/皮肤焦虑做受众上下文，落地到产品摩擦，默认保留），I5-C 可接受强暗示（非敏感品类，主语义仍落合法价值域，默认保留）。**功效暗示永不过滤（v4.11.4）：I5-B/C 默认保留、默认强化，只有 I5-A 硬禁才拦截。
 
 ### 4.22 Pain Distance
-DIRECT_PAIN / PARTIAL_PAIN / CONTEXT_PAIN — 产品事实与痛点的距离。DIRECT 最强表达；PARTIAL_PAIN 产品解决关键摩擦，允许强表达，边界体现在不夸大（不把部分解决写成全部解决），禁止在文案里主动声明边界/免责；CONTEXT_PAIN 只作为受众状态，允许出现但不能当主卖点（原 INFERRED_PHYSIOLOGICAL_PAIN 归入此类）。
+DIRECT_PAIN / PARTIAL_PAIN / CONTEXT_PAIN — 产品事实与痛点的距离。DIRECT 最强表达；PARTIAL_PAIN 产品解决关键摩擦，允许强表达，边界体现在不夸大（不把部分解决写成全部解决），禁止在文案里主动声明边界/免责；CONTEXT_PAIN 只作为受众状态，默认保留，非敏感品类可作为主卖点（v4.11.4），敏感品类仍只作上下文（原 INFERRED_PHYSIOLOGICAL_PAIN 归入此类）。
 
 ### 4.23 Pain Translation Path
 Sell 每篇必须完成 Pain Translation（P1 Surface Complaint → P2 Daily Friction → P3 Emotional Cost → P4 Desired Progress → P5 Product Bridge），并经过 Product-to-Pain Match Gate。只有参数罗列没有用户利益/痛点翻译 = Commercial Translation FAIL。
@@ -217,7 +217,7 @@ PASS / FAIL — 每个焦虑通过 Source Test（真实来源而非 AI 编造）
 REQUIRED（Sell/Seed 焦虑之后必须给出口）/ OPTIONAL（Content 可只意识问题）— 禁止全篇压焦虑不给解决逻辑；使用 Anxiety → Relief Path 形成情绪释放。
 
 ### 4.32 Commercial Intensity
-CONSERVATIVE / STANDARD（默认）/ AGGRESSIVE — 商业强度档位，按品类 + 平台 + 用户目标选择。CONSERVATIVE 收紧 I5-B/C 与 PARTIAL_PAIN、AMBER 不开放；STANDARD 适度放宽；AGGRESSIVE 非敏感品类允许更强场景冲击与身份暗示。任何档位不改变 Claim Ceiling，未授权功效不得进入正文。
+CONSERVATIVE / STANDARD（默认）/ AGGRESSIVE — 商业强度档位，按品类 + 平台 + 用户目标选择。CONSERVATIVE 收紧 I5-B/C 与 PARTIAL_PAIN、AMBER 不开放；STANDARD 下 I5-B/C 默认保留、默认强化（v4.11.4），AMBER 在非敏感品类开放；AGGRESSIVE 非敏感品类允许更强场景冲击与身份暗示，I5-B/C 默认保留并强化。任何档位不改变 Claim Ceiling，I5-A 硬禁不得进入正文。
 
 ### Route resolution
 
@@ -298,8 +298,8 @@ Minimal loading rules (cannot be lost even by a Limited Agent):
 | 需要放宽价值暗示/痛点翻译 / 健康品类卖不动 | `references/execution/implicit-benefit-pain.md` |
 | 需要提高商业表达强度/情绪浓度/隐喻/剧情 / 文案真实但卖不动 / 需要按品类差异化表达强度 / 需要选择商业强度档位 | `references/execution/commercial-expression-freedom.md` |
 | 需要痛点场景化/焦虑激活/紧迫感 / 痛点太抽象场景不具体 | `references/execution/anxiety-pain-scenification.md` |
-| Platform-specific | `references/modes/24-modes.md` + `references/modes/platforms.md` |
-| Multi-platform | `references/modes/24-modes.md` + `references/modes/platforms.md` + `references/cross-platform/cross-platform-reconception.md` |
+| Platform-specific | `references/modes/24-modes.md` + `references/modes/platforms.md` + `references/modes/viral-content-map.md` |
+| Multi-platform | `references/modes/24-modes.md` + `references/modes/platforms.md` + `references/modes/viral-content-map.md` + `references/cross-platform/cross-platform-reconception.md` |
 | Seed/Sell / Commercial copy | `references/execution/purpose-integrity.md` + `references/craft/cta.md` |
 | IP mode | `references/craft/ip-naturalness.md` + `references/execution/expression-authority.md` |
 | External research | `references/external/external-intelligence.md` |
@@ -360,17 +360,19 @@ Minimal loading rules (cannot be lost even by a Limited Agent):
 ### G6.6 Pain Translation (Sell/Seed)
 - Sell must complete Pain Translation (P1 Surface Complaint → P2 Daily Friction → P3 Emotional Cost → P4 Desired Progress → P5 Product Bridge) through the Product-to-Pain Match Gate
 - Seed leans toward Desire Translation (Desired State + Scene + Product Difference + Experience Imagination), not full ingredient recitation
-- Pain Distance 按 DIRECT_PAIN / PARTIAL_PAIN / CONTEXT_PAIN 分级：DIRECT 最强表达；PARTIAL_PAIN 允许强表达，边界体现在不夸大（不把部分解决写成全部解决），禁止在文案里主动声明边界/免责；CONTEXT_PAIN 只能作为受众上下文、不得当主卖点
-- Pain may be intensified but must be real friction, never invented health fear; no symptom pain → unauthorized efficacy leap
+- Pain Distance 按 DIRECT_PAIN / PARTIAL_PAIN / CONTEXT_PAIN 分级：DIRECT 最强表达；PARTIAL_PAIN 允许强表达，边界体现在不夸大（不把部分解决写成全部解决），禁止在文案里主动声明边界/免责；CONTEXT_PAIN 默认保留，非敏感品类可作为主卖点（v4.11.4），敏感品类仍只作上下文
+- **功效暗示永不过滤（v4.11.4）**：I5-B/C/AMBER 默认保留、默认强化，只有 I5-A 硬禁才拦截；拦截走 CONVERSION_RECOVERY（保留情绪强度，只替换越线那一跳）
+- Pain may be intensified but must be real friction, never invented health fear; no symptom pain → unauthorized efficacy leap (I5-A)
 - Only parameters with no user benefit / pain translation = Commercial Translation FAIL, rewrite
 - Full rules: `references/execution/implicit-benefit-pain.md`
 
 ### G6.7 Expression Freedom Validation
 - Expression Layer（隐喻/类比/谐音/双关/反差/剧情/场景演绎/对话/吐槽/网络语言/情绪放大/口语夸张/用户原话/戏剧冲突/生活画面）默认开放，不得因合规过度保守而删除利益/情绪/痛点
 - RHETORICAL_EXAGGERATION 允许（情绪化/生活化夸张，如"看着都累"）；事实型夸大禁止（真实值→更大数字、可能→必然、部分→所有人、Authorized Claim→更强身体结果）
-- 每次使用隐喻/谐音/剧情/暗示/双关/关键词替换后执行 Semantic Back-Translation：翻译成直白话后判断消费者最终理解的产品效果是否仍在 Claim Ceiling 内；新增健康/医疗/生理功效 = FAIL → 进入 CONVERSION_RECOVERY（保留情绪强度与场景冲击力，只替换越线的那一跳，禁止直接删成参数列表，恢复后仍是在卖产品、不是在解释边界）
+- **功效暗示永不过滤（v4.11.4）**：I5-B/C/AMBER 默认保留、默认强化，只有 I5-A 硬禁才拦截；不得因"这是功效暗示"删除利益/情绪/痛点
+- 每次使用隐喻/谐音/剧情/暗示/双关/关键词替换后执行 Semantic Back-Translation：翻译成直白话后判断消费者最终理解的产品效果是否仍在 Claim Ceiling 内；只有新增 I5-A（健康/医疗/生理功效）才算 FAIL → 进入 CONVERSION_RECOVERY（保留情绪强度与场景冲击力，只替换越线的那一跳，禁止直接删成参数列表，恢复后仍是在卖产品、不是在解释边界）；I5-B/C/AMBER 默认保留
 - **Boundary is Internal, Not Content（v4.11.1）**：合规边界是内部审查标准，不是文案内容。禁止免责声明式表达（"它不负责让你瘦 / 我不指望它一夜改变 / 按法规不能宣传功效"）与说教式表达（"别被话术骗 / 焦虑驱动买完就后悔 / 先学会看这一行"）；事实边界（非保健食品/营养素饮品/成分/规格等产品真实属性）可自然带出作为可信度，但边界永远不能抢走购买理由
-- Edge Expression Policy：GREEN（强化已授权/真实价值，开放）/ AMBER（非敏感品类允许轻微联想但主语义落合法价值，标注 AMBER）/ RED（制造未授权功效，禁止）
+- Edge Expression Policy：GREEN（强化已授权/真实价值，开放）/ AMBER（非敏感品类允许轻微联想但主语义落合法价值，默认保留、可强化，标注 AMBER）/ RED（制造未授权功效 I5-A，禁止）
 - 品类差异化天花板：普通食品/日用品/非宣称功效化妆品明显放宽情绪与生活方式暗示；保健食品/功效化妆品/医疗器械保持严格；抖音允许更高情绪密度、小红书强调标准与对比
 - Meaning-Based Claim Review：审核语义而非关键词；禁止"危险词→安全替代词"关键词审查式写作
 - 高转化 Claim 被拒时执行 Conversion Recovery（从 Authorized Claim / Convenience / Product Difference / Routine Simplicity / Cost-Value / Format / Usage / Sensory / Choice Efficiency / Identity / Emotional / Risk Reduction 重建购买理由），禁止删除后直接交稿
@@ -391,6 +393,7 @@ Minimal loading rules (cannot be lost even by a Limited Agent):
 - Platform core respected (attention / decision / cognition / trust)
 - Re-conception, not re-styling — different question per platform
 - Platform-specific proof type and information density
+- 2026 爆款实证（`references/modes/viral-content-map.md`）：情绪先行、活人感、信任×场景三条跨平台规律；平台内容类型 / 分发机制 / 电商打法按图谱适配，但不得成为固定五件套
 
 ### G8 Natural Depth / Humanization
 - Natural conversational flow, not module拼接
@@ -410,9 +413,10 @@ Minimal loading rules (cannot be lost even by a Limited Agent):
 
 ### G11 Semantic Claim Audit
 - Check what the user will understand the effect to be, not just which sensitive words appear
-- No "forbidden word → safe substitute" mapping; hidden efficacy implication (你懂的 / 前后对比 / 场景暗示) is still an unauthorized claim
+- No "forbidden word → safe substitute" mapping; I5-A hidden efficacy implication (你懂的 / 前后对比 / 场景暗示) is still an unauthorized claim
+- **功效暗示永不过滤（v4.11.4）**：I5-B/C/AMBER 默认保留，只有 I5-A 才算 FAIL；拦截走 CONVERSION_RECOVERY
 - Same Claim Ceiling for every commercial identity (达人/素人IP/品牌/店主/创始人)
-- **Semantic Destination Test**: ask what an ordinary consumer will most naturally understand the product to deliver — "更方便/更容易坚持/更省事/选择更简单" is fine; "能治/改善某种身体问题" fails even without efficacy words. Audit meaning, not vocabulary.
+- **Semantic Destination Test**: ask what an ordinary consumer will most naturally understand the product to deliver — "更方便/更容易坚持/更省事/选择更简单" is fine; "能治/改善某种身体问题" (I5-A) fails even without efficacy words. Audit meaning, not vocabulary.
 
 ### G12 Review Risk Audit
 - Platform rules are for Risk Detection, not Evasion Design
@@ -475,6 +479,7 @@ Compose skills at runtime via adapter capability mapping.
 ## 10. Final Output Contract
 
 **Canonical output contract：`references/quality/final-output.md`。** 本节约束为最小不可丢失规则。
+**Canonical output template：`references/templates/output-templates.md`。** 创作完内容后强制套用模板并生成 `.md` 文件（见 §10.5）。
 
 ### 10.1 输出格式（Default，不是 Hard Lock）
 
@@ -509,8 +514,19 @@ Angle（角度）与 Closing Family（收口家族）默认保持内部；**唯�
 
 - `CTA_PERMISSION` 默认 `IMPLICIT_ONLY`；只有命中 Closed Explicit CTA Allowlist 才允许显式 CTA。
 - **Sell 不自动解锁显式 CTA。** 热用户 / 高购买意向 / first_goal=purchase_decision 均不改变 CTA Permission。
+- **全口径默认高级隐式收口（v4.12.0）：** 看播 / 预约 / 成交 / 留资 / 加热 所有口径默认收口 = NATURAL_STOP 或 IMPLICIT_CLOSE。显式动作（进直播间 / 点预约 / 点购物车 / 下单 / 去拍 / 去看看 / 点我头像 / 点下方）不属于任何口径的默认选项。
+- **高级隐式收口六项质检：** 零动作指令 / 零目的地 / 零时间限定 / 零直播间行为预告 / 承接本版核心观点 / 同批次句式指纹不重复。详见 `references/craft/cta.md` 第二节·五。
 - **Natural Stop 是合法且优先的结尾。** No closing sentence is better than a forced closing sentence.
 - 完整 CTA 规则：`references/craft/cta.md`（Source of Truth）。
+
+### 10.5 强制模板套用 + MD 文件生成（v4.14.0 新增）
+
+**创作完内容之后，强制套用模板并生成 `.md` 文件交付。** 完整模板结构与文件生成规则见 `references/templates/output-templates.md`（Source of Truth）。
+
+- **强制套用模板**：创作完内容后必须按模板组织输出（单版 / 多版表格 / 多平台），不得自由排版。
+- **强制生成 `.md` 文件**：保存到当前工作目录，命名 `{平台}-{产品}-{行动}-{YYMMDDHHMM}.md`（与 HTML 报告命名规范一致，仅扩展名不同）。
+- **执行时机**：G10 输出净化之后 → 套模板 → 落盘。
+- **例外**：用户明确指定其他格式（JSON / 表格 / 其他宿主格式）时遵从用户格式。
 
 ---
 

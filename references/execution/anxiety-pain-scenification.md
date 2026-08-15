@@ -567,7 +567,7 @@ Research 可以专业。正文要像人。
 **v4.11.0 补充**：
 
 - 焦虑强度按品类差异化（非敏感品类允许更高密度，敏感品类收紧）——但任何品类都不制造虚假疾病 / 灾难 / 稀缺。
-- 痛点距离按 DIRECT_PAIN / PARTIAL_PAIN / CONTEXT_PAIN 分级：PARTIAL_PAIN 允许强表达但露出边界，CONTEXT_PAIN 只能作为受众上下文。
+- 痛点距离按 DIRECT_PAIN / PARTIAL_PAIN / CONTEXT_PAIN 分级：PARTIAL_PAIN 允许强表达但边界体现在不夸大（v4.11.1 起不再要求"露出边界"），CONTEXT_PAIN 默认保留、非敏感品类可作为主卖点（v4.11.4）。
 - COMMERCIAL_INTENSITY 档位只改变焦虑与场景的表达强度，不改变"焦虑只能作用于现实摩擦、不能作用于身体后果"的底线。
 
 ---

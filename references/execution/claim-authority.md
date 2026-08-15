@@ -1,13 +1,13 @@
 ﻿# Claim Authority（主张表达权限层）
 
 > **Source of Truth：主张表达权限 Claim Authority。** 主 SKILL.md 只保留简要调用；本文件是 Claim Authority 的唯一 Source of Truth。
-> **版本**：v4.11.0 更新（COMMERCIAL_INTENSITY / Conversion Recovery 保留强度）
+> **版本**：v4.11.4 更新（功效暗示永不过滤：I5-B/C/AMBER 默认保留 / COMMERCIAL_INTENSITY 档位联动）
 > **类型**：商业表达强度升级（不新增暗语/规避/谐音；不修改 24 模式 / 四平台 Canonical Core / Content / Seed / Sell 核心定义 / CTA Permission / Dynamic Angle / Natural Depth）
-> **解决问题**：Skill 在食品、营养品、保健食品、美妆等品类中过度保守——发现功效存在合规风险 → 大幅弱化 → 删除核心利益 → 最后只剩成分、规格、包装 → 虽然安全，但没有购买欲望。
-> **最高原则**：# Maximize Persuasion Within the Claim Ceiling.
+> **解决问题**：Skill 在食品、营养品、保健食品、美妆等品类中过度保守——发现功效存在合规风险 → 大幅弱化 → 删除核心利益 → 最后只剩成分、规格、包装 → 虽然安全，但没有购买欲望。v4.11.4 起执行"功效暗示永不过滤"：合法边界内的功效暗示（I5-B / I5-C / AMBER）默认保留、默认强化，只有 I5-A 硬禁才被拦截。
+> **最高原则**：# Maximize Persuasion Within the Claim Ceiling. # 功效暗示永不过滤——只有 I5-A 硬禁才拦截。
 > 不是 Minimize Claims，也不是 Evade the Claim Ceiling。
 > **Compliance sets the ceiling. Copywriting should write as strongly as possible below that ceiling.**
-> **v4.11.0 关键变化**：新增 COMMERCIAL_INTENSITY 路由参数（CONSERVATIVE / STANDARD / AGGRESSIVE）；Conversion Recovery 强制保留情绪强度与场景冲击力；品类差异化天花板明确化。
+> **v4.11.4 关键变化**：I5-B/C 与 AMBER 在非敏感品类默认保留、默认强化；COMMERCIAL_INTENSITY 各档位联动更新（STANDARD 下 I5-C 默认开放）；"Hidden Efficacy Implication" 禁止范围收窄为仅 I5-A。
 
 ---
 
@@ -109,14 +109,14 @@
 
 ### STANDARD（标准，默认）
 
-- 适度放宽 I5-B/C 和痛点距离。
-- I5-B 允许作为受众上下文并落地到摩擦；PARTIAL_PAIN 允许强表达（边界体现在不夸大）；AMBER 在非敏感品类开放。
+- **I5-B/C 默认保留、默认强化（v4.11.4）**；PARTIAL_PAIN 允许强表达（边界体现在不夸大）；AMBER 在非敏感品类开放。
+- I5-B 作为受众上下文并落地到摩擦；I5-C 在非敏感品类默认开放（不再仅限 AGGRESSIVE）。
 - 适用：大多数普通食品 / 日用品 / 非宣称功效化妆品。
 
 ### AGGRESSIVE（激进）
 
 - 非敏感品类下允许更强场景冲击和身份暗示。
-- I5-C 开放；PARTIAL_PAIN 强表达；AMBER 灰色区充分使用；抖音情绪密度拉满。
+- I5-B/C 默认保留并强化；PARTIAL_PAIN 强表达；AMBER 灰色区充分使用；抖音情绪密度拉满。
 - 仍禁止：I5-A 硬禁、硬功效偷渡、虚假疾病 / 灾难 / 稀缺、虚构身体结果。
 
 **COMMERCIAL_INTENSITY 与 Claim Ceiling 的关系**：
@@ -275,18 +275,21 @@ COSMETIC 不得自动进入"功效不能说"。
 - "早上赶时间，拿一包就走。" → 表达便利。
 - "如果你不想每天桌上摆好几瓶，这种按天分装的形式确实省事。" → 表达使用方式。
 
-禁止 **Hidden Efficacy Implication**：
+**v4.11.4：功效暗示永不过滤。** I5-B（受众状态落地到摩擦）、I5-C（主语义落合法价值域的强暗示）、AMBER（灰色区轻微联想）在非敏感品类默认保留、默认强化——不得因为"这是功效暗示"就删除。
+
+禁止 **I5-A Hidden Efficacy Implication（硬禁，仅此一级）**：
 
 - "以前下午三点就撑不住，现在你懂的。"
 - "女生那几天我都会多来一包。"
 - "熬夜党第二天状态差别很明显。"
 - "脸色这个东西，补没补自己最清楚。"
 
-这种本质是在用剧情/暗语代替未经授权功效。依然属于 Unauthorized Claim。
+这类本质是在用剧情/暗语代替**未经授权的明确生理结果**（I5-A），依然属于 Unauthorized Claim，任何档位禁止。拦截后走 CONVERSION_RECOVERY（保留情绪强度，只替换越线那一跳）。
 
 原则：
 
 > # Imply lifestyle value, not hidden medical efficacy.
+> # 功效暗示永不过滤——只有 I5-A 硬禁才拦截。
 
 ---
 
@@ -334,8 +337,9 @@ Skill 应该执行 **Semantic Claim Check**，而不是 Keyword Check。
 - 有限测试
 - 行业知识向当前 SKU 解释
 - 适配性判断
+- **非敏感品类下的轻微功效联想（v4.11.4 默认保留）**：主语义落合法价值域（省事 / 更简单 / 更容易坚持 / 选择更少 / 身份感）的强暗示，默认保留、默认强化，不得因"有轻微联想"降级或删除
 
-要求：准确限定。
+要求：准确限定；非敏感品类下按"功效暗示永不过滤"原则保留，敏感品类下收紧。
 
 ### RED ZONE（红色区）
 
@@ -517,9 +521,10 @@ Final
 
 > # 商业内容的第一任务是把真实价值卖出去。
 > # 合规系统的任务不是阻止成交，而是阻止虚假成交。
+> # 功效暗示永不过滤——只有 I5-A 硬禁才拦截。
 > # 有权限的功效，大胆讲。
 > # 有证据的结果，准确讲。
-> # 没权限的功效，不用暗语偷渡。
+> # 没权限的功效，不用暗语偷渡（I5-A）。
 > # 不能讲的身体结果，用真实使用价值重新建立购买理由。
 > # Compliance sets the ceiling.
 > # Copywriting should write as strongly as possible below that ceiling.
