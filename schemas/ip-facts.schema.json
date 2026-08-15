@@ -1,0 +1,125 @@
+﻿{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "IP Facts",
+  "description": "Canonical IP fact schema for identity integrity and IP asset planning.",
+  "type": "object",
+  "required": ["ip_id", "real_identity"],
+  "properties": {
+    "ip_id": {
+      "type": "string",
+      "description": "Unique IP identifier"
+    },
+    "real_identity": {
+      "type": "string",
+      "description": "Real-world identity (must be consistent across platforms)",
+      "examples": ["tea_shop_owner", "founder", "brand_ambassador", "consumer", "industry_expert"]
+    },
+    "display_name": {
+      "type": "string"
+    },
+    "background": {
+      "type": "object",
+      "description": "Verified background facts. Only include what has real source.",
+      "properties": {
+        "profession": { "type": "string" },
+        "years_in_industry": { "type": "integer" },
+        "education": { "type": "string" },
+        "location": { "type": "string" },
+        "certifications": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "achievements": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    },
+    "business_facts": {
+      "type": "object",
+      "description": "Verified business facts (P2 level or above). No fabrication.",
+      "properties": {
+        "shop_name": { "type": "string" },
+        "shop_location": { "type": "string" },
+        "years_in_business": { "type": "integer" },
+        "customer_count": { "type": "string" },
+        "business_type": { "type": "string" }
+      }
+    },
+    "values": {
+      "type": "array",
+      "description": "Core values / worldview. Current judgment, not history.",
+      "items": { "type": "string" }
+    },
+    "narrative_roles": {
+      "type": "object",
+      "description": "Narrative roles per platform (identity stays same, role changes)",
+      "properties": {
+        "douyin": { "type": "string", "description": "e.g., live demonstrator" },
+        "xiaohongshu": { "type": "string", "description": "e.g., buying advisor" },
+        "official_account": { "type": "string", "description": "e.g., industry observer" },
+        "channels": { "type": "string", "description": "e.g., trusted judge" }
+      }
+    },
+    "ip_assets_targets": {
+      "type": "object",
+      "description": "What IP assets to build per platform",
+      "properties": {
+        "douyin": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "xiaohongshu": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "official_account": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "channels": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    },
+    "voice": {
+      "type": "object",
+      "properties": {
+        "tone": { "type": "string" },
+        "pace": { "type": "string" },
+        "vocabulary_level": { "type": "string" },
+        "catchphrases": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    },
+    "first_person_allowlist": {
+      "type": "array",
+      "description": "First-person expressions that are factually supported and allowed",
+      "items": {
+        "type": "object",
+        "properties": {
+          "expression": { "type": "string" },
+          "source": { "type": "string" },
+          "category": {
+            "type": "string",
+            "enum": ["current_judgment", "verified_history", "business_fact", "personal_preference"]
+          }
+        }
+      }
+    },
+    "first_person_denylist": {
+      "type": "array",
+      "description": "First-person expressions that are NOT supported and must not be used",
+      "items": { "type": "string" }
+    },
+    "compliance_notes": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Compliance restrictions for this IP"
+    }
+  },
+  "additionalProperties": false
+}

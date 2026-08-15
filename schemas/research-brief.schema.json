@@ -1,0 +1,116 @@
+﻿{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Research Brief",
+  "description": "Structured external research brief for External Intelligence Layer.",
+  "type": "object",
+  "required": ["research_goal", "research_scope"],
+  "properties": {
+    "research_goal": {
+      "type": "string",
+      "enum": [
+        "angle_discovery",
+        "question_discovery",
+        "competitor_research",
+        "trend_analysis",
+        "white_space_discovery",
+        "fact_verification",
+        "platform_specific"
+      ],
+      "description": "Why research is being conducted"
+    },
+    "research_scope": {
+      "type": "string",
+      "enum": ["light", "standard", "deep"],
+      "description": "Research depth/budget"
+    },
+    "product_category": {
+      "type": "string",
+      "description": "Product category to research"
+    },
+    "target_platform": {
+      "type": "string",
+      "enum": ["douyin", "xiaohongshu", "official_account", "channels", "all", "generic"],
+      "description": "Platform to tailor research for"
+    },
+    "target_audience": {
+      "type": "string",
+      "description": "Target audience segment"
+    },
+    "signals": {
+      "type": "array",
+      "description": "Collected web signals with classification",
+      "items": {
+        "type": "object",
+        "required": ["signal_text", "signal_type", "source_url"],
+        "properties": {
+          "signal_text": { "type": "string" },
+          "signal_type": {
+            "type": "string",
+            "enum": [
+              "QUESTION_SIGNAL",
+              "TENSION_SIGNAL",
+              "TREND_SIGNAL",
+              "SATURATION_SIGNAL",
+              "WHITE_SPACE_SIGNAL",
+              "EXTERNAL_FACT",
+              "COMPETITOR_PATTERN",
+              "USER_BEHAVIOR"
+            ]
+          },
+          "source_url": { "type": "string", "format": "uri" },
+          "source_authority": {
+            "type": "string",
+            "enum": ["A1", "A2", "A3", "A4", "A5"]
+          },
+          "freshness_date": { "type": "string", "format": "date" },
+          "relevance_score": { "type": "integer", "minimum": 1, "maximum": 10 }
+        }
+      }
+    },
+    "research_to_angle": {
+      "type": "array",
+      "description": "Mappings from research signals to content angles",
+      "items": {
+        "type": "object",
+        "properties": {
+          "signal": { "type": "string" },
+          "proposed_angle": { "type": "string" },
+          "angle_strength": { "type": "string", "enum": ["strong", "medium", "weak"] },
+          "saturation_penalty": { "type": "number" },
+          "information_gain_score": { "type": "number" }
+        }
+      }
+    },
+    "admission_gate_results": {
+      "type": "array",
+      "description": "External Claim Admission Gate results",
+      "items": {
+        "type": "object",
+        "properties": {
+          "claim": { "type": "string" },
+          "source_type": { "type": "string" },
+          "admission_level": {
+            "type": "string",
+            "enum": ["angle_only", "context", "core_proof", "rejected"]
+          },
+          "reason": { "type": "string" }
+        }
+      }
+    },
+    "white_space_findings": {
+      "type": "array",
+      "description": "Underserved content angles found",
+      "items": { "type": "string" }
+    },
+    "research_summary": {
+      "type": "string",
+      "description": "1-paragraph summary of research findings"
+    },
+    "limitations": {
+      "type": "array",
+      "description": "Known limitations of this research",
+      "items": { "type": "string" }
+    }
+  },
+  "additionalProperties": false
+}

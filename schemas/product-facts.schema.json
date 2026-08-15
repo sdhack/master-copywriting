@@ -1,0 +1,117 @@
+﻿{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Product Facts",
+  "description": "Canonical product fact schema for Master Copywriting skill composition. Single source of truth for one SKU.",
+  "type": "object",
+  "required": ["sku_id", "product_name", "category"],
+  "properties": {
+    "sku_id": {
+      "type": "string",
+      "description": "Unique SKU identifier"
+    },
+    "product_name": {
+      "type": "string",
+      "description": "Product display name"
+    },
+    "category": {
+      "type": "string",
+      "description": "Product category (e.g., tea, skincare, food)"
+    },
+    "subcategory": {
+      "type": "string",
+      "description": "Subcategory (e.g., oolong tea, serum)"
+    },
+    "specs": {
+      "type": "object",
+      "description": "Product specifications",
+      "properties": {
+        "weight_grams": { "type": "number" },
+        "pieces": { "type": "integer" },
+        "boxes": { "type": "integer" },
+        "unit_format": { "type": "string" },
+        "packaging": { "type": "string" }
+      }
+    },
+    "pricing": {
+      "type": "object",
+      "properties": {
+        "price": { "type": "number" },
+        "currency": { "type": "string", "default": "CNY" },
+        "promotion": { "type": "string" },
+        "original_price": { "type": "number" },
+        "price_per_unit": { "type": "string", "description": "Label only, not for calculation" }
+      }
+    },
+    "key_facts": {
+      "type": "array",
+      "description": "Verified product facts (P1 level)",
+      "items": {
+        "type": "object",
+        "required": ["fact", "source_type"],
+        "properties": {
+          "fact": { "type": "string" },
+          "source_type": {
+            "type": "string",
+            "enum": ["P1_PRODUCT_FACT"],
+            "description": "Product Facts Schema only owns Product Truth (P1). IP facts belong to ip-facts.schema.json; external facts/signals belong to research-brief.schema.json."
+          },
+          "source_detail": { "type": "string" },
+          "numeric_value": { "type": "number" },
+          "numeric_unit": { "type": "string" }
+        }
+      }
+    },
+    "craft": {
+      "type": "object",
+      "properties": {
+        "process": { "type": "string" },
+        "craftsman": { "type": "string" },
+        "heritage_status": { "type": "string" },
+        "origin": { "type": "string" },
+        "material": { "type": "string" }
+      }
+    },
+    "sensory": {
+      "type": "object",
+      "properties": {
+        "aroma": { "type": "array", "items": { "type": "string" } },
+        "taste": { "type": "array", "items": { "type": "string" } },
+        "appearance": { "type": "string" },
+        "soup_color": { "type": "string" }
+      }
+    },
+    "brewing": {
+      "type": "object",
+      "properties": {
+        "hot_brew_ratio": { "type": "string" },
+        "cold_brew_ratio": { "type": "string" },
+        "brew_count": { "type": "integer", "description": "Number of brews (P1 fact)" },
+        "water_temp": { "type": "string" }
+      }
+    },
+    "after_sales": {
+      "type": "object",
+      "properties": {
+        "trial_policy": { "type": "string" },
+        "return_policy": { "type": "string" },
+        "shipping": { "type": "string" },
+        "guarantee": { "type": "string" }
+      }
+    },
+    "brand": {
+      "type": "object",
+      "properties": {
+        "brand_name": { "type": "string" },
+        "brand_story": { "type": "string" },
+        "brand_values": { "type": "array", "items": { "type": "string" } },
+        "voice": { "type": "string" }
+      }
+    },
+    "compliance_notes": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Compliance restrictions for this product"
+    }
+  },
+  "additionalProperties": false
+}

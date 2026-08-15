@@ -1,0 +1,126 @@
+﻿{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Content Fingerprint",
+  "description": "Structured fingerprint of a content piece for repetition checking and diversity management.",
+  "type": "object",
+  "required": ["content_id", "platform", "purpose", "core_proposition"],
+  "properties": {
+    "content_id": {
+      "type": "string",
+      "description": "Unique content identifier"
+    },
+    "platform": {
+      "type": "string",
+      "enum": ["douyin", "xiaohongshu", "official_account", "channels", "generic"]
+    },
+    "purpose": {
+      "type": "string",
+      "enum": ["content", "seed", "sell"]
+    },
+    "core_proposition": {
+      "type": "string",
+      "description": "One-sentence core proposition"
+    },
+    "angle_type": {
+      "type": "string",
+      "description": "Type of angle (discovery, proof, comparison, framework, etc.)"
+    },
+    "creative_driver": {
+      "type": "string",
+      "description": "Primary creative driver"
+    },
+    "key_facts_used": {
+      "type": "array",
+      "description": "Product facts used in this piece",
+      "items": { "type": "string" }
+    },
+    "ip_asset_built": {
+      "type": "string",
+      "description": "IP asset accumulated"
+    },
+    "product_role": {
+      "type": "string",
+      "enum": ["protagonist", "proof_case", "solution", "choice_result", "opinion_example"]
+    },
+    "content_function": {
+      "type": "string",
+      "enum": [
+        "discovery",
+        "education",
+        "comparison",
+        "proof",
+        "framework",
+        "story",
+        "method",
+        "judgment",
+        "recommendation",
+        "lifestyle"
+      ],
+      "description": "Functional role of content"
+    },
+    "hook_type": {
+      "type": "string",
+      "description": "Type of opening hook"
+    },
+    "cta_type": {
+      "type": "string",
+      "description": "Type of CTA (if sell)"
+    },
+    "word_count": {
+      "type": "integer",
+      "description": "Pure body/script word count (no metadata)"
+    },
+    "tone": {
+      "type": "string",
+      "description": "Overall tone"
+    },
+    "creation_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "fact_consistency": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 2,
+      "description": "Quality dimension 0/1/2 (0 = not met, 1 = weak, 2 = clearly met). No pseudo-precision 0-10."
+    },
+    "purpose_completion": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 2,
+      "description": "Quality dimension 0/1/2. Seed = preference shift; Sell = decision completion."
+    },
+    "platform_fit": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 2,
+      "description": "Quality dimension 0/1/2. 0-10 subjective scoring removed."
+    },
+    "hard_gate_results": {
+      "type": "object",
+      "description": "Pass/fail for each hard gate",
+      "properties": {
+        "g1_product_truth": { "type": "boolean" },
+        "g2_numeric_integrity": { "type": "boolean" },
+        "g3_identity_truth": { "type": "boolean" },
+        "g4_external_claim": { "type": "boolean" },
+        "g5_demo_comparison": { "type": "boolean" },
+        "g6_purpose": { "type": "boolean" },
+        "g7_platform": { "type": "boolean" },
+        "g8_naturalness": { "type": "boolean" },
+        "g9_diversity": { "type": "boolean" },
+        "g10_sanitizer": { "type": "boolean" }
+      }
+    },
+    "tags": {
+      "type": "array",
+      "description": "Content tags for similarity matching",
+      "items": { "type": "string" }
+    },
+    "similarity_group": {
+      "type": "string",
+      "description": "Group ID for similar content (for diversity checking)"
+    }
+  },
+  "additionalProperties": false
+}

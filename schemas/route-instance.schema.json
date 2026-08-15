@@ -1,0 +1,271 @@
+﻿{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Route Instance",
+  "description": "Structured routing result for a copywriting task. Output after task analysis, before generation.",
+  "type": "object",
+  "required": ["task_type", "platform", "purpose", "ip_mode", "complexity", "runtime_mode"],
+  "properties": {
+    "task_id": {
+      "type": "string",
+      "description": "Unique task identifier"
+    },
+    "task_type": {
+      "type": "string",
+      "enum": ["single_copy", "multi_version", "multi_platform", "content_batch", "strategy"],
+      "description": "Type of copywriting task"
+    },
+    "platform": {
+      "type": "string",
+      "enum": ["douyin", "xiaohongshu", "official_account", "channels", "generic", "mixed"],
+      "description": "Target platform"
+    },
+    "platforms": {
+      "type": "array",
+      "description": "Multiple platforms if task_type is multi_platform",
+      "items": {
+        "type": "string",
+        "enum": ["douyin", "xiaohongshu", "official_account", "channels", "generic"]
+      }
+    },
+    "purpose": {
+      "type": "string",
+      "enum": ["content", "seed", "sell", "auto_detect"],
+      "description": "Content purpose: content value / preference building / decision completion"
+    },
+    "ip_mode": {
+      "type": "string",
+      "enum": ["standard", "ip", "auto_detect"],
+      "description": "Standard brand copy or IP-personality copy"
+    },
+    "complexity": {
+      "type": "string",
+      "enum": ["simple", "standard", "complex"],
+      "description": "Task complexity for length budgeting"
+    },
+    "length": {
+      "type": "object",
+      "properties": {
+        "mode": {
+          "type": "string",
+          "enum": ["auto", "short", "medium", "long", "specific"]
+        },
+        "target_words": {
+          "type": "integer",
+          "description": "Target word count (budget, not hard KPI)"
+        },
+        "budget_range": {
+          "type": "object",
+          "properties": {
+            "min": { "type": "integer" },
+            "max": { "type": "integer" }
+          }
+        }
+      }
+    },
+    "runtime_mode": {
+      "type": "string",
+      "enum": ["FULL", "GROUNDED", "WEB_ONLY", "TEXT_ONLY"],
+      "description": "Detected runtime capability mode"
+    },
+    "capabilities": {
+      "type": "object",
+      "description": "Detected capabilities",
+      "properties": {
+        "WEB_SEARCH": { "type": "boolean" },
+        "FILE_READ": { "type": "boolean" },
+        "FILE_SEARCH": { "type": "boolean" },
+        "CODE_EXECUTION": { "type": "boolean" },
+        "CALCULATOR": { "type": "boolean" },
+        "FUNCTION_CALLING": { "type": "boolean" },
+        "MCP": { "type": "boolean" },
+        "MEMORY": { "type": "boolean" },
+        "STRUCTURED_OUTPUT": { "type": "boolean" }
+      }
+    },
+    "product_fact_source": {
+      "type": "string",
+      "enum": [
+        "composed_skill", "user_input", "file", "mcp", "database",
+        "official_web", "authorized_official_listing", "mixed_verified", "unknown"
+      ],
+      "description": "Source of product facts. official_web / authorized_official_listing / mixed_verified are set after Product Source Retrieval succeeds; must NOT remain 'unknown' after a successful search (PATCH 14)."
+    },
+    "product_identity_status": {
+      "type": "string",
+      "enum": ["EXACT", "PARTIAL", "UNKNOWN"],
+      "description": "Certainty that the user's product name uniquely maps to the current SKU. A product name alone does NOT imply EXACT; multiple age versions / specs / generations / formulas / regional variants make it PARTIAL (PATCH 08)."
+    },
+    "product_fact_sufficiency": {
+      "type": "string",
+      "enum": [
+        "NONE", "IDENTITY_ONLY", "PARTIAL_FACTS",
+        "SUFFICIENT_FOR_CONTENT", "SUFFICIENT_FOR_SEED", "SUFFICIENT_FOR_SELL"
+      ],
+      "description": "Adequacy of product facts for the current purpose. Separated from product_fact_source: user input may identify the product without being a sufficient Product Fact Source (PATCH 01)."
+    },
+    "product_retrieval_status": {
+      "type": "string",
+      "enum": ["NOT_NEEDED", "REQUIRED", "SEARCHING", "RESOLVED", "AMBIGUOUS", "FAILED", "LIMITED"],
+      "description": "Status of product information retrieval. If WEB_SEARCH exists and sufficiency is below the purpose requirement, status must leave NOT_NEEDED and reach SEARCHING/RESOLVED/AMBIGUOUS/FAILED before any user data request (PATCH 14/22/23)."
+    },
+    "product_regulatory_category": {
+      "type": "string",
+      "enum": ["GENERAL_GOODS", "ORDINARY_FOOD", "HEALTH_FOOD", "NUTRIENT_SUPPLEMENT_HEALTH_FOOD", "COSMETIC", "MEDICAL_DEVICE", "DRUG", "OTHER"],
+      "description": "Regulatory category of the current SKU. Must be identified before writing product copy; if unknown and WEB_SEARCH exists, retrieve official label / registration / filing identity instead of guessing from words like nutrition pack / wellness / beauty (PATCH 02)."
+    },
+    "claim_authority_level": {
+      "type": "string",
+      "enum": ["L0_UNKNOWN", "L1_PRODUCT_ATTRIBUTE", "L2_AUTHORIZED_CLAIM", "L3_EVIDENCE_CLAIM", "L4_USER_VALUE_TRANSLATION", "L5_AUTHENTIC_EXPERIENCE", "L6_UNAUTHORIZED_EFFECT"],
+      "description": "Expression permission level of the strongest claim in this piece. L6 must never enter the body (PATCH 01)."
+    },
+    "claim_strength": {
+      "type": "string",
+      "enum": ["DIRECT", "EVIDENCE_BOUNDED", "CONDITIONAL", "SUBJECTIVE", "ATTRIBUTE_ONLY", "PROHIBITED"],
+      "description": "Claim Strength = Maximum Strength Supported by Evidence. Strong authority means no unnecessary weakening; subjective only means no escalation (PATCH 07)."
+    },
+    "commercial_value_path": {
+      "type": "string",
+      "description": "For Sell: the Problem → Benefit purchase-reason path (Authorized Function / Convenience / Product Difference / Routine Simplification / Verified Experience / Value / Cost). Absent = Commercial Usefulness FAIL (PATCH 08)."
+    },
+    "implication_level": {
+      "type": "string",
+      "enum": ["I1_PRODUCT_EXPERIENCE", "I2_LIFESTYLE_BENEFIT", "I3_EMOTIONAL_IDENTITY", "I4_CONDITIONED_FUNCTIONAL", "I5_A_HARD_PROHIBITION", "I5_B_HIGH_RISK_CONTEXTUAL", "I5_C_ACCEPTABLE_STRONG"],
+      "description": "Highest implication level used in this piece. I1-I3 open, I4 conditioned (needs Authorized Claim or sufficient evidence), I5-A hard prohibited (disease/treatment/prevention/clear physiological result, any intensity level), I5-B high-risk but contextual (state fatigue/skin anxiety/age anxiety as audience context landing on product friction), I5-C acceptable strong implication (non-sensitive categories, main semantic still in legal value domain) (PATCH v4.11.0)."
+    },
+    "pain_distance": {
+      "type": "string",
+      "enum": ["DIRECT_PAIN", "PARTIAL_PAIN", "CONTEXT_PAIN"],
+      "description": "Distance between product facts and the pain addressed. DIRECT_PAIN: product directly solves → strongest expression. PARTIAL_PAIN: product solves the key friction → strong expression allowed but real boundary must be shown. CONTEXT_PAIN: only audience state → allowed to appear but cannot be the main selling point (former INFERRED_PHYSIOLOGICAL_PAIN folded into this) (PATCH v4.11.0)."
+    },
+    "commercial_intensity": {
+      "type": "string",
+      "enum": ["CONSERVATIVE", "STANDARD", "AGGRESSIVE"],
+      "default": "STANDARD",
+      "description": "Commercial intensity level, selected by category + platform + user goal. Controls how strongly to express (I5-B/C space, pain distance, AMBER zone) without changing Claim Ceiling. CONSERVATIVE: current strict standard. STANDARD (default): moderate relaxation. AGGRESSIVE: non-sensitive categories allow stronger scene impact and identity implication; hard efficacy smuggling still prohibited (PATCH v4.11.0)."
+    },
+    "pain_translation_path": {
+      "type": "string",
+      "description": "For Sell/Seed: the Pain Translation chain (P1 Surface Complaint → P2 Daily Friction → P3 Emotional Cost → P4 Desired Progress → P5 Product Bridge) passed through the Product-to-Pain Match Gate. Absent = Commercial Translation FAIL (PATCH 15)."
+    },
+    "benefit_translation_domain": {
+      "type": "string",
+      "description": "Legal benefit domain(s) used when health efficacy is unavailable: Convenience / Routine Simplicity / Decision Reduction / Portability / Time Saving / Consistency Support / Sensory Experience / Format Innovation / Cost Value / Authorized Function / Verified Performance / Lifestyle Fit / Risk Reduction / Choice Confidence (PATCH 06)."
+    },
+    "expression_freedom_level": {
+      "type": "string",
+      "enum": ["EXPRESSION_OPEN", "EXPRESSION_RESTRICTED"],
+      "default": "EXPRESSION_OPEN",
+      "description": "Expression Layer freedom level. EXPRESSION_OPEN (default): metaphor/analogy/homophony/pun/contrast/plot/scene演绎/dialogue/吐槽/internet language/emotional amplification/colloquial exaggeration/user原话/dramatic conflict/life scenes all open, but expression form must not create a new Product Claim. EXPRESSION_RESTRICTED only when a specific platform/law requires it (PATCH v4.9.0)."
+    },
+    "rhetorical_exaggeration": {
+      "type": "string",
+      "enum": ["ALLOWED", "PROHIBITED"],
+      "description": "Whether rhetorical exaggeration is allowed. ALLOWED for emotional/lifestyle/rhetorical exaggeration (e.g. '看着都累'); PROHIBITED for factual inflation (real value → bigger number, possible → certain, some users → everyone, Authorized Claim → stronger body result). Emotional exaggeration is allowed. Factual exaggeration is not (PATCH v4.9.0)."
+    },
+    "back_translation_result": {
+      "type": "string",
+      "enum": ["PASS", "FAIL"],
+      "description": "Result of Semantic Back-Translation for metaphor/homophony/plot/implication/pun/keyword substitution: translate the expression into plain language and judge whether the effect an ordinary consumer understands remains within the Claim Ceiling. PASS = has Claim Authority or is only legal life/emotional value; FAIL = adds a health/medical/physiological efficacy (PATCH v4.9.0)."
+    },
+    "anxiety_type": {
+      "type": "string",
+      "enum": ["A1_LOSS", "A2_EXECUTION", "A3_DECISION", "A4_COMPLEXITY", "A5_TIME", "A6_OPPORTUNITY_COST", "A7_REGRET", "A8_WRONG_CHOICE", "A9_SOCIAL_SCENE"],
+      "description": "Anxiety type dynamically selected for this piece. Product Truth chooses the anxiety, not the reverse. Each anxiety must pass the Anxiety Legitimacy Gate (Source / Reality / Product Relevance) (PATCH v4.10.0)."
+    },
+    "pain_specificity_score": {
+      "type": "integer",
+      "enum": [0, 1, 2],
+      "description": "0 = abstract concept (e.g. '现代人很忙'); 1 = concrete pain but weak scene; 2 = user immediately recognizes the specific scene and friction. Sell default: Pain Specificity must not be 0 (PATCH v4.10.0)."
+    },
+    "scene_vividness_score": {
+      "type": "integer",
+      "enum": [0, 1, 2],
+      "description": "0 = no picture; 1 = has scene words; 2 = has at least two of action/object/time/conflict. Douyin targets 2; Xiaohongshu at least a verifiable/referenceable real scene; Channels credible and retellable; OA may reduce shot detail but needs a real problem structure (PATCH v4.10.0)."
+    },
+    "anxiety_legitimacy": {
+      "type": "string",
+      "enum": ["PASS", "FAIL"],
+      "description": "Each anxiety passes Source Test (real source, not AI-invented) + Reality Test (problem exists without advertising) + Product Relevance Test (product can really reduce it). Any failure = switch anxiety (PATCH v4.10.0)."
+    },
+    "relief_path": {
+      "type": "string",
+      "enum": ["REQUIRED", "OPTIONAL"],
+      "description": "Sell/Seed must give an exit after anxiety (Anxiety → Relief Path); Content may only raise awareness. Never press anxiety without a resolution logic (PATCH v4.10.0)."
+    },
+    "ip_fact_source": {
+      "type": "string",
+      "enum": ["composed_skill", "user_input", "file", "mcp", "database", "unknown"],
+      "description": "Source of IP facts"
+    },
+    "core_proposition": {
+      "type": "string",
+      "description": "Core proposition for this piece (1 sentence)"
+    },
+    "preference_target": {
+      "type": "string",
+      "description": "For Seed: what preference is being built"
+    },
+    "primary_proof_type": {
+      "type": "string",
+      "description": "Primary proof type for this platform/task"
+    },
+    "ip_asset_target": {
+      "type": "string",
+      "description": "IP asset to build in this piece"
+    },
+    "product_role": {
+      "type": "string",
+      "enum": ["protagonist", "proof_case", "solution", "choice_result", "opinion_example"],
+      "description": "Role of product in this content"
+    },
+    "content_format": {
+      "type": "string",
+      "enum": ["short_video", "live_script", "note", "long_article", "ad_creative", "landing_page", "button", "form", "unknown"],
+      "description": "Content format of this route instance"
+    },
+    "target_audience": {
+      "type": "string",
+      "description": "Target audience of this piece"
+    },
+    "audience_temperature": {
+      "type": "string",
+      "enum": ["cold", "warm", "hot", "unknown"],
+      "description": "Audience temperature. Affects information depth, objection handling, offer explanation only; never affects CTA permission."
+    },
+    "first_goal": {
+      "type": "string",
+      "description": "Unique first goal of this piece (e.g., purchase_decision). Business goal is separate from language action permission."
+    },
+    "commercial_relationship": {
+      "type": "string",
+      "enum": [
+        "brand_official", "shop_owner", "founder", "product_side",
+        "collab_influencer", "commission_influencer", "gifted_experience",
+        "real_consumer", "no_commercial_relation", "unknown"
+      ],
+      "description": "Commercial relationship between creator and product. Belongs to the route instance, not the product."
+    },
+    "cta_permission": {
+      "type": "string",
+      "enum": ["IMPLICIT_ONLY", "EXPLICIT_ALLOWED"],
+      "default": "IMPLICIT_ONLY",
+      "description": "CTA language permission. IMPLICIT_ONLY by default; EXPLICIT_ALLOWED only via the Closed Explicit CTA Allowlist."
+    },
+    "closing_strategy": {
+      "type": "string",
+      "enum": ["NATURAL_STOP", "IMPLICIT_CLOSE", "EXPLICIT_CTA"],
+      "description": "Closing strategy. NATURAL_STOP preferred; EXPLICIT_CTA only when cta_permission = EXPLICIT_ALLOWED."
+    },
+    "references_to_load": {
+      "type": "array",
+      "description": "References to load for this task (progressive disclosure)",
+      "items": { "type": "string" }
+    },
+    "verification_limits": {
+      "type": "array",
+      "description": "What cannot be auto-verified in this runtime. Describes verification limits only; never lowers Product/Identity/Numeric/External/Demonstration truth standards.",
+      "items": { "type": "string" }
+    }
+  },
+  "additionalProperties": false
+}
