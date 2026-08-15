@@ -1,57 +1,57 @@
 ﻿# Master Copywriting Skill v4.14.0
 
-> **One Canonical Brain. Many Agent Bodies.**
-> _Cross-agent portable copywriting decision & generation system — writes platform-native, purpose-aligned, fact-integrity copy across any LLM agent._
+> **一个规范大脑，多个 Agent 载体。**
+> _跨 Agent 可移植的文案决策与生成系统 —— 让任何 LLM Agent 都能产出平台原生、目标对齐、事实完整的高转化文案。_
 
-[![Version](https://img.shields.io/badge/version-4.14.0-6B46C1?style=flat-square)]()
-[![Agents](https://img.shields.io/badge/agents-CLAUDE%20|%20OpenAI%20|%20Gemini%20|%20Copilot-10B981?style=flat-square)]()
-[![Platforms](https://img.shields.io/badge/platforms-%E6%8A%96%E9%9F%B3%20%7C%20%E5%B0%8F%E7%BA%A2%E4%B9%A6%20%7C%20%E8%A7%86%E9%A2%91%E5%8F%B7%20%7C%20%E5%85%AC%E4%BC%97%E5%8F%B7-3B82F6?style=flat-square)]()
-[![Modes](https://img.shields.io/badge/modes-24%20writing%20modes-F59E0B?style=flat-square)]()
-[![Status](https://img.shields.io/badge/status-production-EF4444?style=flat-square)]()
+[![版本](https://img.shields.io/badge/version-4.14.0-6B46C1?style=flat-square)]()
+[![Agent](https://img.shields.io/badge/Agent-CLAUDE%20|%20OpenAI%20|%20Gemini%20|%20Copilot-10B981?style=flat-square)]()
+[![平台](https://img.shields.io/badge/%E5%B9%B3%E5%8F%B0-%E6%8A%96%E9%9F%B3%20%7C%20%E5%B0%8F%E7%BA%A2%E4%B9%A6%20%7C%20%E8%A7%86%E9%A2%91%E5%8F%B7%20%7C%20%E5%85%AC%E4%BC%97%E5%8F%B7-3B82F6?style=flat-square)]()
+[![模式](https://img.shields.io/badge/%E6%A8%A1%E5%BC%8F-24%20%E7%A7%8D%E5%86%99%E4%BD%9C%E6%A8%A1%E5%BC%8F-F59E0B?style=flat-square)]()
+[![状态](https://img.shields.io/badge/%E7%8A%B6%E6%80%81-%E7%94%9F%E4%BA%A7%E7%BA%A7-EF4444?style=flat-square)]()
 
 ---
 
-## What Makes This Different
+## 它为什么不一样
 
-Not a prompt library. Not a template collection. **A single-source-of-truth writing intelligence layer** that drives any agent to produce consistent, platform-native, high-conversion copy — from the same product facts.
+这不是提示词库，也不是模板合集。**它是一个单一事实来源的写作智能层** —— 用同一套产品事实，驱动任何 Agent 产出一致、平台原生、高转化的文案。
 
-| vs. | Typical Approach | This Skill |
+| 对比维度 | 传统做法 | 本技能 |
 |---|---|---|
-| **Consistency** | Each agent writes differently | 1 canonical brain, N agent bodies |
-| **Platform Fit** | Generic templates | 4 platform-specific engines + 2026 viral content map |
-| **Compliance** | Manual review | 10-level hard gate system, auto-filter |
-| **CTA Control** | "Buy now" everywhere | 4-tier implicit-only permission system |
-| **Portability** | Claude-only | 6 adapters, from FULL to TEXT_ONLY |
-| **Quality** | Subjective review | Regression tests, fingerprint validation |
+| **一致性** | 每个 Agent 写得都不一样 | 1 个规范大脑，N 个 Agent 载体 |
+| **平台适配** | 通用模板 | 4 套平台专属引擎 + 2026 爆款内容图谱 |
+| **合规** | 人工审核 | 10 级硬门禁系统，自动过滤 |
+| **CTA 控制** | 到处"立即购买" | 4 档隐式收口权限系统 |
+| **可移植性** | 仅限 Claude | 6 个适配器，从 FULL 到 TEXT_ONLY |
+| **质量** | 主观评审 | 回归测试 + 指纹校验 |
 
 ---
 
-## Architecture
+## 架构
 
 ```
 Canonical Core (SKILL.md)
-├── Capability Negotiation → Runtime mode detection
-├── Router → 24-mode task classification
-├── Execution Order → Step-by-step workflow
-├── Hard Gates → 10-level gate system
-└── Progressive Disclosure → Reference loading map
+├── 能力协商 → 运行时模式检测
+├── 路由器 → 24 模式任务分类
+├── 执行顺序 → 分步工作流
+├── 硬门禁 → 10 级门禁系统
+└── 渐进式披露 → 参考文件加载图谱
 
-References/ (Single Source of Truth)
-├── modes/ (24 modes, platforms, 2026 viral-content-map)
-├── angle/ (dynamic angles, natural depth)
-├── external/ (external intelligence)
-├── cross-platform/ (re-conception protocol)
-├── execution/ (hard gates, purpose, expression authority)
-├── quality/ (anti-patternization, length engine, final output)
-├── account/ (account-level system)
-├── craft/ (hooks, formulas, examples, CTA)
-└── templates/ (output-templates — mandatory enforcement)
+References/（单一事实来源）
+├── modes/（24 模式、平台、2026 爆款内容图谱）
+├── angle/（动态角度、自然深度）
+├── external/（外部情报）
+├── cross-platform/（跨平台重构协议）
+├── execution/（硬门禁、目的完整性、表达权限）
+├── quality/（反套路化、长度引擎、成品标准）
+├── account/（账号级系统）
+├── craft/（钩子、公式、示例、CTA）
+└── templates/（输出模板 —— 强制套用）
 
-Adapters/ (Platform-specific, no rule changes)
-├── generic (markdown-only baseline)
+Adapters/（平台适配，不改规则）
+├── generic（仅 Markdown 基线）
 ├── claude / openai / gemini / copilot / limited-agent
 
-Schemas/ (Structured I/O for high-capability agents)
+Schemas/（面向高能力 Agent 的结构化 I/O）
 ├── product-facts.schema.json
 ├── ip-facts.schema.json
 ├── route-instance.schema.json
@@ -61,112 +61,112 @@ Schemas/ (Structured I/O for high-capability agents)
 
 ---
 
-## Key Innovations
+## 核心创新
 
-### v4.14.0 — Template Enforcement (Latest)
-- **Mandatory Output Templates**: Every copy output auto-fills into structured table templates
-- **Auto File Generation**: Creates `{Platform}-{Product}-{Action}-{YYMMDDHHMM}.md` files on delivery
-- **3 Template Types**: Single-version, Multi-version, Multi-platform
+### v4.14.0 —— 强制模板（最新）
+- **强制输出模板**：每篇文案自动套用结构化表格模板
+- **自动生成文件**：交付时自动生成 `{平台}-{产品}-{行动}-{YYMMDDHHMM}.md` 文件
+- **3 种模板类型**：单版、多版、多平台
 
-### v4.13.0 — 2026 Viral Content Map
-- **3 Cross-Platform Viral Rules**: Emotion-first, Authenticity over polish, Trust+Scenario commerce
-- **4 Platform Viral Playbooks**: Algorithm-specific content types, distribution mechanics, e-commerce strategies
-- **Empirical Data Layer**: Cross-referenced from 8 authoritative 2026 reports
+### v4.13.0 —— 2026 爆款内容图谱
+- **3 条跨平台爆款规律**：情绪先行、真实大于精致、信任×场景电商
+- **4 套平台爆款打法**：算法专属内容类型、分发机制、电商策略
+- **实证数据层**：交叉验证 8 份 2026 权威报告
 
-### v4.12.0 — Full Implicit Close Revolution
-- **Zero-Command CTA**: All 5 CTA families default to IMPLICIT_CLOSE — no action words, no destinations, no time limits
-- **6-Point Close Audit**: Every closing line must pass a framework check before output
-- **Closed Allowlist**: Only an explicit allowlist can unlock explicit CTA
+### v4.12.0 —— 全口径高级隐式收口
+- **零指令 CTA**：5 个收口家族默认全部隐式 —— 无动作词、无目的地、无时间限定
+- **收口六项质检**：每条收口必须通过框架检查才能输出
+- **封闭白名单**：只有白名单才能解锁显式 CTA（卖货/高意向不再自动解锁）
 
-### v4.11.x — Gate System & Compliance
-- **10-Level Hard Gate System**: From product fact integrity to platform compliance
-- **AI Style Score**: Detects LLM-typical patterns, auto-humanizes when >35
-- **E-commerce Compliance Engine**: 2104 rules across 17 industries, 7 platforms
+### v4.11.x —— 门禁系统与合规
+- **10 级硬门禁系统**：从产品事实完整性到平台合规
+- **AI 味评分**：检测 LLM 典型表达，>35 自动拟人化改写
+- **电商合规引擎**：17 大行业、7 大平台、2104 条规则
 
 ---
 
-## Runtime Modes
+## 运行时模式
 
-| Mode | Capabilities | Use Case |
+| 模式 | 能力 | 适用场景 |
 |---|---|---|
-| **FULL** | Web + Files + Code + MCP + Memory + Structured | High-end agent, full system |
-| **GROUNDED** | Files + Structured (no web) | Workspace agent, no internet |
-| **WEB_ONLY** | Web + Structured (no files) | Search-capable chat agent |
-| **TEXT_ONLY** | Markdown only | Basic agent, safe baseline |
+| **FULL** | 联网 + 文件 + 代码 + MCP + 记忆 + 结构化 | 高能力 Agent，完整系统 |
+| **GROUNDED** | 文件 + 结构化（不联网） | 工作区 Agent，无需联网 |
+| **WEB_ONLY** | 联网 + 结构化（无文件） | 可搜索的对话 Agent |
+| **TEXT_ONLY** | 仅 Markdown | 基础 Agent，安全基线 |
 
-Auto-detected via capability negotiation. No manual config needed.
-
----
-
-## Distribution Packages
-
-### Standard Package
-`SKILL.md` + `references/` + `assets/` — works with any markdown-capable agent. Zero dependencies. **~252 KB (v4.14.0)**
-
-### Agentic Package
-Standard + `adapters/` + `schemas/` + `tests/` + `scripts/` — for high-capability agents with tool use, code execution, and structured output. **~412 KB (v4.14.0)**
+通过能力协商自动检测，无需手动配置。
 
 ---
 
-## Quality Assurance
+## 分发包
+
+### 标准包
+`SKILL.md` + `references/` + `assets/` —— 适用于任何支持 Markdown 的 Agent，零依赖。**约 252 KB（v4.14.0）**
+
+### Agentic 包
+标准包 + `adapters/` + `schemas/` + `tests/` + `scripts/` —— 适用于支持工具调用、代码执行和结构化输出的高能力 Agent。**约 412 KB（v4.14.0）**
+
+---
+
+## 质量保障
 
 ```
-validate_skill.py     → 0 errors (v4.14.0)
-run_regression.py     → 102/102 passed
-build_package.py      → standard + agentic
-content-fingerprint   → format compliance
+validate_skill.py     → 0 错误（v4.14.0）
+run_regression.py     → 102/102 通过
+build_package.py      → 标准包 + Agentic 包
+content-fingerprint   → 格式合规
 ```
 
 ---
 
-## Installation
+## 安装
 
 ### Claude
-Copy skill folder to Claude skills directory. Auto-loads via `SKILL.md`. See `adapters/claude.md`.
+将技能文件夹复制到 Claude skills 目录，通过 `SKILL.md` 自动加载。详见 `adapters/claude.md`。
 
 ### OpenAI / Assistants API
-Upload `SKILL.md` + references as files. Enable file search + code interpreter. See `adapters/openai.md`.
+上传 `SKILL.md` + references 作为文件，启用文件搜索 + 代码解释器。详见 `adapters/openai.md`。
 
 ### Gemini
-Add `SKILL.md` to system instructions. Upload references to Drive. Enable Google Search. See `adapters/gemini.md`.
+将 `SKILL.md` 加入系统指令，上传 references 到 Drive，启用 Google 搜索。详见 `adapters/gemini.md`。
 
 ### Copilot / VS Code
-Place folder in workspace. Accessible via Copilot Chat. See `adapters/copilot.md`.
+将文件夹放入工作区，通过 Copilot Chat 访问。详见 `adapters/copilot.md`。
 
-### Any Agent
-Just read `SKILL.md`. Works with any markdown-capable LLM. See `adapters/generic.md`.
+### 任意 Agent
+直接阅读 `SKILL.md` 即可，适用于任何支持 Markdown 的 LLM。详见 `adapters/generic.md`。
 
 ---
 
-## By the Numbers
+## 数据一览
 
-| Metric | Value |
+| 指标 | 数值 |
 |---|---|
-| Versions shipped | 14+ (v4.0.0 → v4.14.0) |
-| Platform engines | 4 (抖音 / 小红书 / 视频号 / 公众号) |
-| Writing modes | 24 |
-| Compliance rules | 2104 |
-| Reference files | 30+ |
-| Agent adapters | 6 |
-| Regression tests | 102 |
-| CTA families | 5 (all implicit by default) |
+| 已发布版本 | 14+（v4.0.0 → v4.14.0） |
+| 平台引擎 | 4（抖音 / 小红书 / 视频号 / 公众号） |
+| 写作模式 | 24 |
+| 合规规则 | 2104 |
+| 参考文件 | 30+ |
+| Agent 适配器 | 6 |
+| 回归测试 | 102 |
+| CTA 家族 | 5（默认全部隐式） |
 
 ---
 
-## Versioning
+## 版本管理
 
-**Semantic Versioning:**
-- **Major**: Canonical behavior changes
-- **Minor**: New capabilities / platform adapters
-- **Patch**: Rule fixes, fact gate fixes
+**语义化版本：**
+- **主版本**：规范行为变更
+- **次版本**：新能力 / 平台适配器
+- **补丁**：规则修复、事实门禁修复
 
-[Full Changelog](CHANGELOG.md) · [Migration Guide](MIGRATION.md)
+[完整更新日志](CHANGELOG.md) · [迁移指南](MIGRATION.md)
 
 ---
 
-## License
+## 许可证
 
-Internal use. 
+内部使用。
 
 ---
 
