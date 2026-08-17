@@ -1,6 +1,6 @@
 ---
 name: master-copywriting
-version: 4.18.0
+version: 4.19.0
 description: >
   全栈文案决策与生成系统。先做任务类型路由，再按 平台×目的×IP模式
   生成。支持抖音、小红书、公众号、视频号。触发场景：广告文案、产品文案、

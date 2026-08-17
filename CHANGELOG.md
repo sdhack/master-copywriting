@@ -5,6 +5,22 @@ All notable changes to the Master Copywriting skill.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [4.19.0] - 2026-08-17
+
+### Added
+- **references/craft/cta.md 二·五 新增「判断留白机械句」反模式族（核心新增）**：把"值不值得，自己判断 / 自己心里有数 / 你自己定 / 你自己掂量 / 自己最清楚 / 值不值 / 合不合适"定义为禁止的万能收口——它看似高级隐式，实则换任何产品、任何正文都能用。新增**互换性测试（Interchangeability Test）**：把收口句里的产品/场景/标准词全部替换成另一个产品，若句子依然成立 → 机械句，重写。收口必须证明"只属于这一篇"，回扣本版正文的具体卖点、具体标准、具体场景。
+- **references/quality/anti-patternization.md**：句末强化句识别信号新增"自己判断 / 自己掂量 / 值不值得"；Rule Visibility Test 的 CTA 模板行新增判断留白机械句；Set-Level QA 16.6 Ending Check 新增第 4 项（3 篇以上以判断留白机械句结束 → 打散收尾方式）
+
+### Changed
+- **references/craft/cta.md**：修正被误标为"合格高级隐式"的机械示例（"这一场讲透怎么挑，值不值得听，你自己定" → "听完这一场，挑茶那点门道就齐了"）；家族句式变体库 8 处机械变体改为携带具体标准/场景/物件的自然变体（如"合不合适，自己判断" → "是真是假，泡一杯就有答案"）；分口径原则表、种草/卖货示例、平台层示例同步去机械化
+- **zhangping-shuixian-sell-point/assets/scripts.json**：重写 5 条机械收口模板（s10 门道留一半 / s11 自己心里有数 / s13 自己对照 / s14 坚持再看 / s15 回到开头），改为承接具体卖点的槽位结构，并在 compliance 中明确禁止判断留白机械句
+- **SKILL.md / reference-index.md**：版本升至 v4.19.0
+
+### Root Cause（本轮迭代根因）
+- 机械 CTA 的源头不是生成环节，而是**参考文件里的"合格示例"本身是机械句**——cta.md 高级 vs 低质对照表、家族句式变体库、scripts.json 三处锚点同时把"自己判断/你自己定"当作正面示例，模型照抄导致同批次 5 版收口雷同
+- 上一轮修复使用的"谁喝谁知道"同样属于已标记的句末强化句，属于"换一种机械"——真正的修复是**收口携带本版具体内容**，而不是换一个万能句
+
+---
 ## [4.18.0] - 2026-08-17
 
 ### Added

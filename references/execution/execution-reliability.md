@@ -1,4 +1,4 @@
-﻿# Execution Reliability Patch（执行可靠性补丁）
+# Execution Reliability Patch（执行可靠性补丁）
 
 > **版本**：v1.0（v3.6 新增）
 > **类型**：执行可靠性补丁（不新增创意框架/钩子/公式/平台理论/24模式/角度发现/外部情报架构）
@@ -193,7 +193,7 @@ GATE 10 — Final Output Sanitizer
 
 ### 可以做：Decision-Dimension Comparison
 
-用户在铁观音、单丛、乌龙茶之间选择时，可以比较：
+用户在铁观音、单丛、水仙之间选择时，可以比较：
 - 香型倾向
 - 常见品类特点
 - 选择问题
