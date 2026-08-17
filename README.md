@@ -1,4 +1,4 @@
-# Master Copywriting Skill v4.18.0
+# Master Copywriting Skill v4.19.0
 
 > **一个规范大脑，统治所有 Agent。**
 > _跨 Agent 可移植的文案决策与生成系统 —— 让任何 LLM Agent 都能产出平台原生、目标对齐、事实完整的高转化文案。_
@@ -18,7 +18,7 @@
 ╚══════════════════════════════════════════════════════════════════╝
 ```
 
-[![版本](https://img.shields.io/badge/version-4.18.0-6B46C1?style=flat-square)]()
+[![版本](https://img.shields.io/badge/version-4.19.0-6B46C1?style=flat-square)]()
 [![Agent](https://img.shields.io/badge/Agent-CLAUDE%20%7C%20OpenAI%20%7C%20Gemini%20%7C%20Copilot-10B981?style=flat-square)]()
 [![平台](https://img.shields.io/badge/%E5%B9%B3%E5%8F%B0-%E6%8A%96%E9%9F%B3%20%7C%20%E5%B0%8F%E7%BA%A2%E4%B9%A6%20%7C%20%E8%A7%86%E9%A2%91%E5%8F%B7%20%7C%20%E5%85%AC%E4%BC%97%E5%8F%B7-3B82F6?style=flat-square)]()
 [![模式](https://img.shields.io/badge/%E6%A8%A1%E5%BC%8F-24%20%E7%A7%8D%E5%86%99%E4%BD%9C%E6%A8%A1%E5%BC%8F-F59E0B?style=flat-square)]()
@@ -109,7 +109,14 @@ Schemas/（面向高能力 Agent 的结构化 I/O）
 
 ## 核心创新
 
-### v4.18.0 —— 千川素材创作爆量手册拆解（最新）
+### v4.19.0 —— 机械式CTA反模式修复（最新）
+- **判断留白机械句反模式族**：识别"自己判断/自己心里有数/你自己定/你自己掂量/值不值/合不合适"等万能收口，禁止作为收口
+- **互换性测试**：收口换产品仍成立 = 机械句，必须重写
+- **合格示例修正**：cta.md 中 10+ 条被误标为合格的机械示例全部修正
+- **scripts.json 收口模板去机械化**：5 条机械收口模板重写为承接具体卖点的变体
+- **反模板化检测升级**：anti-patternization.md 新增句末机械判断句检测
+
+### v4.18.0 —— 千川素材创作爆量手册拆解（前一个版本）
 - **15 万字实战体系**：第三方数据中心《千川素材创作爆量手册》拆解，25 章方法论提炼为可执行结构
 - **要素组合体系**：创作手法 3 × 素材类型 7 × 脚本创意 11 × 开头三秒 9 × 中间卖点 12 × 尾部结尾 5 选型矩阵
 - **卖点 12 招 + 排序方法论**：外观/材料/工艺/功能/价格/场景/方法/地域/人群/背书/情怀/稀缺 + 用户视角优先/竞品对比/重复度重构
@@ -172,17 +179,17 @@ Schemas/（面向高能力 Agent 的结构化 I/O）
 ## 分发包
 
 ### 标准包
-`SKILL.md` + `references/` + `assets/` —— 适用于任何支持 Markdown 的 Agent，零依赖。**约 307 KB（v4.18.0）**
+`SKILL.md` + `references/` + `assets/` —— 适用于任何支持 Markdown 的 Agent，零依赖。**约 309 KB（v4.19.0）**
 
 ### Agentic 包
-标准包 + `adapters/` + `schemas/` + `tests/` + `scripts/` —— 适用于支持工具调用、代码执行和结构化输出的高能力 Agent。**约 467 KB（v4.18.0）**
+标准包 + `adapters/` + `schemas/` + `tests/` + `scripts/` —— 适用于支持工具调用、代码执行和结构化输出的高能力 Agent。**约 469 KB（v4.19.0）**
 
 ---
 
 ## 质量保障
 
 ```
-validate_skill.py     → 0 错误（v4.18.0）
+validate_skill.py     → 0 错误（v4.19.0）
 run_regression.py     → 102/102 通过
 build_package.py      → 标准包 + Agentic 包
 content-fingerprint   → 格式合规
@@ -215,7 +222,7 @@ content-fingerprint   → 格式合规
 
 | 指标 | 数值 |
 |---|---|
-| 已发布版本 | 18+（v4.0.0 → v4.18.0） |
+| 已发布版本 | 19+（v4.0.0 → v4.19.0） |
 | 平台引擎 | 4（抖音 / 小红书 / 视频号 / 公众号） |
 | 写作模式 | 24 |
 | 合规规则 | 2104 |
@@ -223,7 +230,7 @@ content-fingerprint   → 格式合规
 | Agent 适配器 | 6 |
 | 回归测试 | 102 |
 | CTA 家族 | 5（默认全部隐式） |
-| 代码总量 | 37,892 行 |
+| 代码总量 | 37,930 行 |
 
 ---
 
