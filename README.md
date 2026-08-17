@@ -1,4 +1,4 @@
-﻿# Master Copywriting Skill v4.14.0
+# Master Copywriting Skill v4.15.0
 
 > **一个规范大脑，统治所有 Agent。**
 > _跨 Agent 可移植的文案决策与生成系统 —— 让任何 LLM Agent 都能产出平台原生、目标对齐、事实完整的高转化文案。_
@@ -18,7 +18,7 @@
 ╚══════════════════════════════════════════════════════════════════╝
 ```
 
-[![版本](https://img.shields.io/badge/version-4.14.0-6B46C1?style=flat-square)]()
+[![版本](https://img.shields.io/badge/version-4.15.0-6B46C1?style=flat-square)]()
 [![Agent](https://img.shields.io/badge/Agent-CLAUDE%20%7C%20OpenAI%20%7C%20Gemini%20%7C%20Copilot-10B981?style=flat-square)]()
 [![平台](https://img.shields.io/badge/%E5%B9%B3%E5%8F%B0-%E6%8A%96%E9%9F%B3%20%7C%20%E5%B0%8F%E7%BA%A2%E4%B9%A6%20%7C%20%E8%A7%86%E9%A2%91%E5%8F%B7%20%7C%20%E5%85%AC%E4%BC%97%E5%8F%B7-3B82F6?style=flat-square)]()
 [![模式](https://img.shields.io/badge/%E6%A8%A1%E5%BC%8F-24%20%E7%A7%8D%E5%86%99%E4%BD%9C%E6%A8%A1%E5%BC%8F-F59E0B?style=flat-square)]()
@@ -88,7 +88,7 @@ References/（单一事实来源 · 31 个文件）
 ├── execution/（硬门禁、目的完整性、表达权限）
 ├── quality/（反套路化、长度引擎、成品标准）
 ├── account/（账号级系统）
-├── craft/（钩子、公式、示例、CTA）
+├── craft/（钩子、公式、示例、CTA、蝉妈妈黄金3秒台词库）
 └── templates/（输出模板 —— 强制套用）
 
 Adapters/（平台适配，不改规则）
@@ -109,10 +109,17 @@ Schemas/（面向高能力 Agent 的结构化 I/O）
 
 ## 核心创新
 
-### v4.14.0 —— 强制模板（最新）
+### v4.15.0 —— 强制模板（最新）
 - **强制输出模板**：每篇文案自动套用结构化表格模板
 - **自动生成文件**：交付时自动生成 `{平台}-{产品}-{行动}-{YYMMDDHHMM}.md` 文件
 - **3 种模板类型**：单版、多版、多平台
+
+### v4.15.0 —— 蝉妈妈黄金3秒台词库（最新）
+- **1499 条付费广告实证**：蝉妈妈黄金3秒台词榜单，30 页真实投放数据
+- **23 种套路频次排序**：点名产品 44% 居首，组合套路占 71%
+- **TOP 句式结构库**：10 个高频套路各配可迁移句式 + 高赞示例
+- **3 条组合黄金公式**：点名产品+福利优惠、点名产品+警告避坑、点名受众+产品+效果
+- **hooks.md 升级**：抖音黄金三秒从 4 条通用机制升级为 10 条数据驱动套路
 
 ### v4.13.0 —— 2026 爆款内容图谱
 - **3 条跨平台爆款规律**：情绪先行、真实大于精致、信任×场景电商
@@ -147,17 +154,17 @@ Schemas/（面向高能力 Agent 的结构化 I/O）
 ## 分发包
 
 ### 标准包
-`SKILL.md` + `references/` + `assets/` —— 适用于任何支持 Markdown 的 Agent，零依赖。**约 252 KB（v4.14.0）**
+`SKILL.md` + `references/` + `assets/` —— 适用于任何支持 Markdown 的 Agent，零依赖。**约 252 KB（v4.15.0）**
 
 ### Agentic 包
-标准包 + `adapters/` + `schemas/` + `tests/` + `scripts/` —— 适用于支持工具调用、代码执行和结构化输出的高能力 Agent。**约 412 KB（v4.14.0）**
+标准包 + `adapters/` + `schemas/` + `tests/` + `scripts/` —— 适用于支持工具调用、代码执行和结构化输出的高能力 Agent。**约 412 KB（v4.15.0）**
 
 ---
 
 ## 质量保障
 
 ```
-validate_skill.py     → 0 错误（v4.14.0）
+validate_skill.py     → 0 错误（v4.15.0）
 run_regression.py     → 102/102 通过
 build_package.py      → 标准包 + Agentic 包
 content-fingerprint   → 格式合规
@@ -190,11 +197,11 @@ content-fingerprint   → 格式合规
 
 | 指标 | 数值 |
 |---|---|
-| 已发布版本 | 14+（v4.0.0 → v4.14.0） |
+| 已发布版本 | 14+（v4.0.0 → v4.15.0） |
 | 平台引擎 | 4（抖音 / 小红书 / 视频号 / 公众号） |
 | 写作模式 | 24 |
 | 合规规则 | 2104 |
-| 参考文件 | 31 |
+| 参考文件 | 32 |
 | Agent 适配器 | 6 |
 | 回归测试 | 102 |
 | CTA 家族 | 5（默认全部隐式） |
