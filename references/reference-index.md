@@ -1,6 +1,6 @@
 # Reference Index
 
-> Canonical reference index for Master Copywriting v4.15.0
+> Canonical reference index for Master Copywriting v4.16.0
 > Single Source of Truth — no rule duplication across adapters.
 
 ---
@@ -14,7 +14,7 @@ references/
 ├── modes/                         # 24 modes + platforms + viral content map
 │   ├── 24-modes.md
 │   ├── platforms.md
-│   └── viral-content-map.md       # 2026 爆款内容图谱（三条跨平台规律+平台内容类型+分发机制+电商打法）
+│   └── viral-content-map.md       # 2026 爆款内容图谱（三条跨平台规律+平台内容类型+分发机制+电商打法+八大人群EATM+对标拆解+反季清仓）
 ├── angle/                         # Angle discovery + natural depth
 │   ├── dynamic-angle-discovery.md
 │   └── natural-depth.md
@@ -43,6 +43,7 @@ references/
 └── craft/                         # Craft references (hooks, formulas, examples)
     ├── hooks.md
     ├── gold3s-database.md      # 黄金3秒台词库（1499 条付费广告实证）
+    ├── qianchuan-material-sop.md # 千川爆款素材SOP（四维定位+21式开头×6种草×6结尾+爆款基因复刻+AI素材矩阵）
     ├── formulas.md
     ├── cta.md
     ├── voice.md
@@ -80,6 +81,8 @@ references/
 | 创作完内容后强制套用模板 + 生成 MD 文件（任何交付任务） | `templates/output-templates.md` | templates |
 | Compliance review | `quality/compliance.md` | quality |
 | Hook writing | `craft/hooks.md` + `craft/gold3s-database.md`（抖音/直播黄金3秒实证套路） | craft |
+| 千川/付费素材 / 商品广告素材 / 素材三段式组合 / 爆款基因复刻 / AI素材 | `craft/qianchuan-material-sop.md` | craft |
+| 人群定向 / 对标拆解 / 反季清仓 / 电商打法 | `modes/viral-content-map.md`（第六/七/八节） | modes |
 | Formulas / structures | `craft/formulas.md` | craft |
 | Voice / tone | `craft/voice.md` | craft |
 | Psychology | `craft/psychology.md` | craft |

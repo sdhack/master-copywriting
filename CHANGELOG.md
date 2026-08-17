@@ -5,6 +5,26 @@ All notable changes to the Master Copywriting skill.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [4.16.0] - 2026-08-17
+
+### Added
+- **references/craft/qianchuan-material-sop.md（核心新增）**：千川爆款素材 SOP。来源：第三方数据平台「内容中心」栏目《千川爆款复刻操作手册》《电商AI素材锦囊妙计》等官方运营指南拆解（2026-08 抓取）。内容：①素材生产四维定位（品牌策略→产品定位→内容策略→素材策略，四步流程）；②素材三段式组合库（21 式爆款开头 × 6 大种草方式 × 6 大结尾引导句式，各配机制与安全标签）；③爆款基因复刻（高光 3 秒榜 / 话术榜 / 脚本榜，拆解基因→迁移机制→结合货盘重组）；④AI 素材能力矩阵（AI 绘图 / AI 视频 / AI 文案 / AI 智能编辑，三步走路径：选模板→AI生成→投放优化）
+- **references/modes/viral-content-map.md 新增三节（v1.1）**：①第六节「八大人群内容定向」——EATM 四维模型（环境场景/人设形象/文案方向/内容主题）+ 八大人群画像与内容方向（小镇新贵/小镇中老年/GenZ/精致妈妈/新锐白领/资深中产/都市银发/都市蓝领）+ 人群定向写作规则；②第七节「对标拆解方法论」——四个无效拆解误区 + 竞品对标五维（基础数据/流量结构/爆款内容/选品策略/用户画像）+ 品牌对标五维（品牌整体数据/品牌自播/品牌达播/商品策略/用户资产沉淀）；③第八节「反季清仓策略」——反季清仓四步法（货品优化/心智种草/直播承接/测款补量）+ 写作规则
+
+### Changed
+- **references/reference-index.md**：版本号升至 v4.16.0；craft/ 目录注册 qianchuan-material-sop.md；Reference Loading Map 新增「千川/付费素材」与「人群定向/对标拆解/反季清仓」两行
+- **SKILL.md**：版本号升至 4.16.0；G7 Platform Native 新增千川素材与人群定向/对标拆解/反季清仓引用；Progressive Disclosure 加载表新增两行
+
+### Hard Bottom Lines Preserved（硬底线保留）
+- 千川素材 SOP 是机制与结构的实证来源，不是例句库；禁止复制原句或仅换词，只迁移「结构×机制×组合逻辑」
+- 素材三段式组合中，开头 3 秒选型以 gold3s-database.md 套路频次实证为准；福利优惠/限时限量/价格折扣类属 CONDITIONAL，使用前必须检查事实表；"手慢无/炸单/虚假稀缺"属 AVOID 不召回
+- 结尾收口口径按用户明确目标选定一个（看播/预约/成交/留资/加热），禁止模板默认类别覆盖用户目标；看播口径收口不写时间限定词
+- 人群定向不改变 Claim Ceiling：面向银发/妈妈人群时功效表达仍受约束（I5-A 硬禁仍生效）；对标学到的表达结构同样受 Claim Ceiling 约束
+- 反季清仓的价格/折扣/限量/活动期限表达仍属 CONDITIONAL，须查事实表
+- AI 素材产出必须过 AI_STYLE_SCORE 人味化检测与平台合规校验；AI 生成内容不得新增未授权功效
+- 所有内容生成规则（Hard Gates、Humanization、平台原生、真人感）不变
+
+---
 ## [4.15.0] - 2026-08-17
 
 ### Added
