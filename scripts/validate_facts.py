@@ -1,4 +1,4 @@
-﻿#!/usr/bin/env python3
+#!/usr/bin/env python3
 """
 Fact Consistency Validation
 Checks a set of generated content pieces for fact consistency.

@@ -42,7 +42,7 @@ references/
 │   └── account-level-system.md
 └── craft/                         # Craft references (hooks, formulas, examples)
     ├── hooks.md
-    ├── chanmama-gold3s.md      # 蝉妈妈黄金3秒台词库（1499 条付费广告实证）
+    ├── gold3s-database.md      # 黄金3秒台词库（1499 条付费广告实证）
     ├── formulas.md
     ├── cta.md
     ├── voice.md
@@ -79,7 +79,7 @@ references/
 | Final output polish | `quality/final-output.md` | quality |
 | 创作完内容后强制套用模板 + 生成 MD 文件（任何交付任务） | `templates/output-templates.md` | templates |
 | Compliance review | `quality/compliance.md` | quality |
-| Hook writing | `craft/hooks.md` + `craft/chanmama-gold3s.md`（抖音/直播黄金3秒实证套路） | craft |
+| Hook writing | `craft/hooks.md` + `craft/gold3s-database.md`（抖音/直播黄金3秒实证套路） | craft |
 | Formulas / structures | `craft/formulas.md` | craft |
 | Voice / tone | `craft/voice.md` | craft |
 | Psychology | `craft/psychology.md` | craft |

@@ -8,12 +8,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [4.15.0] - 2026-08-17
 
 ### Added
-- **`references/craft/chanmama-gold3s.md`（核心新增）**：蝉妈妈「黄金3秒台词」实证库。数据来源：蝉妈妈黄金3秒台词榜单（cy.chanmama.com/tools/liveGoldDialogueRank/），30 页 × 50 条 = 1499 条付费广告真实投放台词，含关联素材数/创意数/直播数/总点赞数。内容：23 种套路频次总览（点名产品 44% 居首）、TOP 套路句式结构（机制×结构×示例）、高频套路组合（组合占 71%，含组合黄金公式）、高赞台词拆解（点赞 TOP 20 机制归纳）、生成规则（选套路顺序 + 硬规则 + 与现有规则关系）
-- **`references/craft/hooks.md` 第六节「抖音黄金三秒」升级为数据驱动版**：从 4 条通用机制扩展为 10 条实证套路 + 组合黄金公式 + 硬规则，引用 chanmama-gold3s.md 为 Source of Truth
+- **references/craft/gold3s-database.md（核心新增）**：某数据平台「黄金3秒台词」实证库。数据来源：第三方数据平台黄金3秒台词榜单，30 页 × 50 条 = 1499 条付费广告真实投放台词，含关联素材数/创意数/直播数/总点赞数。内容：23 种套路频次总览（点名产品 44% 居首）、TOP 套路句式结构（机制×结构×示例）、高频套路组合（组合占 71%，含组合黄金公式）、高赞台词拆解（点赞 TOP 20 机制归纳）、生成规则（选套路顺序 + 硬规则 + 与现有规则关系）
+- **references/craft/hooks.md 第六节「抖音黄金三秒」升级为数据驱动版**：从 4 条通用机制扩展为 10 条实证套路 + 组合黄金公式 + 硬规则，引用 gold3s-database.md 为 Source of Truth
 
 ### Changed
-- **`references/reference-index.md`**：版本号升至 v4.15.0；craft/ 目录注册 chanmama-gold3s.md；Reference Loading Map 的 Hook writing 行加入该文件
-- **SKILL.md**：版本号升至 4.15.0；G7 Platform Native 新增抖音/直播开头 3 秒钩子优先参考 chanmama-gold3s.md；Progressive Disclosure 加载表新增「抖音/直播开头 3 秒钩子」行
+- **references/reference-index.md**：版本号升至 v4.15.0；craft/ 目录注册 gold3s-database.md；Reference Loading Map 的 Hook writing 行加入该文件
+- **SKILL.md**：版本号升至 4.15.0；G7 Platform Native 新增抖音/直播开头 3 秒钩子优先参考 gold3s-database.md；Progressive Disclosure 加载表新增「抖音/直播开头 3 秒钩子」行
 
 ### Hard Bottom Lines Preserved（硬底线保留）
 - 黄金3秒台词库是机制与结构的实证来源，不是例句库；禁止复制原句或仅换词，只迁移机制/句式结构/表达逻辑
@@ -26,12 +26,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [4.14.0] - 2026-08-15
 
 ### Added
-- **`references/templates/` 模块（核心新增）**：新增输出模板与 MD 文件生成契约。`references/templates/output-templates.md` 定义输出模板结构（单版/多版表格/多平台三种模板）、MD 文件生成规则（文件名 `{平台}-{产品}-{行动}-{YYMMDDHHMM}.md`）、模板填充规则与执行步骤。创作完内容后强制套用模板并生成 `.md` 文件交付。
-- **`SKILL.md` §10.5 强制模板套用 + MD 文件生成（v4.14.0 新增）**：创作完内容之后强制套用模板并生成 `.md` 文件。执行时机：G10 输出净化之后 → 套模板 → 落盘。例外：用户明确指定其他格式时遵从用户格式。引用 `references/templates/output-templates.md` 为 Source of Truth。
-- **`final-output.md` §26.5 强制模板套用 + MD 文件生成**：与 SKILL.md §10.5 同步，补充说明"模板是交付外壳，不是内容替代品"——内容层禁止模板化（anti-patternization.md），交付层强制模板化，两者不冲突。
+- **references/templates/ 模块（核心新增）**：新增输出模板与 MD 文件生成契约。references/templates/output-templates.md 定义输出模板结构（单版/多版表格/多平台三种模板）、MD 文件生成规则（文件名 {平台}-{产品}-{行动}-{YYMMDDHHMM}.md）、模板填充规则与执行步骤。创作完内容后强制套用模板并生成 .md 文件交付。
+- **SKILL.md §10.5 强制模板套用 + MD 文件生成（v4.14.0 新增）**：创作完内容之后强制套用模板并生成 .md 文件。执行时机：G10 输出净化之后 → 套模板 → 落盘。例外：用户明确指定其他格式时遵从用户格式。引用 references/templates/output-templates.md 为 Source of Truth。
+- **final-output.md §26.5 强制模板套用 + MD 文件生成**：与 SKILL.md §10.5 同步，补充说明"模板是交付外壳，不是内容替代品"——内容层禁止模板化（anti-patternization.md），交付层强制模板化，两者不冲突。
 
 ### Changed
-- **`references/reference-index.md`**：版本号升至 v4.14.0；目录结构注册 `templates/` 模块；Reference Loading Map 新增"创作完内容后强制套用模板 + 生成 MD 文件"行，加载 `templates/output-templates.md`
+- **references/reference-index.md**：版本号升至 v4.14.0；目录结构注册 templates/ 模块；Reference Loading Map 新增"创作完内容后强制套用模板 + 生成 MD 文件"行，加载 templates/output-templates.md
 - **SKILL.md**：版本号升至 4.14.0；§10 头部新增 Canonical output template 引用行
 
 ### Hard Bottom Lines Preserved（硬底线保留）
@@ -46,13 +46,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [4.13.0] - 2026-08-15
 
 ### Added
-- **`references/modes/viral-content-map.md`（核心新增）**：基于《四大平台爆款内容图谱（2026 信源版）》调研转译的爆款内容图谱。三条跨平台爆款规律（情绪先行信息后置 / 活人感取代精致人设 / 电商爆款=信任×场景而非流量×低价）+ 平台爆款内容类型图谱 + 分发机制适配 + 平台电商打法图谱 + 按目标选平台决策地图。信源窗口 2026-01-01 至 2026-08-15（平台官方年度报告 / 官方战报 / 腾讯财报 / 新榜 / 飞瓜 / 千瓜 / 果集·友望 / QuestMobile 交叉验证）
+- **references/modes/viral-content-map.md（核心新增）**：基于《四大平台爆款内容图谱（2026 信源版）》调研转译的爆款内容图谱。三条跨平台爆款规律（情绪先行信息后置 / 活人感取代精致人设 / 电商爆款=信任×场景而非流量×低价）+ 平台爆款内容类型图谱 + 分发机制适配 + 平台电商打法图谱 + 按目标选平台决策地图。信源窗口 2026-01-01 至 2026-08-15（平台官方年度报告 / 官方战报 / 腾讯财报 / 新榜 / 飞瓜 / 千瓜 / 果集·友望 / QuestMobile 交叉验证）
 
 ### Changed
-- **`references/modes/platforms.md`**：平台总览表新增"2026 爆款实证要点"列（抖音：算法赛马+热点广场、完播/互动/转发权重、活人感官方风向标；小红书：70% 月活搜索、笔记长尾、攻略测评长尾之王；视频号：转发权重>点赞、生活类点赞 TOP 43%、300 元+ 占 GMV 一半；公众号：订阅+算法双轨、标题与开头段权重放大、千粉小号出圈机会）；文件头新增对 viral-content-map.md 的引用说明
-- **`references/cross-platform/cross-platform-reconception.md`**：新增"〇、跨平台爆款规律输入（2026）"章节，三条跨平台规律（情绪先行 / 活人感 / 信任×场景）作为每个平台重新立题前的底层输入，分别落到四平台的具体命题检查；文件版本升至 v1.1
+- **references/modes/platforms.md**：平台总览表新增"2026 爆款实证要点"列（抖音：算法赛马+热点广场、完播/互动/转发权重、活人感官方风向标；小红书：70% 月活搜索、笔记长尾、攻略测评长尾之王；视频号：转发权重>点赞、生活类点赞 TOP 43%、300 元+ 占 GMV 一半；公众号：订阅+算法双轨、标题与开头段权重放大、千粉小号出圈机会）；文件头新增对 viral-content-map.md 的引用说明
+- **references/cross-platform/cross-platform-reconception.md**：新增"〇、跨平台爆款规律输入（2026）"章节，三条跨平台规律（情绪先行 / 活人感 / 信任×场景）作为每个平台重新立题前的底层输入，分别落到四平台的具体命题检查；文件版本升至 v1.1
 - **SKILL.md**：G7 Platform Native 新增 2026 爆款实证引用（情绪先行、活人感、信任×场景三条跨平台规律；平台内容类型/分发机制/电商打法按图谱适配，但不得成为固定五件套）；Progressive Disclosure 加载表 Platform-specific 与 Multi-platform 行加入 viral-content-map.md；版本号升至 4.13.0
-- **`references/reference-index.md`**：目录结构注册 viral-content-map.md；Reference Loading Map 平台行加入该文件；索引版本升至 v4.13.0
+- **references/reference-index.md**：目录结构注册 viral-content-map.md；Reference Loading Map 平台行加入该文件；索引版本升至 v4.13.0
 
 ### Hard Bottom Lines Preserved（硬底线保留）
 - 平台内容类型图谱不得成为固定选题五件套（Example Anti-Anchoring 仍生效）；图谱用于拓宽角度搜索空间，不是"每次必须选一篇"的固定栏目
@@ -71,8 +71,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **PATCH 04 — 48 CTA 模板速查门禁强化**：广告类模板（D7/D8/D9、X5/X6/X7、S5/S6、G4/G5/G6）与成交/留资/私域类模板明确"默认禁止召回，仅 EXPLICIT_ALLOWED 时可召回且须转译自然口语"；种草类模板中"引导动作"同样默认转译隐式
 
 ### Added
-- `references/craft/cta.md`：第二节改为"全口径默认高级隐式收口"；新增第二节·五"高级隐式收口定义与质检"；第九节模板门禁强化；文件版本升至 v4.7.0
-- `references/craft/examples.md`：第三节 CTA 结构演示改为全口径隐式，看播/预约示例隐式化，新增两条显式禁止示例
+- references/craft/cta.md：第二节改为"全口径默认高级隐式收口"；新增第二节·五"高级隐式收口定义与质检"；第九节模板门禁强化；文件版本升至 v4.7.0
+- references/craft/examples.md：第三节 CTA 结构演示改为全口径隐式，看播/预约示例隐式化，新增两条显式禁止示例
 - SKILL.md 更新 10.4 CTA 最小硬规则（全口径隐式 + 六项质检）；版本号升至 4.12.0
 
 ### Hard Bottom Lines Preserved（硬底线保留）
@@ -92,12 +92,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **PATCH 05 — PARTIAL_PAIN 露出边界残留修复**：commercial-expression-freedom.md 第二十九/三十章与 anxiety-pain-scenification.md 第四十章残留的"PARTIAL_PAIN 必须露出边界 / 允许强表达但露出边界"统一改为"边界体现在不夸大"（v4.11.1 口径）
 
 ### Added
-- `references/execution/implicit-benefit-pain.md`：I5-B/C 默认保留、默认强化；CONTEXT_PAIN 非敏感品类可作主卖点；Semantic Destination Test 仅 I5-A 算失败；第二十节最高原则加入"功效暗示永不过滤"
-- `references/execution/claim-authority.md`：COMMERCIAL_INTENSITY 档位联动更新（STANDARD 下 I5-C 默认开放）；第九节 Hidden Efficacy Implication 收窄为仅 I5-A；AMBER ZONE 非敏感品类默认保留；第二十节最高原则加入"功效暗示永不过滤"
-- `references/execution/commercial-expression-freedom.md`：第二十五章新增"功效暗示默认保留，除非属于 I5-A 硬禁"条款；Edge Expression Policy AMBER 区默认开放、可强化；修复 PARTIAL_PAIN 露出边界残留
-- `references/execution/anxiety-pain-scenification.md`：第四十章痛点距离同步（CONTEXT_PAIN 非敏感品类可作主卖点 / PARTIAL_PAIN 边界体现在不夸大）
+- references/execution/implicit-benefit-pain.md：I5-B/C 默认保留、默认强化；CONTEXT_PAIN 非敏感品类可作主卖点；Semantic Destination Test 仅 I5-A 算失败；第二十节最高原则加入"功效暗示永不过滤"
+- references/execution/claim-authority.md：COMMERCIAL_INTENSITY 档位联动更新（STANDARD 下 I5-C 默认开放）；第九节 Hidden Efficacy Implication 收窄为仅 I5-A；AMBER ZONE 非敏感品类默认保留；第二十节最高原则加入"功效暗示永不过滤"
+- references/execution/commercial-expression-freedom.md：第二十五章新增"功效暗示默认保留，除非属于 I5-A 硬禁"条款；Edge Expression Policy AMBER 区默认开放、可强化；修复 PARTIAL_PAIN 露出边界残留
+- references/execution/anxiety-pain-scenification.md：第四十章痛点距离同步（CONTEXT_PAIN 非敏感品类可作主卖点 / PARTIAL_PAIN 边界体现在不夸大）
 - SKILL.md 更新 4.21 Implication Level / 4.22 Pain Distance / 4.32 Commercial Intensity / G6.6 Pain Translation / G6.7 Expression Freedom Validation / G11 Semantic Claim Audit；版本号升至 4.11.4
-- `scripts/validate_skill.py` 新增 Check 24（功效暗示永不过滤契约）
+- scripts/validate_skill.py 新增 Check 24（功效暗示永不过滤契约）
 
 ### Hard Bottom Lines Preserved（硬底线保留）
 - I5-A 硬禁（未授权疾病/治疗/预防/明确生理结果）任何档位禁止，不得通过暗示/隐喻/谐音/剧情偷渡
@@ -115,7 +115,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **PATCH 03 — 单版轻量输出角度也保持内部**：单版轻量输出时角度保持内部，只有多版表格模板场景下角度随表格输出
 
 ### Added
-- `references/quality/final-output.md` 第 26.2/26.3 节更新：多行表格模板去掉收口家族行；角度唯一例外；收口家族任何场景不输出
+- references/quality/final-output.md 第 26.2/26.3 节更新：多行表格模板去掉收口家族行；角度唯一例外；收口家族任何场景不输出
 - SKILL.md 第 10.2/10.3 节同步更新；版本号升至 4.11.3
 - 回归测试更新：多版表格模板契约检查改为角度行 + 收口家族不输出（v4.11.3）
 
@@ -135,7 +135,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **PATCH 03 — Metadata Leak Linter 增加表格模板豁免**：validate_skill.py 与 run_regression.py 的 Metadata Leak 检查识别"多行表格/多版表格/单表格/表格模板/表格行"上下文，不再把多版表格模板误报为元数据泄漏
 
 ### Added
-- `references/quality/final-output.md` 第 26.2/26.3 节更新：多版多行表格模板（版本标题行+角度行+收口家族行+完整口播稿行）+ 角度/收口家族输出例外（v4.11.2）
+- references/quality/final-output.md 第 26.2/26.3 节更新：多版多行表格模板（版本标题行+角度行+收口家族行+完整口播稿行）+ 角度/收口家族输出例外（v4.11.2）
 - SKILL.md 第 10.2/10.3 节同步更新；版本号升至 4.11.2
 - 回归测试新增多版表格模板契约检查（final-output.md 声明 / SKILL.md 同步 / 单版内部元数据保持）
 
@@ -157,12 +157,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **PATCH 05 — 事实边界保留**：非保健食品/营养素饮品/成分/规格等产品真实属性可自然带出作为可信度，但边界永远不能抢走购买理由；硬底线（未授权疾病/治疗/预防/明确生理结果、虚假证据、硬功效偷渡）不变
 
 ### Added
-- `references/execution/commercial-expression-freedom.md` 新增第二十五章"Boundary is Internal, Not Content"（免责声明式表达禁止 + 说教式表达禁止 + 原则）
-- `references/execution/implicit-benefit-pain.md` 更新 PARTIAL_PAIN（v4.11.1：不再要求"文中露出真实边界"，边界体现在不夸大，禁止主动声明边界/免责）
-- `references/execution/anxiety-pain-scenification.md` 更新 Relief Contrast（After 禁止免责语气）
-- `references/execution/claim-authority.md` 更新 COMMERCIAL_INTENSITY 各档位与 PARTIAL_PAIN 联动（任何档位禁止免责声明）
+- references/execution/commercial-expression-freedom.md 新增第二十五章"Boundary is Internal, Not Content"（免责声明式表达禁止 + 说教式表达禁止 + 原则）
+- references/execution/implicit-benefit-pain.md 更新 PARTIAL_PAIN（v4.11.1：不再要求"文中露出真实边界"，边界体现在不夸大，禁止主动声明边界/免责）
+- references/execution/anxiety-pain-scenification.md 更新 Relief Contrast（After 禁止免责语气）
+- references/execution/claim-authority.md 更新 COMMERCIAL_INTENSITY 各档位与 PARTIAL_PAIN 联动（任何档位禁止免责声明）
 - SKILL.md 更新 4.22 Pain Distance（PARTIAL_PAIN 边界体现在不夸大）与 G6.7 Expression Freedom Validation（Boundary is Internal）
-- `scripts/validate_skill.py` 新增 Check 23（Boundary is Internal contract：cef.md 声明 / 免责+说教禁止声明 / 旧"露出真实边界"残留检测 / PARTIAL_PAIN 内部边界规则 / Relief Contrast After 免责语气禁止 / SKILL.md 声明 / 免责说教短语仅出现在禁止语境）
+- scripts/validate_skill.py 新增 Check 23（Boundary is Internal contract：cef.md 声明 / 免责+说教禁止声明 / 旧"露出真实边界"残留检测 / PARTIAL_PAIN 内部边界规则 / Relief Contrast After 免责语气禁止 / SKILL.md 声明 / 免责说教短语仅出现在禁止语境）
 - 回归测试 6 例（BI-01~06）：Boundary is Internal 声明、免责/说教禁止声明、旧边界残留移除、PARTIAL_PAIN 内部边界、Relief Contrast After、免责说教短语仅禁止语境
 
 ### Hard Bottom Lines Preserved（硬底线保留）
@@ -185,14 +185,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **PATCH 07 — 品类差异化焦虑强度**：非敏感品类允许更高焦虑密度（更强的情绪语言/更快的痛点切入/更强的 Continuing Cost/更高的 Accumulated Friction 密度）；敏感品类焦虑聚焦"执行/选择/使用"摩擦，身体状态类痛点只能做 CONTEXT_PAIN 不得当主卖点，负面未来场景只描述"行为继续"不描述"身体继续"
 
 ### Added
-- `references/execution/claim-authority.md` 新增 COMMERCIAL_INTENSITY（CONSERVATIVE / STANDARD / AGGRESSIVE）路由参数与 Claim Ceiling 关系说明
-- `references/execution/implicit-benefit-pain.md` 更新 I5 三级拆分（I5-A / I5-B / I5-C）与 Pain Distance 三级（DIRECT_PAIN / PARTIAL_PAIN / CONTEXT_PAIN）
-- `references/execution/commercial-expression-freedom.md` 新增 Edge Expression Policy（GREEN / AMBER / RED）与品类差异化天花板
-- `references/execution/anxiety-pain-scenification.md` 新增品类差异化焦虑强度
-- `schemas/route-instance.schema.json` 新增 commercial_intensity 字段（enum CONSERVATIVE/STANDARD/AGGRESSIVE，default STANDARD）；implication_level 枚举更新为 I1-I4 + I5-A/B/C；pain_distance 枚举更新为 DIRECT_PAIN / PARTIAL_PAIN / CONTEXT_PAIN
+- references/execution/claim-authority.md 新增 COMMERCIAL_INTENSITY（CONSERVATIVE / STANDARD / AGGRESSIVE）路由参数与 Claim Ceiling 关系说明
+- references/execution/implicit-benefit-pain.md 更新 I5 三级拆分（I5-A / I5-B / I5-C）与 Pain Distance 三级（DIRECT_PAIN / PARTIAL_PAIN / CONTEXT_PAIN）
+- references/execution/commercial-expression-freedom.md 新增 Edge Expression Policy（GREEN / AMBER / RED）与品类差异化天花板
+- references/execution/anxiety-pain-scenification.md 新增品类差异化焦虑强度
+- schemas/route-instance.schema.json 新增 commercial_intensity 字段（enum CONSERVATIVE/STANDARD/AGGRESSIVE，default STANDARD）；implication_level 枚举更新为 I1-I4 + I5-A/B/C；pain_distance 枚举更新为 DIRECT_PAIN / PARTIAL_PAIN / CONTEXT_PAIN
 - SKILL.md 新增 Router 4.32 Commercial Intensity、更新 4.21 Implication Level（I5-A/B/C）与 4.22 Pain Distance（PARTIAL_PAIN）
 - 6 个 Adapter 新增 Commercial Intensity Hard Rule（I5-A/B/C 阶梯 / PARTIAL_PAIN / Edge Expression Policy / 品类差异化天花板 / 平台强度差异 / 硬底线不变）
-- `scripts/validate_skill.py` 新增 Check 22（Commercial Intensity contract：schema 字段 / claim-authority.md COMMERCIAL_INTENSITY 声明 / I5-A/B/C 声明 / Edge Expression Policy 声明 / 品类差异化天花板声明 / I5-A 硬底线短语仅出现在禁止语境 / Back-Translation 可恢复声明 / SKILL.md Commercial Intensity 声明）
+- scripts/validate_skill.py 新增 Check 22（Commercial Intensity contract：schema 字段 / claim-authority.md COMMERCIAL_INTENSITY 声明 / I5-A/B/C 声明 / Edge Expression Policy 声明 / 品类差异化天花板声明 / I5-A 硬底线短语仅出现在禁止语境 / Back-Translation 可恢复声明 / SKILL.md Commercial Intensity 声明）
 - 回归测试 10 例（CI-01~10，Case 254-263）
 
 ### Hard Bottom Lines Preserved（硬底线保留）
@@ -250,11 +250,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **PATCH 40 — 最终 Hard Gate（PAIN & ANXIETY INTEGRITY GATE）**：检查 Pain Reality / Scene Specificity / Cost Reality / Anxiety Legitimacy / Product Relevance / Claim Integrity / Relief Path；任何虚假危险/无依据灾难/产品接不住的焦虑 = FAIL；但只因为焦虑"有点强"不能自动削弱，只要真实相关可支撑允许保持商业强度
 
 ### Added
-- `references/execution/anxiety-pain-scenification.md` — 焦虑激活与痛点场景化引擎 Source of Truth（40 节：Pain Chain P1-P8 / 抽象痛点禁止 / Camera Test / Scene Components / Accumulated Friction / Anxiety Types A1-A9 / Anxiety Selection / Cost Layer / Continuing Cost / 负面未来场景 / Pain Escalation / Micro-Pain / Solution Arrival / Failed Solution / Mechanism / 产品不是救世主 / Pain Specificity Score / Scene Vividness Score / Anxiety Legitimacy Gate / 禁止的焦虑 / 情绪语言 / 场景服务 Angle / 素人/达人/商家 / Seed-Sell 焦虑强度 / Relief Path / Relief Contrast / 焦虑开场 / 平台焦虑差异 / 多版本焦虑多样 / Angle Pain Candidates / External Pain Discovery / 用户原生语言 / 禁止五段式模板 / Humanization Pass / Commercial Intensity Recovery / PAIN & ANXIETY INTEGRITY GATE）
-- `schemas/route-instance.schema.json` 新增字段：anxiety_type / pain_specificity_score / scene_vividness_score / anxiety_legitimacy / relief_path
+- references/execution/anxiety-pain-scenification.md — 焦虑激活与痛点场景化引擎 Source of Truth（40 节：Pain Chain P1-P8 / 抽象痛点禁止 / Camera Test / Scene Components / Accumulated Friction / Anxiety Types A1-A9 / Anxiety Selection / Cost Layer / Continuing Cost / 负面未来场景 / Pain Escalation / Micro-Pain / Solution Arrival / Failed Solution / Mechanism / 产品不是救世主 / Pain Specificity Score / Scene Vividness Score / Anxiety Legitimacy Gate / 禁止的焦虑 / 情绪语言 / 场景服务 Angle / 素人/达人/商家 / Seed-Sell 焦虑强度 / Relief Path / Relief Contrast / 焦虑开场 / 平台焦虑差异 / 多版本焦虑多样 / Angle Pain Candidates / External Pain Discovery / 用户原生语言 / 禁止五段式模板 / Humanization Pass / Commercial Intensity Recovery / PAIN & ANXIETY INTEGRITY GATE）
+- schemas/route-instance.schema.json 新增字段：anxiety_type / pain_specificity_score / scene_vividness_score / anxiety_legitimacy / relief_path
 - SKILL.md 新增 Router 4.27-4.31（Anxiety Type / Pain Specificity Score / Scene Vividness Score / Anxiety Legitimacy / Relief Path）、G6.8 Anxiety & Pain Scenification 硬门、Progressive Disclosure 加载项、Skill Composition 行
 - 6 个 Adapter 新增 Anxiety & Pain Scenification Hard Rule（Pain Chain / Camera Test / Anxiety Legitimacy Gate / Accumulated Friction / Relief Path / 禁止虚假焦虑）
-- `scripts/validate_skill.py` 新增 Check 21（Anxiety & Pain Scenification contract：schema 字段 / anxiety-pain-scenification.md 存在 / SKILL.md 引用 / Anxiety Legitimacy Gate 声明 / 禁止虚假焦虑声明 / Relief Path 声明 / Camera Test 声明）
+- scripts/validate_skill.py 新增 Check 21（Anxiety & Pain Scenification contract：schema 字段 / anxiety-pain-scenification.md 存在 / SKILL.md 引用 / Anxiety Legitimacy Gate 声明 / 禁止虚假焦虑声明 / Relief Path 声明 / Camera Test 声明）
 - 回归测试 10 例（ANX-01~10，Case 254-263）
 
 ---
@@ -291,11 +291,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **PATCH 27 — 最终 Creative Permission**：允许大胆写痛/写烦/写懒/写纠结/写欲望/写生活混乱/写选择困难/写消费者真实吐槽/写戏剧/写冲突/写隐喻/写谐音/写反差/写自嘲/写幽默/写强判断/写商业欲望；不要把 Skill 训练成"合规机器人"；所有创造性最终不能改变现实世界里的产品事实
 
 ### Added
-- `references/execution/commercial-expression-freedom.md` — 商业表达自由层 Source of Truth（27 节：Expression Layer 开放 / RHETORICAL_EXAGGERATION / 事实型夸大禁止 / 隐喻开放 / 谐音双关 / 剧情表达 / 痛点放宽 / Pain Translation 强制 / 身体痛点不删除 / 需求邻接 / Benefit 靠近用户 / 结果感 / Authorized Claim 情绪化 / 用户原话 / 达人素人大胆 / 商家不官腔 / 强利益表达 / Claim Strength 不缩水 / Semantic Back-Translation / Meaning-Based Review / Conversion Recovery / Sell Density / Seed Desire / 金句 / 不写满免责声明 / 优化顺序 / Creative Permission）
-- `schemas/route-instance.schema.json` 新增字段：expression_freedom_level / rhetorical_exaggeration / back_translation_result
+- references/execution/commercial-expression-freedom.md — 商业表达自由层 Source of Truth（27 节：Expression Layer 开放 / RHETORICAL_EXAGGERATION / 事实型夸大禁止 / 隐喻开放 / 谐音双关 / 剧情表达 / 痛点放宽 / Pain Translation 强制 / 身体痛点不删除 / 需求邻接 / Benefit 靠近用户 / 结果感 / Authorized Claim 情绪化 / 用户原话 / 达人素人大胆 / 商家不官腔 / 强利益表达 / Claim Strength 不缩水 / Semantic Back-Translation / Meaning-Based Review / Conversion Recovery / Sell Density / Seed Desire / 金句 / 不写满免责声明 / 优化顺序 / Creative Permission）
+- schemas/route-instance.schema.json 新增字段：expression_freedom_level / rhetorical_exaggeration / back_translation_result
 - SKILL.md 新增 Router 4.24-4.26（Expression Freedom Level / Rhetorical Exaggeration / Back-Translation Result）、G6.7 Expression Freedom Validation 硬门、Progressive Disclosure 加载项、Skill Composition 行
 - 6 个 Adapter 新增 Commercial Expression Freedom Hard Rule（Expression Layer 开放 / RHETORICAL_EXAGGERATION / Semantic Back-Translation / Meaning-Based Review / Conversion Recovery / 不写满免责声明）
-- `scripts/validate_skill.py` 新增 Check 20（Commercial Expression Freedom contract：schema 字段 / commercial-expression-freedom.md 存在 / SKILL.md 引用 / Semantic Back-Translation 声明 / Meaning-Based Review 声明 / 事实型夸大禁止声明 / Conversion Recovery 声明）
+- scripts/validate_skill.py 新增 Check 20（Commercial Expression Freedom contract：schema 字段 / commercial-expression-freedom.md 存在 / SKILL.md 引用 / Semantic Back-Translation 声明 / Meaning-Based Review 声明 / 事实型夸大禁止声明 / Conversion Recovery 声明）
 - 回归测试 10 例（EXPR-01~10，Case 244-253）
 
 ---
@@ -325,11 +325,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **PATCH 20 — 最终最高原则**：痛点可以讲深不要讲假；场景可以讲狠不要制造疾病恐惧；用户价值可以暗示，未经授权的身体功效不能偷渡；不要把"不能说某个功效"理解成"不能卖这个产品"；少一点"它能把你身体变成什么样"，多一点"它能把你每天这件事变得怎么样"
 
 ### Added
-- `references/execution/implicit-benefit-pain.md` — 暗示利益与痛点翻译层 Source of Truth（20 节：Implication Ladder I1-I5 / Pain Translation Engine P1-P5 / 症状痛点下沉 / 痛点真实强度 / Fact 三次翻译 / Benefit Domains / Semantic Destination Test / Narrative Implication / Pain Hook / Product-to-Pain Match Gate / Pain Distance / Desire Translation / 体验型轻暗示 / 身份统一 Ceiling / Sell 强制 Pain Translation / Seed 偏欲望翻译 / Pain Translation Quality Check / 不自动免责声明 / 商业强度优先 / 最高原则）
-- `schemas/route-instance.schema.json` 新增字段：implication_level / pain_distance / pain_translation_path / benefit_translation_domain
+- references/execution/implicit-benefit-pain.md — 暗示利益与痛点翻译层 Source of Truth（20 节：Implication Ladder I1-I5 / Pain Translation Engine P1-P5 / 症状痛点下沉 / 痛点真实强度 / Fact 三次翻译 / Benefit Domains / Semantic Destination Test / Narrative Implication / Pain Hook / Product-to-Pain Match Gate / Pain Distance / Desire Translation / 体验型轻暗示 / 身份统一 Ceiling / Sell 强制 Pain Translation / Seed 偏欲望翻译 / Pain Translation Quality Check / 不自动免责声明 / 商业强度优先 / 最高原则）
+- schemas/route-instance.schema.json 新增字段：implication_level / pain_distance / pain_translation_path / benefit_translation_domain
 - SKILL.md 新增 Router 4.21-4.23（Implication Level / Pain Distance / Pain Translation Path）、G6.6 Pain Translation 硬门、G11 Semantic Destination Test、Progressive Disclosure 加载项
 - 6 个 Adapter 新增 Pain Translation Hard Rule（Implication Ladder / Pain Translation Engine / Semantic Destination Test / Narrative Implication / 不自动免责声明 / 不制造疾病恐惧）
-- `scripts/validate_skill.py` 新增 Check 19（Pain Translation contract：schema 字段 / implicit-benefit-pain.md 存在 / SKILL.md 引用 / 隐藏健康医疗暗示仅出现在禁止语境 / Semantic Destination Test 声明 / 不制造疾病恐惧声明）
+- scripts/validate_skill.py 新增 Check 19（Pain Translation contract：schema 字段 / implicit-benefit-pain.md 存在 / SKILL.md 引用 / 隐藏健康医疗暗示仅出现在禁止语境 / Semantic Destination Test 声明 / 不制造疾病恐惧声明）
 - 回归测试 10 例（PAIN-01~10，Case 234-243）
 
 ---
@@ -359,10 +359,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **PATCH 20 — 最终最高原则**：Compliance sets the ceiling. Copywriting should write as strongly as possible below that ceiling；商业内容第一任务是把真实价值卖出去；不做"最安全但卖不动"，也不做"靠违规功效才能成交"
 
 ### Added
-- `references/execution/claim-authority.md` — 主张表达权限层 Source of Truth（20 节：L0-L6 / Category Ceiling / 普通食品 / 保健食品 / 美妆 / Benefit Translation / Strength Matching / Commercial Usefulness Gate / Value Association vs Hidden Efficacy / Semantic Claim Check / Claim Zone / Sellable Green Facts / 身份同一 Ceiling / Conversion Recovery / Sell 最低商业要求 / 营养品示例 / Hard Gate 顺序 / 最高原则）
-- `schemas/route-instance.schema.json` 新增字段：product_regulatory_category / claim_authority_level / claim_strength / commercial_value_path
+- references/execution/claim-authority.md — 主张表达权限层 Source of Truth（20 节：L0-L6 / Category Ceiling / 普通食品 / 保健食品 / 美妆 / Benefit Translation / Strength Matching / Commercial Usefulness Gate / Value Association vs Hidden Efficacy / Semantic Claim Check / Claim Zone / Sellable Green Facts / 身份同一 Ceiling / Conversion Recovery / Sell 最低商业要求 / 营养品示例 / Hard Gate 顺序 / 最高原则）
+- schemas/route-instance.schema.json 新增字段：product_regulatory_category / claim_authority_level / claim_strength / commercial_value_path
 - 6 个 Adapter 新增 Claim Authority Hard Rule（Regulatory Category / Authorized Claim Set / Sellable Green Facts / Semantic Claim Check / 同一 Claim Ceiling / Conversion Recovery）
-- `scripts/validate_skill.py` 新增 Check 18（Claim Authority contract：schema 字段 / claim-authority.md 存在 / SKILL.md 引用 / 无违规词替换器映射表 / Semantic Claim Check 声明 / Hidden Efficacy 禁止声明）
+- scripts/validate_skill.py 新增 Check 18（Claim Authority contract：schema 字段 / claim-authority.md 存在 / SKILL.md 引用 / 无违规词替换器映射表 / Semantic Claim Check 声明 / Hidden Efficacy 禁止声明）
 - 回归测试 10 例（CLAIM-01~10，Case 224-233）
 
 ---
@@ -370,7 +370,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [4.6.2] - 2026-08-15
 
 ### Changed
-- **PATCH 01 — Product Fact Source 与 Product Fact Sufficiency 分离**：新增 PRODUCT_FACT_SOURCE（含 official_web / authorized_official_listing / mixed_verified）和 PRODUCT_FACT_SUFFICIENCY（NONE / IDENTITY_ONLY / PARTIAL_FACTS / SUFFICIENT_FOR_CONTENT / SUFFICIENT_FOR_SEED / SUFFICIENT_FOR_SELL）；禁止使用 `product_fact_source != unknown` 作为"不需要联网检索"的依据
+- **PATCH 01 — Product Fact Source 与 Product Fact Sufficiency 分离**：新增 PRODUCT_FACT_SOURCE（含 official_web / authorized_official_listing / mixed_verified）和 PRODUCT_FACT_SUFFICIENCY（NONE / IDENTITY_ONLY / PARTIAL_FACTS / SUFFICIENT_FOR_CONTENT / SUFFICIENT_FOR_SEED / SUFFICIENT_FOR_SELL）；禁止使用 product_fact_source != unknown 作为"不需要联网检索"的依据
 - **PATCH 02 — Product Acquisition Preflight（PRE-GATE 0）**：正式 Hard Gates 之前新增产品获取预检流程；只有在 Product Acquisition 完成后才进入 G1 Product Truth；禁止先进入 G1 发现事实不足后直接要求用户提交资料
 - **PATCH 03 — Search Before Ask 最高优先规则**：用户提供可搜索线索 + WEB_SEARCH 存在时，Agent 必须先搜索；禁止第一反应"请上传详情页/请提供配料表/资料不足无法完成"
 - **PATCH 04 — WEB_ONLY 模式修复**：WEB_ONLY = WEB_SEARCH available, local file source unavailable；不代表只能依赖用户提供 SKU 事实；可以从官方网页建立 Product Ledger
@@ -402,8 +402,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **PATCH 30 — 最终执行顺序统一**：PRE-GATE 0 加入执行顺序流程；绝对禁止"发现用户没给详情页→直接把资料收集工作退回给用户"
 
 ### Added
-- `references/execution/product-acquisition.md` — 产品事实获取层 Source of Truth（30 节规则，含 Search Before Ask、Product Ledger、Minimum Disambiguation、High-Risk Product Retrieval、Purpose-Specific Fact Minimum 等）
-- `schemas/route-instance.schema.json` 新增字段：product_identity_status / product_fact_sufficiency / product_retrieval_status
+- references/execution/product-acquisition.md — 产品事实获取层 Source of Truth（30 节规则，含 Search Before Ask、Product Ledger、Minimum Disambiguation、High-Risk Product Retrieval、Purpose-Specific Fact Minimum 等）
+- schemas/route-instance.schema.json 新增字段：product_identity_status / product_fact_sufficiency / product_retrieval_status
 - 回归测试 6 例（PRODUCT-WEB-01~06，Case 218-223）
 
 ---
@@ -411,14 +411,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [4.6.1] - 2026-08-15
 
 ### Changed
-- **CTA Permission 硬化（PATCH 01/02/04/05/35/36）**：CTA 从"隐式优先"的 Preference 改为 Permission 问题。`CTA_PERMISSION` 只有 IMPLICIT_ONLY（默认）/ EXPLICIT_ALLOWED 两个值；删除 AUTO/MAYBE/PREFERRED/LAST_CHOICE 等模糊状态；Sell、热用户、高购买意向、first_goal=purchase_decision 均不自动解锁显式 CTA；只有命中 Closed Explicit CTA Allowlist（用户明确要求 / 直播成交阶段 / 商品卡 Button / 广告 CTA Button / Landing Page / 表单 / 明确私域动作）才允许显式
+- **CTA Permission 硬化（PATCH 01/02/04/05/35/36）**：CTA 从"隐式优先"的 Preference 改为 Permission 问题。CTA_PERMISSION 只有 IMPLICIT_ONLY（默认）/ EXPLICIT_ALLOWED 两个值；删除 AUTO/MAYBE/PREFERRED/LAST_CHOICE 等模糊状态；Sell、热用户、高购买意向、first_goal=purchase_decision 均不自动解锁显式 CTA；只有命中 Closed Explicit CTA Allowlist（用户明确要求 / 直播成交阶段 / 商品卡 Button / 广告 CTA Button / Landing Page / 表单 / 明确私域动作）才允许显式
 - **取消"每篇必须有收口家族"（PATCH 02）**：Closing Family 仅当 Closing Strategy = IMPLICIT_CLOSE 时才需要内部选择；NATURAL_STOP 不分配 Closing Family；多版可 NATURAL_STOP / NATURAL_STOP / IMPLICIT_A / IMPLICIT_B / NATURAL_STOP
 - **Natural Stop 升级（PATCH 01.5）**：Closing Strategy 只允许 NATURAL_STOP / IMPLICIT_CLOSE / EXPLICIT_CTA；最高原则 No closing sentence is better than a forced closing sentence
 - **No Fake Memory Gate（PATCH 03/33）**：跨批次收口轮换、家族使用计数、避开上一批次仅在 MEMORY capability 或用户上下文提供 Content History 时执行；否则只做 Current Batch QA
 - **Research/Tool Claim Integrity（PATCH 34）**：无 WEB_SEARCH 不得声称「最近大家都在搜/现在流行/根据搜索结果/当前市场趋势」；无 FILE_READ 不得声称「根据你的产品 Skill」；无 CODE_EXECUTION/CALCULATOR 不得假装运行计算工具；无 MEMORY 不得声称历史使用次数
 - **Silent Activation（PATCH 08）**：删除首次启动 12 行版本介绍；默认静默激活，仅用户明确询问时输出版本/帮助
 - **Final Output Contract 冲突修复（PATCH 06/07/24）**：删除"禁止输出收口家族 + 顶部表格必须输出收口家族"的冲突；默认只输出 标题+正文/口播+必要画面建议；多版=每版独立块；禁止默认输出角度/收口家族/QA/路由/评分等内部元数据；输出格式改为 Default（Markdown 默认，用户明确格式优先）
-- **Progressive Disclosure 统一（PATCH 09/10）**：`references/reference-index.md` 成为 Reference Loading Source of Truth；SKILL.md 只保留简要调用；FULL 模式 = 所有可选能力可用，references 仍选择性加载
+- **Progressive Disclosure 统一（PATCH 09/10）**：references/reference-index.md 成为 Reference Loading Source of Truth；SKILL.md 只保留简要调用；FULL 模式 = 所有可选能力可用，references 仍选择性加载
 - **Capability 命名统一（PATCH 11/32）**：全包 CODE_EXEC → CODE_EXECUTION；Capability Contract Test 自动扫描
 - **Hard Gates 绝不可降级（PATCH 12）**：删除 route-instance.schema.json 的 hard_gate_exceptions，改为 verification_limits（只说明无法自动验证什么，不降低真实性标准）
 - **Product Fact Schema 串源修复（PATCH 13/14/31）**：key_facts.source_type 仅接受 P1_PRODUCT_FACT；commercial_identity 移出 Product Schema，加入 route-instance.schema.json 的 commercial_relationship
@@ -426,7 +426,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **24 Modes Purpose 旧逻辑修复（PATCH 16）**：普通种草去掉"即时成交"目标；普通卖货"行动"改为 Decision Readiness；决策信息锚点改为"是否选择当前方案/SKU"
 - **平台禁止反向制造 IP 经历（PATCH 17/18）**：Platform Native 不能创建 biography；IP Persona Signal 优先当前判断/偏好/标准/原则/取舍，只有 IP Fact 支持时才用过去经历
 - **CTA 示例清理（PATCH 19/20）**：显式 CTA 反例统一移入 NEGATIVE EXAMPLES — DO NOT RECALL；绝对化/过度承诺/压迫感/金句化示例降级或删除；CTA reference 重点保留机制而非成品句
-- **Stale Cross-Reference 修复（PATCH 21）**：references 中"主 SKILL.md 第 X 节"改为稳定文件路径 + Heading Name；`references/cta.md` 改为 `references/craft/cta.md`
+- **Stale Cross-Reference 修复（PATCH 21）**：references 中"主 SKILL.md 第 X 节"改为稳定文件路径 + Heading Name；references/cta.md 改为 references/craft/cta.md
 - **版本同步（PATCH 22）**：reference-index / README / build fallback / portability-report 统一至 4.6.1
 - **Single Source of Truth 真正执行（PATCH 23）**：CTA 权限规则只定义在 craft/cta.md；其他 references 只引用不重新定义
 
@@ -470,7 +470,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 - **最终交付不再显示角度、收口家族**：角度与收口家族仅用于生成阶段防重复与选型（G10 输出净化），最终交付只保留"版本标题表格 + 表格外完整口播稿"
-- 每版结构 = 单行版本标题表格（`稿N · 版本名`）+ 下方引用块完整口播稿；角度概览等辅助信息仅用户明确要求时才呈现
+- 每版结构 = 单行版本标题表格（稿N · 版本名）+ 下方引用块完整口播稿；角度概览等辅助信息仅用户明确要求时才呈现
 - SKILL.md 10.1 节与 final-output.md 第 26 节同步更新；版本升至 4.5.2
 
 ---
@@ -498,7 +498,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 - **输出格式硬约束**：Final Output Contract 新增 10.1 节，规定最终交付物一律使用纯 Markdown（md）格式
-- 完整口播稿强制入表规则：表头"完整口播稿"仅允许出现一次，多篇稿在同一个单列表格同一单元格内用 `**【稿N · 版本名】**` 分隔
+- 完整口播稿强制入表规则：表头"完整口播稿"仅允许出现一次，多篇稿在同一个单列表格同一单元格内用 **【稿N · 版本名】** 分隔
 - 禁止 HTML / docx / pptx / 其他富文本作为最终交付物（除非用户明确要求 HTML 报告）
 
 ### Changed
@@ -526,8 +526,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 - 隐式收口原则升级为四层结构：**种草一律隐式 → 卖货优先决策完成感 → 隐式收口备选 → 显式CTA是最后选择**
-- `references/craft/cta.md`：卖货型内容优先决策完成感，隐式收口备选（choice_helper / verification_task），显式CTA是最后选择
-- `references/execution/purpose-integrity.md`：CTA 优先决策完成感，隐式收口备选，显式引导是最后选择
+- references/craft/cta.md：卖货型内容优先决策完成感，隐式收口备选（choice_helper / verification_task），显式CTA是最后选择
+- references/execution/purpose-integrity.md：CTA 优先决策完成感，隐式收口备选，显式引导是最后选择
 - SKILL.md description 同步四层原则，版本升至 4.2.0
 
 ---

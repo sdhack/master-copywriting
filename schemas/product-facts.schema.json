@@ -1,4 +1,4 @@
-﻿{
+{
   "$schema": "http://json-schema.org/draft-07/schema#",
   "title": "Product Facts",
   "description": "Canonical product fact schema for Master Copywriting skill composition. Single source of truth for one SKU.",

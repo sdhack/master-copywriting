@@ -102,15 +102,15 @@ Canonical core uses only abstract capability names. Never specific tool names.
 
 | Abstract Capability | What it does |
 |---|---|
-| `WEB_SEARCH` | Retrieve verified official product sources, verify current external facts, retrieve the current SKU's regulatory category / authorized claim set, and perform External Intelligence research |
-| `FILE_READ` | Read files from local filesystem |
-| `FILE_SEARCH` | Search within files (grep/glob) |
-| `CODE_EXECUTION` | Run code (Python/JS/etc.) for calculation/validation |
-| `CALCULATOR` | Basic arithmetic calculations |
-| `FUNCTION_CALLING` | Call structured tools/functions |
-| `MCP` | Model Context Protocol servers |
-| `MEMORY` | Cross-conversation memory |
-| `STRUCTURED_OUTPUT` | Output structured JSON/Schema-compliant data |
+| WEB_SEARCH | Retrieve verified official product sources, verify current external facts, retrieve the current SKU's regulatory category / authorized claim set, and perform External Intelligence research |
+| FILE_READ | Read files from local filesystem |
+| FILE_SEARCH | Search within files (grep/glob) |
+| CODE_EXECUTION | Run code (Python/JS/etc.) for calculation/validation |
+| CALCULATOR | Basic arithmetic calculations |
+| FUNCTION_CALLING | Call structured tools/functions |
+| MCP | Model Context Protocol servers |
+| MEMORY | Cross-conversation memory |
+| STRUCTURED_OUTPUT | Output structured JSON/Schema-compliant data |
 
 **Tool Independence Contract:** If a capability exists → use it. If not → execute fallback. Never simulate search results, file reads, MCP, or code execution.
 
@@ -166,7 +166,7 @@ Unique first goal of this piece (e.g., purchase_decision). **Business Goal ≠ L
 brand_official / shop_owner / founder / product_side / collab_influencer / commission_influencer / gifted_experience / real_consumer / no_commercial_relation / unknown — belongs to the route instance, not the product.
 
 ### 4.12 CTA Permission
-IMPLICIT_ONLY (default) / EXPLICIT_ALLOWED (only via Closed Explicit CTA Allowlist, see `references/craft/cta.md`)
+IMPLICIT_ONLY (default) / EXPLICIT_ALLOWED (only via Closed Explicit CTA Allowlist, see references/craft/cta.md)
 
 ### 4.13 Closing Strategy
 NATURAL_STOP (preferred) / IMPLICIT_CLOSE / EXPLICIT_CTA (only when CTA_PERMISSION = EXPLICIT_ALLOWED)
@@ -229,7 +229,7 @@ After routing, load only the needed references (Progressive Disclosure, see §6)
 
 Strict gate order. A failure at an earlier gate invalidates all later gate passes.
 
-```
+
 PRE-GATE 0 — Product Acquisition
   ↓
 PRE-GATE 1 — Regulatory Category & Claim Ceiling
@@ -265,7 +265,7 @@ G10 — Final Output Sanitizer
 G11 — Semantic Claim Audit
   ↓
 G12 — Review Risk Audit
-```
+
 
 **Fact gate failure = whole piece fails.** Not "7 out of 10 gates pass so it's fine."
 
@@ -273,12 +273,12 @@ G12 — Review Risk Audit
 
 **PRE-GATE 1 — Regulatory Category & Claim Ceiling（品类主张上限）**：识别 PRODUCT_REGULATORY_CATEGORY → 建立 AUTHORIZED_CLAIM_SET / Evidence Set → 设定 Claim Ceiling → 之后所有主张在 Ceiling 内按最大强度表达（Maximize Persuasion Within the Claim Ceiling）。禁止：发现是健康品类 → 全部弱化 → 写不动。
 
-Full gate definitions: `references/execution/execution-reliability.md`
-Product Acquisition rules: `references/execution/product-acquisition.md`
-Claim Authority rules: `references/execution/claim-authority.md`
-Implicit Benefit & Pain Translation rules: `references/execution/implicit-benefit-pain.md`
-Commercial Expression Freedom rules: `references/execution/commercial-expression-freedom.md`
-Anxiety & Pain Scenification rules: `references/execution/anxiety-pain-scenification.md`
+Full gate definitions: references/execution/execution-reliability.md
+Product Acquisition rules: references/execution/product-acquisition.md
+Claim Authority rules: references/execution/claim-authority.md
+Implicit Benefit & Pain Translation rules: references/execution/implicit-benefit-pain.md
+Commercial Expression Freedom rules: references/execution/commercial-expression-freedom.md
+Anxiety & Pain Scenification rules: references/execution/anxiety-pain-scenification.md
 
 ---
 
@@ -286,28 +286,28 @@ Anxiety & Pain Scenification rules: `references/execution/anxiety-pain-scenifica
 
 Load reference files only when the task needs them. Avoid loading the entire knowledge base at once.
 
-**Reference Loading Source of Truth：`references/reference-index.md`。** SKILL.md 只保留简要调用；加载规则以 reference-index.md 为准。
+**Reference Loading Source of Truth：references/reference-index.md。** SKILL.md 只保留简要调用；加载规则以 reference-index.md 为准。
 
 Minimal loading rules (cannot be lost even by a Limited Agent):
 
 | Task Signal | Load References |
 |---|---|
-| Any copy task (always) | `references/execution/execution-reliability.md` |
-| Product facts insufficient / product identity unclear | `references/execution/product-acquisition.md` |
-| 健康/营养/美妆/功效品类 / 需要判断主张表达权限 | `references/execution/claim-authority.md` |
-| 需要放宽价值暗示/痛点翻译 / 健康品类卖不动 | `references/execution/implicit-benefit-pain.md` |
-| 需要提高商业表达强度/情绪浓度/隐喻/剧情 / 文案真实但卖不动 / 需要按品类差异化表达强度 / 需要选择商业强度档位 | `references/execution/commercial-expression-freedom.md` |
-| 需要痛点场景化/焦虑激活/紧迫感 / 痛点太抽象场景不具体 | `references/execution/anxiety-pain-scenification.md` |
-| Platform-specific | `references/modes/24-modes.md` + `references/modes/platforms.md` + `references/modes/viral-content-map.md` |
-| Multi-platform | `references/modes/24-modes.md` + `references/modes/platforms.md` + `references/modes/viral-content-map.md` + `references/cross-platform/cross-platform-reconception.md` |
-| Seed/Sell / Commercial copy | `references/execution/purpose-integrity.md` + `references/craft/cta.md` |
-| IP mode | `references/craft/ip-naturalness.md` + `references/execution/expression-authority.md` |
-| External research | `references/external/external-intelligence.md` |
-| Multi-version | `references/angle/dynamic-angle-discovery.md` |
-| Final QA | `references/quality/anti-patternization.md` + `references/quality/final-output.md` as needed |
-| 抖音/直播开头 3 秒钩子 | `references/craft/chanmama-gold3s.md`（蝉妈妈黄金3秒台词库） |
+| Any copy task (always) | references/execution/execution-reliability.md |
+| Product facts insufficient / product identity unclear | references/execution/product-acquisition.md |
+| 健康/营养/美妆/功效品类 / 需要判断主张表达权限 | references/execution/claim-authority.md |
+| 需要放宽价值暗示/痛点翻译 / 健康品类卖不动 | references/execution/implicit-benefit-pain.md |
+| 需要提高商业表达强度/情绪浓度/隐喻/剧情 / 文案真实但卖不动 / 需要按品类差异化表达强度 / 需要选择商业强度档位 | references/execution/commercial-expression-freedom.md |
+| 需要痛点场景化/焦虑激活/紧迫感 / 痛点太抽象场景不具体 | references/execution/anxiety-pain-scenification.md |
+| Platform-specific | references/modes/24-modes.md + references/modes/platforms.md + references/modes/viral-content-map.md |
+| Multi-platform | references/modes/24-modes.md + references/modes/platforms.md + references/modes/viral-content-map.md + references/cross-platform/cross-platform-reconception.md |
+| Seed/Sell / Commercial copy | references/execution/purpose-integrity.md + references/craft/cta.md |
+| IP mode | references/craft/ip-naturalness.md + references/execution/expression-authority.md |
+| External research | references/external/external-intelligence.md |
+| Multi-version | references/angle/dynamic-angle-discovery.md |
+| Final QA | references/quality/anti-patternization.md + references/quality/final-output.md as needed |
+| 抖音/直播开头 3 秒钩子 | references/craft/gold3s-database.md（黄金3秒台词库） |
 
-**Full index:** `references/reference-index.md`
+**Full index:** references/reference-index.md
 
 ---
 
@@ -365,7 +365,7 @@ Minimal loading rules (cannot be lost even by a Limited Agent):
 - **功效暗示永不过滤（v4.11.4）**：I5-B/C/AMBER 默认保留、默认强化，只有 I5-A 硬禁才拦截；拦截走 CONVERSION_RECOVERY（保留情绪强度，只替换越线那一跳）
 - Pain may be intensified but must be real friction, never invented health fear; no symptom pain → unauthorized efficacy leap (I5-A)
 - Only parameters with no user benefit / pain translation = Commercial Translation FAIL, rewrite
-- Full rules: `references/execution/implicit-benefit-pain.md`
+- Full rules: references/execution/implicit-benefit-pain.md
 
 ### G6.7 Expression Freedom Validation
 - Expression Layer（隐喻/类比/谐音/双关/反差/剧情/场景演绎/对话/吐槽/网络语言/情绪放大/口语夸张/用户原话/戏剧冲突/生活画面）默认开放，不得因合规过度保守而删除利益/情绪/痛点
@@ -377,7 +377,7 @@ Minimal loading rules (cannot be lost even by a Limited Agent):
 - 品类差异化天花板：普通食品/日用品/非宣称功效化妆品明显放宽情绪与生活方式暗示；保健食品/功效化妆品/医疗器械保持严格；抖音允许更高情绪密度、小红书强调标准与对比
 - Meaning-Based Claim Review：审核语义而非关键词；禁止"危险词→安全替代词"关键词审查式写作
 - 高转化 Claim 被拒时执行 Conversion Recovery（从 Authorized Claim / Convenience / Product Difference / Routine Simplicity / Cost-Value / Format / Usage / Sensory / Choice Efficiency / Identity / Emotional / Risk Reduction 重建购买理由），禁止删除后直接交稿
-- Full rules: `references/execution/commercial-expression-freedom.md`
+- Full rules: references/execution/commercial-expression-freedom.md
 
 ### G6.8 Anxiety & Pain Scenification
 - 痛点必须场景化：Sell 默认 Pain Specificity 不能为 0（抽象概念禁止直接进正文）；Pain Scene 尽量通过 Camera Test（摄像机能拍出动作/东西/犹豫/麻烦）
@@ -388,13 +388,13 @@ Minimal loading rules (cannot be lost even by a Limited Agent):
 - 焦虑强度按品类差异化：非敏感品类允许更高情绪密度与场景冲击；敏感品类焦虑聚焦执行/选择/使用摩擦，身体状态类痛点只能作为 CONTEXT_PAIN
 - 多版本不得重复同一种焦虑；场景必须服务 Angle（Scene proves the angle）
 - 最终 PAIN & ANXIETY INTEGRITY GATE：Pain Reality / Scene Specificity / Cost Reality / Anxiety Legitimacy / Product Relevance / Claim Integrity / Relief Path；只因为焦虑"有点强"不能自动削弱
-- Full rules: `references/execution/anxiety-pain-scenification.md`
+- Full rules: references/execution/anxiety-pain-scenification.md
 
 ### G7 Platform Native
 - Platform core respected (attention / decision / cognition / trust)
 - Re-conception, not re-styling — different question per platform
 - Platform-specific proof type and information density
-- 2026 爆款实证（`references/modes/viral-content-map.md`）：情绪先行、活人感、信任×场景三条跨平台规律；平台内容类型 / 分发机制 / 电商打法按图谱适配，但不得成为固定五件套。抖音/直播开头 3 秒钩子优先参考 `references/craft/chanmama-gold3s.md`（蝉妈妈黄金3秒台词库，1499 条付费广告实证套路）
+- 2026 爆款实证（references/modes/viral-content-map.md）：情绪先行、活人感、信任×场景三条跨平台规律；平台内容类型 / 分发机制 / 电商打法按图谱适配，但不得成为固定五件套。抖音/直播开头 3 秒钩子优先参考 references/craft/gold3s-database.md（黄金3秒台词库，1499 条付费广告实证套路）
 
 ### G8 Natural Depth / Humanization
 - Natural conversational flow, not module拼接
@@ -440,10 +440,10 @@ This skill accepts product facts and IP facts from multiple sources:
 
 | Source | Purpose | Schema |
 |---|---|---|
-| Product Fact Source | What the product truth is | `schemas/product-facts.schema.json` |
-| IP Fact Source | Who the person really is | `schemas/ip-facts.schema.json` |
+| Product Fact Source | What the product truth is | schemas/product-facts.schema.json |
+| IP Fact Source | Who the person really is | schemas/ip-facts.schema.json |
 | Brand Source | Brand voice & values | (part of product-facts) |
-| Content History Source | What's been written before | `schemas/content-fingerprint.schema.json` |
+| Content History Source | What's been written before | schemas/content-fingerprint.schema.json |
 
 When no sufficient Product Fact Source is available:
 1. assess product identity;
@@ -468,10 +468,10 @@ It does NOT own:
 | IP truth | IP Profile / user input | Who the person is |
 | External world | External Intelligence / WEB_SEARCH | What the world cares about |
 | Compliance rules | Compliance Skill / quality layer | What cannot be said |
-| Claim ceiling | `references/execution/claim-authority.md` | How strongly each claim may be expressed |
-| Pain & benefit translation | `references/execution/implicit-benefit-pain.md` | How to translate facts into user benefits and pain into purchase reasons |
-| Commercial expression freedom | `references/execution/commercial-expression-freedom.md` | How strongly and creatively the expression may be without changing product facts |
-| Anxiety & pain scenification | `references/execution/anxiety-pain-scenification.md` | How to turn abstract pain into visible scenes and legitimate anxiety into purchase motivation |
+| Claim ceiling | references/execution/claim-authority.md | How strongly each claim may be expressed |
+| Pain & benefit translation | references/execution/implicit-benefit-pain.md | How to translate facts into user benefits and pain into purchase reasons |
+| Commercial expression freedom | references/execution/commercial-expression-freedom.md | How strongly and creatively the expression may be without changing product facts |
+| Anxiety & pain scenification | references/execution/anxiety-pain-scenification.md | How to turn abstract pain into visible scenes and legitimate anxiety into purchase motivation |
 
 Compose skills at runtime via adapter capability mapping.
 
@@ -479,12 +479,12 @@ Compose skills at runtime via adapter capability mapping.
 
 ## 10. Final Output Contract
 
-**Canonical output contract：`references/quality/final-output.md`。** 本节约束为最小不可丢失规则。
-**Canonical output template：`references/templates/output-templates.md`。** 创作完内容后强制套用模板并生成 `.md` 文件（见 §10.5）。
+**Canonical output contract：references/quality/final-output.md。** 本节约束为最小不可丢失规则。
+**Canonical output template：references/templates/output-templates.md。** 创作完内容后强制套用模板并生成 .md 文件（见 §10.5）。
 
 ### 10.1 输出格式（Default，不是 Hard Lock）
 
-- `DEFAULT_OUTPUT_FORMAT = Markdown`。
+- DEFAULT_OUTPUT_FORMAT = Markdown。
 - 用户明确指定格式（JSON / 纯文本 / 表格 / CSV / 文件 / 结构化 Schema / 其他宿主系统要求格式）时，**遵从用户/宿主输出要求**。
 - 禁止因"纯 Markdown 硬约束"覆盖用户明确格式。
 - 原则：**Markdown is the default transport, not the canonical business rule.**
@@ -513,19 +513,19 @@ Angle（角度）与 Closing Family（收口家族）默认保持内部；**唯�
 
 ### 10.4 CTA 最小硬规则（内联，不可丢失）
 
-- `CTA_PERMISSION` 默认 `IMPLICIT_ONLY`；只有命中 Closed Explicit CTA Allowlist 才允许显式 CTA。
+- CTA_PERMISSION 默认 IMPLICIT_ONLY；只有命中 Closed Explicit CTA Allowlist 才允许显式 CTA。
 - **Sell 不自动解锁显式 CTA。** 热用户 / 高购买意向 / first_goal=purchase_decision 均不改变 CTA Permission。
 - **全口径默认高级隐式收口（v4.12.0）：** 看播 / 预约 / 成交 / 留资 / 加热 所有口径默认收口 = NATURAL_STOP 或 IMPLICIT_CLOSE。显式动作（进直播间 / 点预约 / 点购物车 / 下单 / 去拍 / 去看看 / 点我头像 / 点下方）不属于任何口径的默认选项。
-- **高级隐式收口六项质检：** 零动作指令 / 零目的地 / 零时间限定 / 零直播间行为预告 / 承接本版核心观点 / 同批次句式指纹不重复。详见 `references/craft/cta.md` 第二节·五。
+- **高级隐式收口六项质检：** 零动作指令 / 零目的地 / 零时间限定 / 零直播间行为预告 / 承接本版核心观点 / 同批次句式指纹不重复。详见 references/craft/cta.md 第二节·五。
 - **Natural Stop 是合法且优先的结尾。** No closing sentence is better than a forced closing sentence.
-- 完整 CTA 规则：`references/craft/cta.md`（Source of Truth）。
+- 完整 CTA 规则：references/craft/cta.md（Source of Truth）。
 
 ### 10.5 强制模板套用 + MD 文件生成（v4.14.0 新增）
 
-**创作完内容之后，强制套用模板并生成 `.md` 文件交付。** 完整模板结构与文件生成规则见 `references/templates/output-templates.md`（Source of Truth）。
+**创作完内容之后，强制套用模板并生成 .md 文件交付。** 完整模板结构与文件生成规则见 references/templates/output-templates.md（Source of Truth）。
 
 - **强制套用模板**：创作完内容后必须按模板组织输出（单版 / 多版表格 / 多平台），不得自由排版。
-- **强制生成 `.md` 文件**：保存到当前工作目录，命名 `{平台}-{产品}-{行动}-{YYMMDDHHMM}.md`（与 HTML 报告命名规范一致，仅扩展名不同）。
+- **强制生成 .md 文件**：保存到当前工作目录，命名 {平台}-{产品}-{行动}-{YYMMDDHHMM}.md（与 HTML 报告命名规范一致，仅扩展名不同）。
 - **执行时机**：G10 输出净化之后 → 套模板 → 落盘。
 - **例外**：用户明确指定其他格式（JSON / 表格 / 其他宿主格式）时遵从用户格式。
 
@@ -538,7 +538,7 @@ Semantic versioning:
 - **Minor**: New capabilities, new platform adapters
 - **Patch**: Rule fixes, fact gate fixes
 
-Full changelog: `CHANGELOG.md`
+Full changelog: CHANGELOG.md
 
 ---
 
@@ -546,7 +546,7 @@ Full changelog: `CHANGELOG.md`
 
 Adapters handle platform-specific tool mapping, installation paths, filesystem differences, and context loading behavior. They never modify canonical writing rules.
 
-Available adapters: `adapters/` directory.
+Available adapters: adapters/ directory.
 
 | Adapter | Target Agent | Capability Level |
 |---|---|---|
