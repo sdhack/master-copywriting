@@ -1,6 +1,6 @@
-﻿---
+---
 name: master-copywriting
-version: 4.14.0
+version: 4.15.0
 description: >
   全栈文案决策与生成系统。先做任务类型路由，再按 平台×目的×IP模式
   生成。支持抖音、小红书、公众号、视频号。触发场景：广告文案、产品文案、
@@ -305,6 +305,7 @@ Minimal loading rules (cannot be lost even by a Limited Agent):
 | External research | `references/external/external-intelligence.md` |
 | Multi-version | `references/angle/dynamic-angle-discovery.md` |
 | Final QA | `references/quality/anti-patternization.md` + `references/quality/final-output.md` as needed |
+| 抖音/直播开头 3 秒钩子 | `references/craft/chanmama-gold3s.md`（蝉妈妈黄金3秒台词库） |
 
 **Full index:** `references/reference-index.md`
 
@@ -393,7 +394,7 @@ Minimal loading rules (cannot be lost even by a Limited Agent):
 - Platform core respected (attention / decision / cognition / trust)
 - Re-conception, not re-styling — different question per platform
 - Platform-specific proof type and information density
-- 2026 爆款实证（`references/modes/viral-content-map.md`）：情绪先行、活人感、信任×场景三条跨平台规律；平台内容类型 / 分发机制 / 电商打法按图谱适配，但不得成为固定五件套
+- 2026 爆款实证（`references/modes/viral-content-map.md`）：情绪先行、活人感、信任×场景三条跨平台规律；平台内容类型 / 分发机制 / 电商打法按图谱适配，但不得成为固定五件套。抖音/直播开头 3 秒钩子优先参考 `references/craft/chanmama-gold3s.md`（蝉妈妈黄金3秒台词库，1499 条付费广告实证套路）
 
 ### G8 Natural Depth / Humanization
 - Natural conversational flow, not module拼接

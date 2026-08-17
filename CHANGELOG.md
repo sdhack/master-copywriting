@@ -1,10 +1,28 @@
-﻿# Changelog
+# Changelog
 
 All notable changes to the Master Copywriting skill.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [4.15.0] - 2026-08-17
+
+### Added
+- **`references/craft/chanmama-gold3s.md`（核心新增）**：蝉妈妈「黄金3秒台词」实证库。数据来源：蝉妈妈黄金3秒台词榜单（cy.chanmama.com/tools/liveGoldDialogueRank/），30 页 × 50 条 = 1499 条付费广告真实投放台词，含关联素材数/创意数/直播数/总点赞数。内容：23 种套路频次总览（点名产品 44% 居首）、TOP 套路句式结构（机制×结构×示例）、高频套路组合（组合占 71%，含组合黄金公式）、高赞台词拆解（点赞 TOP 20 机制归纳）、生成规则（选套路顺序 + 硬规则 + 与现有规则关系）
+- **`references/craft/hooks.md` 第六节「抖音黄金三秒」升级为数据驱动版**：从 4 条通用机制扩展为 10 条实证套路 + 组合黄金公式 + 硬规则，引用 chanmama-gold3s.md 为 Source of Truth
+
+### Changed
+- **`references/reference-index.md`**：版本号升至 v4.15.0；craft/ 目录注册 chanmama-gold3s.md；Reference Loading Map 的 Hook writing 行加入该文件
+- **SKILL.md**：版本号升至 4.15.0；G7 Platform Native 新增抖音/直播开头 3 秒钩子优先参考 chanmama-gold3s.md；Progressive Disclosure 加载表新增「抖音/直播开头 3 秒钩子」行
+
+### Hard Bottom Lines Preserved（硬底线保留）
+- 黄金3秒台词库是机制与结构的实证来源，不是例句库；禁止复制原句或仅换词，只迁移机制/句式结构/表达逻辑
+- 福利优惠类（价格/折扣/赠品/限量/倒计时）属 CONDITIONAL，使用前必须检查事实表；"手慢无/炸单/虚假稀缺"属 AVOID 不召回
+- 钩子承诺必须在正文兑现；效果表达不得新增未授权功效（I5-A 硬禁仍生效）
+- 套路频次是"选什么"的参考，不是"必须这么写"的模板；同一批次不得全部套同一组合（anti-patternization 仍生效）
+- 所有内容生成规则（Hard Gates、Humanization、平台原生、真人感）不变
+
+---
 ## [4.14.0] - 2026-08-15
 
 ### Added
