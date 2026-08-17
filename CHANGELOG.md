@@ -5,6 +5,31 @@ All notable changes to the Master Copywriting skill.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [4.18.0] - 2026-08-17
+
+### Added
+- **references/craft/qianchuan-manual.md（核心新增）**：千川素材创作爆量手册拆解（全 15 万字实战体系）。来源：第三方数据中心《千川素材创作爆量手册》拆解（2026-08 抓取）。内容：
+  - **要素组合体系**：创作手法 3 × 素材类型 7 × 脚本创意 11 × 开头三秒 9 × 中间卖点 12 × 尾部结尾 5 的选型矩阵
+  - **七大素材类型**：情景种草 / 素人口播 / 产品展款 / 达人测评 / 明星测评 / 剧情演绎 / 卖家促销（作品特征 × 核心目标 × 团队适配）
+  - **十一大脚本创意**：身份推荐 / 人群圈定 / 痛点放大 / 效果开头 / 价格利益 / 过程测评 / 悬念揭秘 / 剧情引出 / 权威讲解 / 知识科普 / 行业揭秘
+  - **开头三秒 9 大结构句式**：价格利益 / 身份推荐 / 点名人群 / 直陈痛点 / 直陈效果 / 提出疑问 / 引发好奇 / 正话反说 / 塑造情绪
+  - **中间卖点 12 大句式 + 卖点排序方法论**：用户视角优先 / 竞品对比 / 重复度重构 / 痛点爽点 / 视觉化前置
+  - **结尾引导 5 大句式**：优惠诱导 / 饥饿营销 / 艾特人群 / 从众引导 / 身份推荐
+  - **完爆前三秒 7 大方法** + **素材视觉化 10 大技巧** + **爆量模板生命周期管理** + **数据分析框架**
+  - **方法论精华**：100 条提炼（第三方数据中心观点）
+- **SKILL.md / reference-index.md**：版本升至 v4.18.0；千川素材深度方法论注册到 Progressive Disclosure 与 Reference Loading Map
+
+### Changed
+- **references/reference-index.md**：craft/ 目录注册 qianchuan-manual.md；Reference Loading Map 新增「千川素材深度方法论」行
+- **SKILL.md**：版本号升至 4.18.0；G7 Platform Native 与 Progressive Disclosure 新增 qianchuan-manual.md 引用
+
+### Compliance Hard Bottom Lines（合规硬底线）
+- 手册中「逼近极限 / 无中生有 / 虚假宣传是对用户的善意谎言」等观点与技能硬底线冲突，**一律不得采纳为生成规则**，仅保留结构价值
+- 所有 CONDITIONAL 标签（价格/福利/限量/销量/背书/第一人称经历/实测/对比/稀缺）使用前必须检查事实表
+- AVOID 类（极限用语/虚假稀缺/无依据恐吓/编造背书/编造卖点）默认路由不得召回
+- 效果/背书/稀缺表达受 Claim Ceiling 约束；I5-A 硬禁、CTA 分口径、看播收口无时间限定词等规则不变
+
+---
 ## [4.17.0] - 2026-08-17
 
 ### Added
