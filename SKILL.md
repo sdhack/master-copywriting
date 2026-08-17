@@ -1,6 +1,6 @@
 ---
 name: master-copywriting
-version: 4.16.0
+version: 4.17.0
 description: >
   全栈文案决策与生成系统。先做任务类型路由，再按 平台×目的×IP模式
   生成。支持抖音、小红书、公众号、视频号。触发场景：广告文案、产品文案、
@@ -306,6 +306,7 @@ Minimal loading rules (cannot be lost even by a Limited Agent):
 | Multi-version | references/angle/dynamic-angle-discovery.md |
 | Final QA | references/quality/anti-patternization.md + references/quality/final-output.md as needed |
 | 抖音/直播开头 3 秒钩子 | references/craft/gold3s-database.md（黄金3秒台词库） |
+| 短视频/直播引流素材开头钩子（按大类快速出钩子） | references/craft/eight-hundred-hooks.md（800个短视频爆款开头钩子模板库） |
 | 千川/付费素材 / 商品广告素材 / 素材三段式组合 / 爆款基因复刻 / AI素材 | references/craft/qianchuan-material-sop.md（千川爆款素材SOP） |
 | 人群定向 / 对标拆解 / 反季清仓 / 电商打法 | references/modes/viral-content-map.md（第六/七/八节） |
 
@@ -396,7 +397,7 @@ Minimal loading rules (cannot be lost even by a Limited Agent):
 - Platform core respected (attention / decision / cognition / trust)
 - Re-conception, not re-styling — different question per platform
 - Platform-specific proof type and information density
-- 2026 爆款实证（references/modes/viral-content-map.md）：情绪先行、活人感、信任×场景三条跨平台规律；平台内容类型 / 分发机制 / 电商打法按图谱适配，但不得成为固定五件套。抖音/直播开头 3 秒钩子优先参考 references/craft/gold3s-database.md（黄金3秒台词库，1499 条付费广告实证套路）
+- 2026 爆款实证（references/modes/viral-content-map.md）：情绪先行、活人感、信任×场景三条跨平台规律；平台内容类型 / 分发机制 / 电商打法按图谱适配，但不得成为固定五件套。抖音/直播开头 3 秒钩子优先参考 references/craft/gold3s-database.md（黄金3秒台词库，1499 条付费广告实证套路）；短视频/直播引流素材开头钩子按大类快速检索参考 references/craft/eight-hundred-hooks.md（800个短视频爆款开头钩子模板库，10大类×800句式+安全标签）
 - 千川/付费素材优先参考 references/craft/qianchuan-material-sop.md（千川爆款素材SOP：四维定位 + 21式开头×6种草×6结尾 + 爆款基因复刻 + AI素材矩阵）；人群定向/对标拆解/反季清仓参考 references/modes/viral-content-map.md 第六/七/八节
 
 ### G8 Natural Depth / Humanization

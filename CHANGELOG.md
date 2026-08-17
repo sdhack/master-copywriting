@@ -5,6 +5,24 @@ All notable changes to the Master Copywriting skill.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [4.17.0] - 2026-08-17
+
+### Added
+- **references/craft/eight-hundred-hooks.md（核心新增）**：800个短视频爆款开头钩子模板库。来源：第三方数据中心 PDF《800个短视频爆款开头钩子》拆解（2026-08 抓取）。内容：10 大类 × 800 条分类句式（痛点共鸣 76 / 内幕揭秘·反常识 88 / 利益诱惑·捷径 190 / 稀缺紧迫 46 / 夸张安利·承诺 111 / 警示避雷 66 / 人群定向 61 / 对比·挑战·测评 45 / 实战经历 55 / 提问互动 62），每条带安全标签（SAFE / CONDITIONAL / AVOID）与使用规则
+- **references/craft/hooks.md 第十四节「第三方模板化钩子库」**：新增 10 大类 × 800 句式的最小可执行版索引表（大类 × 数量 × 核心机制 × 安全标签），引用 eight-hundred-hooks.md 为 Source of Truth
+
+### Changed
+- **references/reference-index.md**：版本号升至 v4.17.0；craft/ 目录注册 eight-hundred-hooks.md；Reference Loading Map 的 Hook writing 行加入该文件
+- **SKILL.md**：版本号升至 4.17.0；G7 Platform Native 新增短视频/直播引流素材开头钩子按大类快速检索参考 eight-hundred-hooks.md；Progressive Disclosure 加载表新增「短视频/直播引流素材开头钩子」行
+
+### Hard Bottom Lines Preserved（硬底线保留）
+- 800 钩子库是**模板句式库**，不是实证原句库；禁止复制原句或仅换词，只迁移结构 + 产品事实现场生成
+- 安全标签与 hooks.md 体系完全兼容：SAFE 默认可用；CONDITIONAL（价格/福利/限量/数据/第一人称经历/实测/对比）使用前必须检查事实表；AVOID（手慢无/炸单/天花板/封神/第一/唯一/90% 的人/99% 的人/无依据恐吓/极端焦虑/虚假稀缺）默认路由不得召回
+- 与 gold3s-database.md（1499 条实证套路）互补：需要"按大类快速出钩子"查本库，需要"基于真实投放数据的套路优先级"查 gold3s；两库均不改变 Claim Ceiling
+- 钩子承诺必须在正文兑现；效果表达不得新增未授权功效（I5-A 硬禁仍生效）
+- 所有内容生成规则（Hard Gates、Humanization、平台原生、真人感）不变
+
+---
 ## [4.16.0] - 2026-08-17
 
 ### Added

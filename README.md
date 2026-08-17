@@ -1,4 +1,4 @@
-# Master Copywriting Skill v4.16.0
+# Master Copywriting Skill v4.17.0
 
 > **一个规范大脑，统治所有 Agent。**
 > _跨 Agent 可移植的文案决策与生成系统 —— 让任何 LLM Agent 都能产出平台原生、目标对齐、事实完整的高转化文案。_
@@ -18,7 +18,7 @@
 ╚══════════════════════════════════════════════════════════════════╝
 ```
 
-[![版本](https://img.shields.io/badge/version-4.16.0-6B46C1?style=flat-square)]()
+[![版本](https://img.shields.io/badge/version-4.17.0-6B46C1?style=flat-square)]()
 [![Agent](https://img.shields.io/badge/Agent-CLAUDE%20%7C%20OpenAI%20%7C%20Gemini%20%7C%20Copilot-10B981?style=flat-square)]()
 [![平台](https://img.shields.io/badge/%E5%B9%B3%E5%8F%B0-%E6%8A%96%E9%9F%B3%20%7C%20%E5%B0%8F%E7%BA%A2%E4%B9%A6%20%7C%20%E8%A7%86%E9%A2%91%E5%8F%B7%20%7C%20%E5%85%AC%E4%BC%97%E5%8F%B7-3B82F6?style=flat-square)]()
 [![模式](https://img.shields.io/badge/%E6%A8%A1%E5%BC%8F-24%20%E7%A7%8D%E5%86%99%E4%BD%9C%E6%A8%A1%E5%BC%8F-F59E0B?style=flat-square)]()
@@ -42,7 +42,7 @@
 | **CTA 控制** | 到处"立即购买" | 4 档隐式收口权限系统 |
 | **可移植性** | 仅限 Claude | 6 个适配器，从 FULL 到 TEXT_ONLY |
 | **质量** | 主观评审 | 回归测试 + 指纹校验 |
-| **规模** | 几千字规则 | 36,813 行规范代码 |
+| **规模** | 几千字规则 | 37,683 行规范代码 |
 
 ---
 
@@ -80,7 +80,7 @@ Canonical Core (SKILL.md)
 ├── 硬门禁 → 10 级门禁系统
 └── 渐进式披露 → 参考文件加载图谱
 
-References/（单一事实来源 · 33 个文件）
+References/（单一事实来源 · 34 个文件）
 ├── modes/（24 模式、平台、2026 爆款内容图谱、八大人群EATM、对标拆解、反季清仓）
 ├── angle/（动态角度、自然深度）
 ├── external/（外部情报）
@@ -88,7 +88,7 @@ References/（单一事实来源 · 33 个文件）
 ├── execution/（硬门禁、目的完整性、表达权限）
 ├── quality/（反套路化、长度引擎、成品标准）
 ├── account/（账号级系统）
-├── craft/（钩子、公式、示例、CTA、黄金3秒台词库、千川爆款素材SOP）
+├── craft/（钩子、公式、示例、CTA、黄金3秒台词库、千川爆款素材SOP、800个短视频爆款开头钩子）
 └── templates/（输出模板 —— 强制套用）
 
 Adapters/（平台适配，不改规则）
@@ -109,7 +109,12 @@ Schemas/（面向高能力 Agent 的结构化 I/O）
 
 ## 核心创新
 
-### v4.16.0 —— 千川爆款素材SOP + 八大人群EATM模型（最新）
+### v4.17.0 —— 800个短视频爆款开头钩子库（最新）
+- **800 条分类钩子句式**：第三方数据中心 PDF《800个短视频爆款开头钩子》拆解，10 大类（痛点共鸣/内幕揭秘/利益诱惑/稀缺紧迫/夸张安利/警示避雷/人群定向/对比挑战/实战经历/提问互动）
+- **安全标签全覆盖**：每条句式带 SAFE / CONDITIONAL / AVOID 三级标签，与 hooks.md 体系完全兼容
+- **与黄金3秒台词库互补**：需要"按大类快速出钩子"查本库，需要"基于真实投放数据的套路优先级"查 gold3s-database.md
+
+### v4.16.0 —— 千川爆款素材SOP + 八大人群EATM模型（前一个版本）
 - **千川爆款素材SOP**：四维定位 + 21式开头×6种草×6结尾三段式组合 + 爆款基因复刻（高光3秒/话术/脚本三榜）+ AI素材能力矩阵
 - **八大人群EATM模型**：环境场景/人设形象/文案方向/内容主题四维对齐，精准人群定向（小镇新贵/GenZ/精致妈妈/新锐白领等8大圈层）
 - **对标拆解方法论**：无效拆解误区 + 竞品对标五维 + 品牌对标五维，从"抄表面"到"拆底层"
@@ -160,17 +165,17 @@ Schemas/（面向高能力 Agent 的结构化 I/O）
 ## 分发包
 
 ### 标准包
-`SKILL.md` + `references/` + `assets/` —— 适用于任何支持 Markdown 的 Agent，零依赖。**约 274 KB（v4.16.0）**
+`SKILL.md` + `references/` + `assets/` —— 适用于任何支持 Markdown 的 Agent，零依赖。**约 295 KB（v4.17.0）**
 
 ### Agentic 包
-标准包 + `adapters/` + `schemas/` + `tests/` + `scripts/` —— 适用于支持工具调用、代码执行和结构化输出的高能力 Agent。**约 434 KB（v4.16.0）**
+标准包 + `adapters/` + `schemas/` + `tests/` + `scripts/` —— 适用于支持工具调用、代码执行和结构化输出的高能力 Agent。**约 454 KB（v4.17.0）**
 
 ---
 
 ## 质量保障
 
 ```
-validate_skill.py     → 0 错误（v4.16.0）
+validate_skill.py     → 0 错误（v4.17.0）
 run_regression.py     → 102/102 通过
 build_package.py      → 标准包 + Agentic 包
 content-fingerprint   → 格式合规
@@ -203,15 +208,15 @@ content-fingerprint   → 格式合规
 
 | 指标 | 数值 |
 |---|---|
-| 已发布版本 | 16+（v4.0.0 → v4.16.0） |
+| 已发布版本 | 17+（v4.0.0 → v4.17.0） |
 | 平台引擎 | 4（抖音 / 小红书 / 视频号 / 公众号） |
 | 写作模式 | 24 |
 | 合规规则 | 2104 |
-| 参考文件 | 33 |
+| 参考文件 | 34 |
 | Agent 适配器 | 6 |
 | 回归测试 | 102 |
 | CTA 家族 | 5（默认全部隐式） |
-| 代码总量 | 36,813 行 |
+| 代码总量 | 37,683 行 |
 
 ---
 
