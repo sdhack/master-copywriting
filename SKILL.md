@@ -575,5 +575,22 @@ Available adapters: adapters/ directory.
 
 ---
 
+## 14. 更新 / Update
+
+**触发词**：用户输入「更新」「升级」「update」「同步最新版」「从 GitHub 更新」等命令式时，执行本技能的更新流程。
+
+**更新流程**（脚本：`scripts/update_skill.py`，从 GitHub 仓库 `sdhack/master-copywriting` 拉取最新版覆盖安装到本地）：
+
+1. 运行 `python scripts/update_skill.py --check` 检查远程是否有新版；
+2. 如有新版，运行 `python scripts/update_skill.py` 执行更新（自动备份当前版本 → 覆盖安装 → 运行 validate_skill.py 校验，失败自动回滚）；
+3. 向用户报告更新结果：旧版本 → 新版本、本次更新的核心变更（可参考 CHANGELOG.md 最新条目）。
+
+**注意事项**：
+- 更新器脚本本身随技能一起从 GitHub 拉取，覆盖安装后自动保留最新版；
+- 若用户要求强制覆盖（版本相同也更新），加 `--force`；
+- 若只想试运行不实际覆盖，加 `--dry-run`。
+
+---
+
 *One Canonical Brain. Many Agent Bodies.*
 *Write once, adapt at runtime, improve by capability.*
