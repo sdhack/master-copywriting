@@ -1,150 +1,47 @@
 #!/usr/bin/env python3
-"""
-Behavioral Regression Runner for Master Copywriting Skill
+"""Real-model behavioral regression. Never converts an unavailable run to PASS."""
+import argparse, json, os, sys, urllib.request, urllib.error
+from pathlib import Path
 
-PATCH 28/38/39: Behavioral regression tests require an ACTUAL model run.
-This script does NOT fake a PASS. If no model endpoint is configured, it
-reports Behavioral Regression = NOT RUN.
+def post(url, key, payload):
+    req = urllib.request.Request(url, data=json.dumps(payload).encode(), headers={"Authorization": f"Bearer {key}", "Content-Type": "application/json"})
+    with urllib.request.urlopen(req, timeout=120) as response: return json.loads(response.read().decode())
 
-Usage:
-  python scripts/run_behavioral_regression.py --root <skill_root>
-  python scripts/run_behavioral_regression.py --prompt "写一条抖音卖货，某款乌龙茶" --agent claude-like
+def call_model(model_spec, key, messages, base_url):
+    provider, sep, model = model_spec.partition(":")
+    if provider != "openai" or not sep or not model: raise ValueError("supported model format: openai:<model>")
+    data = post(base_url.rstrip("/") + "/chat/completions", key, {"model": model, "messages": messages, "temperature": 0})
+    return data["choices"][0]["message"]["content"]
 
-Configuration (optional, enables a real run):
-  env MASTER_COPYWRITING_MODEL   e.g. "openai:gpt-4o" / "anthropic:claude-sonnet-4" / "gemini:gemini-2.0-flash"
-  env BEHAVIORAL_API_KEY         API key for the configured provider
-"""
-
-import argparse
-import json
-import os
-import sys
-
-
-# Fixed prompt set for cross-agent behavioral testing (PATCH 38)
-BEHAVIORAL_CASES = [
-    {
-        "id": "CTA-01",
-        "agent": "claude-like",
-        "prompt": "写一条抖音卖货口播，某款乌龙茶。",
-        "expect": {
-            "platform": "douyin",
-            "purpose": "sell",
-            "cta_permission": "IMPLICIT_ONLY",
-        },
-        "forbidden": ["小黄车", "链接在下面", "去拍", "下单", "想试的下面就是"],
-    },
-    {
-        "id": "CTA-02",
-        "agent": "openai-like",
-        "prompt": "写一条小红书卖货笔记，某款乌龙茶。",
-        "expect": {
-            "platform": "xiaohongshu",
-            "purpose": "sell",
-            "cta_permission": "IMPLICIT_ONLY",
-        },
-        "forbidden": ["小黄车", "链接在下面", "去拍", "下单"],
-    },
-    {
-        "id": "CTA-03",
-        "agent": "gemini-like",
-        "prompt": "写一条视频号 IP 卖货口播，某款乌龙茶。",
-        "expect": {
-            "platform": "channels",
-            "purpose": "sell",
-            "ip_mode": "ip",
-            "cta_permission": "IMPLICIT_ONLY",
-        },
-        "forbidden": ["小黄车", "链接在下面", "去拍", "下单"],
-    },
-    {
-        "id": "CTA-04",
-        "agent": "copilot-like",
-        "prompt": "写一条公众号卖货长文，某款乌龙茶。",
-        "expect": {
-            "platform": "official_account",
-            "purpose": "sell",
-            "cta_permission": "IMPLICIT_ONLY",
-        },
-        "forbidden": ["小黄车", "链接在下面", "去拍", "下单"],
-    },
-    {
-        "id": "CTA-06",
-        "agent": "generic",
-        "prompt": "直播最后30秒，给我明确成交口令，某款乌龙茶。",
-        "expect": {
-            "platform": "generic",
-            "purpose": "sell",
-            "cta_permission": "EXPLICIT_ALLOWED",
-        },
-        "forbidden": [],
-    },
-    {
-        "id": "ROUTE-01",
-        "agent": "limited-agent",
-        "prompt": "我是店主，写一条抖音卖货口播，某款乌龙茶。",
-        "expect": {
-            "commercial_relationship": "shop_owner",
-            "cta_permission": "IMPLICIT_ONLY",
-        },
-        "forbidden": [],
-    },
-]
-
-
-def check_model_available():
-    return bool(os.environ.get("MASTER_COPYWRITING_MODEL"))
-
-
-def run_real_behavioral(skill_root):
-    """Run behavioral cases against a configured model. Placeholder for a real
-    provider call — in this environment no model endpoint is configured."""
-    # NOTE: This is the integration point for a real model call.
-    # Without MASTER_COPYWRITING_MODEL, we must NOT fabricate results.
-    return None
-
+def parse_json(text):
+    text = text.strip()
+    if text.startswith("```"): text = text.split("\n", 1)[1].rsplit("```", 1)[0]
+    return json.loads(text)
 
 def main():
-    parser = argparse.ArgumentParser(description="Behavioral regression runner (PATCH 38)")
-    parser.add_argument("--root", type=str, default=None, help="Skill root directory")
-    parser.add_argument("--prompt", type=str, default=None, help="Single prompt override")
-    parser.add_argument("--agent", type=str, default="generic", help="Agent body label")
-    args = parser.parse_args()
-
-    if args.root:
-        skill_root = os.path.abspath(args.root)
-    else:
-        script_dir = os.path.dirname(os.path.abspath(__file__))
-        skill_root = os.path.dirname(script_dir)
-
-    print(f"Behavioral Regression on: {skill_root}")
-
-    if not check_model_available():
-        print("\n" + "=" * 60)
+    p = argparse.ArgumentParser(); p.add_argument("--root"); p.add_argument("--cases"); p.add_argument("--limit", type=int)
+    a = p.parse_args(); root = Path(a.root).resolve() if a.root else Path(__file__).resolve().parent.parent
+    cases_path = Path(a.cases) if a.cases else root / "tests" / "behavioral" / "cases.json"
+    model, key = os.getenv("MASTER_COPYWRITING_MODEL"), os.getenv("BEHAVIORAL_API_KEY")
+    print(f"Behavioral Regression on: {root}")
+    if not model or not key:
         print("BEHAVIORAL REGRESSION = NOT RUN")
-        print("=" * 60)
-        print("No model endpoint configured (env MASTER_COPYWRITING_MODEL missing).")
-        print("PATCH 28/39: Behavioral Regression must NOT be reported as PASS")
-        print("without an actual model run.")
-        print("\nConfigured behavioral cases (would run with a model):")
-        for case in BEHAVIORAL_CASES:
-            print(f"  - {case['id']} [{case['agent']}]: {case['prompt'][:40]}...")
+        print("Set MASTER_COPYWRITING_MODEL=openai:<model> and BEHAVIORAL_API_KEY.")
         return 0
+    cases = json.loads(cases_path.read_text(encoding="utf-8")); cases = cases[:a.limit] if a.limit else cases
+    skill = (root / "SKILL.md").read_text(encoding="utf-8")
+    base = os.getenv("BEHAVIORAL_BASE_URL", "https://api.openai.com/v1")
+    results = []
+    for case in cases:
+        try:
+            output = call_model(model, key, [{"role":"system","content":skill},{"role":"user","content":case["prompt"]}], base)
+            judge_prompt = {"case": case, "candidate": output, "rubric": {"dimensions":["fact_integrity","purpose_completion","platform_fit","naturalness","commercial_usefulness"],"score":"0/1/2 each","hard_override":"unsupported fact, fake experience, identity fabrication, or unauthorized CTA means pass=false"}}
+            judged = parse_json(call_model(model, key, [{"role":"system","content":"Judge strictly. Return JSON only: {pass:boolean,scores:object,hard_failures:array,reasons:array}."},{"role":"user","content":json.dumps(judge_prompt,ensure_ascii=False)}], base))
+            results.append({"id":case["id"], **judged})
+        except Exception as exc: results.append({"id":case["id"],"pass":False,"error":str(exc)})
+    failed = [x for x in results if not x.get("pass")]
+    print(json.dumps(results, ensure_ascii=False, indent=2))
+    print(f"BEHAVIORAL REGRESSION = {'PASS' if not failed else 'FAIL'} ({len(results)-len(failed)}/{len(results)})")
+    return 1 if failed else 0
 
-    # Real model run path (requires provider integration)
-    results = run_real_behavioral(skill_root)
-    if results is None:
-        print("\nModel configured but runner integration not implemented.")
-        print("BEHAVIORAL REGRESSION = NOT RUN")
-        return 0
-
-    failures = [r for r in results if not r["pass"]]
-    print(f"\nBehavioral cases: {len(results)} total, {len(failures)} failed")
-    for r in results:
-        status = "PASS" if r["pass"] else "FAIL"
-        print(f"  {status}: {r['id']}")
-    return 1 if failures else 0
-
-
-if __name__ == "__main__":
-    sys.exit(main())
+if __name__ == "__main__": sys.exit(main())

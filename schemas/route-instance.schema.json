@@ -135,13 +135,37 @@
     "pain_distance": {
       "type": "string",
       "enum": ["DIRECT_PAIN", "PARTIAL_PAIN", "CONTEXT_PAIN"],
-      "description": "Distance between product facts and the pain addressed. DIRECT_PAIN: product directly solves → strongest expression. PARTIAL_PAIN: product solves the key friction → strong expression allowed but real boundary must be shown. CONTEXT_PAIN: only audience state → allowed to appear but cannot be the main selling point (former INFERRED_PHYSIOLOGICAL_PAIN folded into this) (PATCH v4.11.0)."
+      "description": "Distance between product facts and the pain addressed. DIRECT_PAIN: direct solution. PARTIAL_PAIN: addresses a key friction; boundary is enforced internally and need not appear as disclaimer copy. CONTEXT_PAIN: audience context; for non-sensitive claims it may be the main selling point when semantic back-translation stays within the claim ceiling."
     },
     "commercial_intensity": {
       "type": "string",
       "enum": ["CONSERVATIVE", "STANDARD", "AGGRESSIVE"],
       "default": "STANDARD",
       "description": "Commercial intensity level, selected by category + platform + user goal. Controls how strongly to express (I5-B/C space, pain distance, AMBER zone) without changing Claim Ceiling. CONSERVATIVE: current strict standard. STANDARD (default): moderate relaxation. AGGRESSIVE: non-sensitive categories allow stronger scene impact and identity implication; hard efficacy smuggling still prohibited (PATCH v4.11.0)."
+    },
+    "humanization_pipeline": {
+      "type": "string",
+      "enum": ["INTERNAL_ONLY", "DETECT_AND_REPAIR", "VOICE_PRESERVING", "DOUBLE_AUDIT", "CHINESE_NATIVE", "ENGLISH_TECHNICAL", "PERSONA_BUILD"],
+      "default": "DETECT_AND_REPAIR",
+      "description": "Humanization composition route. External skills provide advisory findings or candidate revisions only; master-copywriting retains final authority over truth, claim ceiling, platform purpose, commercial value and CTA permission."
+    },
+    "humanization_passes": {
+      "type": "integer",
+      "enum": [2],
+      "default": 2,
+      "description": "Publish-ready copy runs two humanization passes: H1 after drafting, H2 after the full G1-G12 review and repair."
+    },
+    "final_invariant_check": {
+      "type": "string",
+      "enum": ["PENDING", "PASS", "FAIL"],
+      "default": "PENDING",
+      "description": "Read-only verification after H2 for Meaning Lock, facts, numbers, claims, identity, purpose, CTA permission and core buying reason. FAIL returns to full review; the check itself must not rewrite."
+    },
+    "voice_source_status": {
+      "type": "string",
+      "enum": ["NONE", "USER_SAMPLES", "APPROVED_PROFILE"],
+      "default": "NONE",
+      "description": "Evidence available for matching a specific personal voice. Specific voice claims are allowed only with USER_SAMPLES or APPROVED_PROFILE."
     },
     "pain_translation_path": {
       "type": "string",

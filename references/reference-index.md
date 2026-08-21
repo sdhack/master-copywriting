@@ -1,6 +1,6 @@
 # Reference Index
 
-> Canonical reference index for Master Copywriting v4.19.0
+> Canonical reference index for Master Copywriting v4.24.0
 > Single Source of Truth — no rule duplication across adapters.
 
 ---
@@ -33,6 +33,8 @@ references/
 │   └── expression-authority.md    # Expression Authority Layer + Fact Boundary
 ├── quality/                       # Quality assurance layers
 │   ├── anti-patternization.md     # Anti-Patternization Layer
+│   ├── human-voice-pass.md        # AI 痕迹诊断、最小修复与文风证据对齐
+│   ├── external-humanization-orchestration.md # 外部去 AI / 文风技能调用契约
 │   ├── default-length-engine.md   # Default Length Engine
 │   ├── final-output.md            # Final output polish
 │   └── compliance.md              # Compliance rules
@@ -78,6 +80,8 @@ references/
 | External research / web signals | `external/external-intelligence.md` | external |
 | Account-level strategy / IP asset | `account/account-level-system.md` | account |
 | Anti-patternization / 去模板感 | `quality/anti-patternization.md` | quality |
+| AI 痕迹诊断 / 去 AI 味 / 人声化 | `quality/human-voice-pass.md` | quality |
+| 外部 humanizer / detector / stop-slop / 文风技能组合 | `quality/external-humanization-orchestration.md` | quality |
 | Word count / length | `quality/default-length-engine.md` | quality |
 | Final output polish | `quality/final-output.md` | quality |
 | 创作完内容后强制套用模板 + 生成 MD 文件（任何交付任务） | `templates/output-templates.md` | templates |

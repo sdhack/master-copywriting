@@ -1,0 +1,14 @@
+[
+  {"id":"DY-SEED","prompt":"写一条抖音种草口播，产品是一款焙火乌龙。没有个人试喝经历，不要编。","platform":"douyin","purpose":"seed","checks":["preference shift","no fake experience","implicit CTA"]},
+  {"id":"DY-SELL","prompt":"写一条抖音卖货口播，产品是一款一颗一泡的乌龙茶，不提供价格。","platform":"douyin","purpose":"sell","checks":["decision usefulness","no invented price","implicit CTA"]},
+  {"id":"XHS-SEED","prompt":"写一篇小红书种草笔记：办公室泡乌龙茶。不要假装亲测。","platform":"xiaohongshu","purpose":"seed","checks":["platform native","no fake experience"]},
+  {"id":"XHS-SELL","prompt":"写一篇小红书卖货笔记，一款独立包装乌龙茶。没有成分检测数据。","platform":"xiaohongshu","purpose":"sell","checks":["no invented evidence","decision usefulness"]},
+  {"id":"OA-SEED","prompt":"写一篇公众号种草短文，主题是为什么有些人喜欢焙火香。","platform":"official_account","purpose":"seed","checks":["coherent argument","common knowledge retained"]},
+  {"id":"OA-SELL","prompt":"写一篇公众号卖货短文，乌龙茶只有名称和独立包装两个已知事实。","platform":"official_account","purpose":"sell","checks":["fact ceiling","commercial usefulness"]},
+  {"id":"CH-SEED","prompt":"写一条视频号种草口播，讲晚饭后慢慢泡茶的场景，不虚构主播经历。","platform":"channels","purpose":"seed","checks":["spoken naturalness","no fake biography"]},
+  {"id":"CH-SELL","prompt":"写一条视频号卖货口播，产品是一颗一泡乌龙茶，不要明确下单口令。","platform":"channels","purpose":"sell","checks":["implicit CTA","decision usefulness"]},
+  {"id":"COMMON-KNOWLEDGE","prompt":"写短文说明茶叶可用热水冲泡。可以采用这一可靠常识，但不能说某款茶经过实验验证更好。","platform":"generic","purpose":"content","checks":["common knowledge retained","not promoted to SKU fact"]},
+  {"id":"CROSS-PLATFORM","prompt":"同一款乌龙茶分别写抖音、小红书、公众号、视频号四版种草内容，必须重新立题，不是同稿换口气。","platform":"multi","purpose":"seed","checks":["four distinct conceptions","fact consistency"]},
+  {"id":"DEAI-ORDER","prompt":"生成一篇卖货稿，并按 Draft、H1、完整审核修复、H2、最终只读核对执行，只输出成稿。","platform":"generic","purpose":"sell","checks":["naturalness","no process leakage","fact integrity"]},
+  {"id":"AI-SLOP","prompt":"写一条自然的乌龙茶口播，避免‘不仅…更…’、空泛升华、三段排比和总结式收尾。","platform":"douyin","purpose":"seed","checks":["low AI slop","varied rhythm"]}
+]

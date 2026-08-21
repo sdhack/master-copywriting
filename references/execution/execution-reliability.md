@@ -1,5 +1,13 @@
 # Execution Reliability Patch（执行可靠性补丁）
 
+## Canonical Publish-ready Pipeline (v4.24.0)
+
+Required order: `Draft -> H1 de-AI -> G1-G12 full review/repair -> H2 de-AI -> read-only invariant check -> sanitizer -> delivery`. This section supersedes older G1-G10-only sequences below.
+
+G1 Product Truth; G2 Numeric Integrity; G3 Identity Truth; G4 External Claim Admission; G5 Demonstration & Comparison Truth; G6 Purpose Integrity; G7 Platform Native; G8 Naturalness; G9 Diversity; G10 Output Sanitizer; G11 Semantic Claim Audit; G12 Review Risk Audit.
+
+Classify issues with [Audit Severity](audit-severity.md). BLOCK prevents delivery, REPAIR is fixed by default, and ADVISORY is optional. The post-H2 invariant check is read-only; a failure returns to the responsible repair stage and repeats H2.
+
 > **版本**：v1.0（v3.6 新增）
 > **类型**：执行可靠性补丁（不新增创意框架/钩子/公式/平台理论/24模式/角度发现/外部情报架构）
 > **解决问题**：Skill 知道规则，但 Hard Gate 没有稳定阻止错误成品输出
@@ -169,6 +177,36 @@ GATE 10 — Final Output Sanitizer
 | Input Facts Correct? | 输入的数字是否来自 Canonical Ledger |
 
 **三项全部通过才能使用。**
+
+---
+
+## 四·一、Common Knowledge Admission Gate（可靠常识准入）
+
+文案可以使用真实且稳定的常识。事实完整不等于每句话都必须来自 Product Ledger；可靠常识可用于把产品事实讲明白、建立生活场景、做不改变 Claim 的类比，或解释普通用户已经共享的概念。
+
+### 可直接使用
+
+- 长期稳定、广泛成立、非时效性、无合理争议的基础常识
+- 不涉及受监管功效、精确数据、当前市场状态或特定主体声誉
+- 与 Canonical Product Ledger 不冲突，且不会把 Product Claim 推高一档
+- 例如解释“奶香感”是嗅觉/风味描述，或说明透明杯便于观察茶汤颜色
+
+### 不能靠常识硬推
+
+- 当前 SKU 的配料、含量、检测值、生产细节、认证、获奖、价格、库存、销量、售后
+- 当前 SKU 必然具备某类产品常见的属性、效果或用户体验
+- 疾病、治疗、预防、生理结果及其他受监管功效
+- 时效性市场判断，或需要真实对照样本的竞品结论
+
+判断问题不是“来源是不是 Product Skill”，而是“这件事是否真的成立，是否会让消费者误以为这是当前 SKU 已被证明的具体事实”。真实常识可以写；从常识跳到 SKU 结论不可以。
+
+### Anti-Overblocking（禁止过度拦截）
+
+- 不得因为一句话没有出现在 Product Ledger，就自动判为虚构。
+- 不得把常见动作、生活场景、基础概念、稳定品类知识全部改成“可能、也许、据说”。
+- 不得删除承载画面、情绪、类比或购买理解的真实常识，只留下产品参数。
+- 只有存在事实争议、时效变化、受监管 Claim、精确量化或 SKU 专属跃迁时，才提高证据要求。
+- 四个平台使用同一真实性标准，不因平台不同改变“什么是真的”；平台只决定常识如何组织和表达。
 
 ---
 

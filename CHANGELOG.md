@@ -1,9 +1,89 @@
 # Changelog
 
+## [4.24.0] - 2026-08-20
+
+### Added
+- Minimal route compiler, persistent fingerprints, privacy-safe telemetry, evidence-based voice profiles, severity levels, and real-model behavioral fixtures/runner.
+
+### Changed
+- Slim progressive-disclosure entrypoint; synchronized Draft/H1/G1-G12/H2/invariant flow and corrected stale pain-distance schema rules.
+
 All notable changes to the Master Copywriting skill.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+## [4.23.2] - 2026-08-20
+
+### Changed
+- **四平台常识开放**：可靠常识准入从单一案例扩展到抖音、小红书、公众号、视频号，并按动作现场、选择参考、推理论证、可信转述分别适配。
+- **Anti-Overblocking**：审核不得仅因内容未进入 Product Ledger 就删除、弱化或免责声明化；只拦截从常识跳到当前 SKU 专属结论的无证据跃迁。
+
+### Tests
+- 回归检查新增四平台常识矩阵、真实常识默认保留与 SKU 跃迁边界断言。
+
+## [4.23.1] - 2026-08-20
+
+### Changed
+- **可靠常识准入**：稳定、广泛成立、非时效性且无合理争议的常识，可直接用于解释、场景与类比，不再要求全部来自 Product Ledger。
+- **SKU 推断边界**：常识不得自动升级为当前商品的配料、检测值、工艺归属、认证、价格、库存、功效或实测结果；这些仍需产品证据或用户确认。
+
+### Tests
+- 回归检查新增 Common Knowledge Admission Gate 与 SKU 事实边界断言。
+
+## [4.23.0] - 2026-08-20
+
+### Added
+- **双遍去 AI 闭环**：所有可发布成稿固定执行“初稿 → H1 去 AI → G1-G12 全面复审修错 → H2 再去 AI → Final Invariant Check”。
+- **机器可读状态**：`route-instance.schema.json` 新增 `humanization_passes=2` 与 `final_invariant_check=PENDING/PASS/FAIL`。
+- **有界返修**：终检失败回到全面复审，最多返修 2 轮；仍失败则停止交付并报告阻塞，不无限重写。
+
+### Tests
+- 回归检查新增双遍次数、阶段顺序、终检状态与最大返修轮次断言。
+
+## [4.22.1] - 2026-08-20
+
+### Changed
+- **四平台同步优化**：抖音、小红书、公众号、视频号全部接入风险分级 Humanization，不再只对短视频或直播引流生效。
+- **平台独立复审**：分别校验口播现场感、选择依据与可复查性、真实推理、可信可转述性；跨平台稿从选角度开始独立生成和去 AI，不允许母稿机械换皮。
+
+### Tests
+- 回归检查新增四平台矩阵完整性与跨平台独立 Humanization 断言。
+
+## [4.22.0] - 2026-08-20
+
+### Changed
+- **Humanization 默认路由**：草稿/内部推演才使用 `INTERNAL_ONLY`；一般可发布交付默认 `DETECT_AND_REPAIR`；千川、付费广告、直播引流、批量商业文案和明确去 AI 味的任务强制进入 `DOUBLE_AUDIT`。
+- **DOUBLE_AUDIT 执行链**：明确为双检测 → `stop-slop` → `humanizer` → Meaning Lock/G1-G12 复审，避免“已安装但未实际调用”。
+- **route-instance.schema.json**：默认值由 `INTERNAL_ONLY` 改为 `DETECT_AND_REPAIR`。
+
+### Tests
+- 回归检查新增一般交付默认路线和付费商业成稿强制路线断言。
+
+## [4.21.0] - 2026-08-20
+
+### Added
+- **external-humanization-orchestration.md**：正式接入 `chatgpt-comparison-detection`、`ai-slop-detector`、`stop-slop`、`humanizer`、`writing-style`、`personal-chinese-writing-style`、`agent-style` 与 `huashu-nuwa`，定义触发条件、职责边界、七种路由模式、Meaning Lock、诊断结构、最小修复、复审、冲突优先级和缺失降级。
+- **route-instance.schema.json**：新增 `humanization_pipeline` 与 `voice_source_status`，把去 AI 技能组合从口头约定变成可验证路由字段。
+
+### Changed
+- **SKILL.md / reference-index.md / human-voice-pass.md**：版本升至 v4.21.0；G8 在外部技能命中时执行组合协议，所有候选稿必须重新通过 G1-G12。
+
+### Boundaries
+- 检测器只识别写作信号，不能证明作者身份；单个词或单个标点不得触发重写。
+- 中文个人文风包、英文技术文风包和人物蒸馏包均按载体条件调用，不作为普通中文营销稿的默认末端滤镜。
+
+## [4.20.0] - 2026-08-20
+
+### Added
+- **references/quality/human-voice-pass.md**：根据《你的文案一眼像 AI？问题根本不在逻辑和内容》提炼并内化的 Human Voice Pass。新增四维 AI 痕迹诊断（空泛开场、元话语套头、机械对称、无信息升华）、最小修复流程、历史样稿文风证据对齐、陌生产品替换测试与朗读检查。
+
+### Changed
+- **SKILL.md / reference-index.md**：版本升至 v4.20.0；Final QA 在需要时加载 Human Voice Pass。
+
+### Boundaries
+- 文章中推荐的外部 humanizer / detector / stop-slop 等工具不作为运行时硬依赖；技能只内化其可验证的方法。
+- 去 AI 味不等于故意错别字、口头禅、虚构经历或放松事实、合规、Claim Ceiling、平台目标和 CTA 规则。
 
 ## [4.19.0] - 2026-08-17
 

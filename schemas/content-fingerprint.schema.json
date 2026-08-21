@@ -109,8 +109,19 @@
         "g7_platform": { "type": "boolean" },
         "g8_naturalness": { "type": "boolean" },
         "g9_diversity": { "type": "boolean" },
-        "g10_sanitizer": { "type": "boolean" }
+        "g10_sanitizer": { "type": "boolean" },
+        "g11_semantic_claim": { "type": "boolean" },
+        "g12_review_risk": { "type": "boolean" }
       }
+    },
+    "humanization_results": {
+      "type": "object",
+      "properties": {
+        "h1_completed": { "type": "boolean" },
+        "h2_completed": { "type": "boolean" },
+        "final_invariant_passed": { "type": "boolean" }
+      },
+      "additionalProperties": false
     },
     "tags": {
       "type": "array",

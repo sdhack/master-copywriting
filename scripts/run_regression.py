@@ -512,6 +512,99 @@ def run_quality_suite(skill_root):
         else:
             warned("Angle repetition prevention not explicit")
 
+    # Test 8: External humanization orchestration contract
+    eho_file = os.path.join(skill_root, "references", "quality", "external-humanization-orchestration.md")
+    if os.path.isfile(eho_file):
+        with open(eho_file, "r", encoding="utf-8") as f:
+            eho = f.read()
+        required_terms = [
+            "Meaning Lock", "chatgpt-comparison-detection", "ai-slop-detector",
+            "stop-slop", "humanizer", "writing-style",
+            "personal-chinese-writing-style", "agent-style", "huashu-nuwa",
+            "冲突优先级", "降级",
+        ]
+        missing = [term for term in required_terms if term not in eho]
+        if missing:
+            failed("External humanization orchestration incomplete", ", ".join(missing))
+        else:
+            passed("External humanization orchestration contract complete")
+    else:
+        failed("external-humanization-orchestration.md not found")
+
+    # Test 9: Humanization route fields are machine-readable
+    route_file = os.path.join(skill_root, "schemas", "route-instance.schema.json")
+    if os.path.isfile(route_file):
+        try:
+            with open(route_file, "r", encoding="utf-8") as f:
+                route = json.load(f)
+            props = route.get("properties", {})
+            expected_modes = {
+                "INTERNAL_ONLY", "DETECT_AND_REPAIR", "VOICE_PRESERVING",
+                "DOUBLE_AUDIT", "CHINESE_NATIVE", "ENGLISH_TECHNICAL", "PERSONA_BUILD",
+            }
+            actual_modes = set(props.get("humanization_pipeline", {}).get("enum", []))
+            default_mode = props.get("humanization_pipeline", {}).get("default")
+            humanization_passes = props.get("humanization_passes", {}).get("default")
+            invariant_states = set(props.get("final_invariant_check", {}).get("enum", []))
+            voice_states = set(props.get("voice_source_status", {}).get("enum", []))
+            if actual_modes != expected_modes:
+                failed("humanization_pipeline enum incomplete")
+            elif voice_states != {"NONE", "USER_SAMPLES", "APPROVED_PROFILE"}:
+                failed("voice_source_status enum incomplete")
+            elif default_mode != "DETECT_AND_REPAIR":
+                failed("Publish-ready humanization default is not DETECT_AND_REPAIR")
+            elif not all(term in eho for term in ["千川", "付费广告", "直播引流", "批量商业文案", "DOUBLE_AUDIT"]):
+                failed("Paid commercial copy is not explicitly routed to DOUBLE_AUDIT")
+            elif not all(term in eho for term in ["抖音", "小红书", "公众号", "视频号", "四平台 Humanization 矩阵"]):
+                failed("Four-platform humanization matrix is incomplete")
+            elif "每个平台独立 Detect → Repair → Re-audit" not in eho:
+                failed("Cross-platform drafts are not independently humanized")
+            elif humanization_passes != 2:
+                failed("Publish-ready copy does not require two humanization passes")
+            elif invariant_states != {"PENDING", "PASS", "FAIL"}:
+                failed("Final invariant check states are incomplete")
+            elif not all(term in eho for term in ["H1", "Full Review", "H2", "Final Invariant Check", "最多返修 2 轮"]):
+                failed("Double humanization review loop is incomplete")
+            else:
+                passed("Humanization routes, two-pass review loop, and four-platform matrix complete")
+        except json.JSONDecodeError:
+            failed("route-instance.schema.json invalid JSON (humanization)")
+    else:
+        failed("route-instance.schema.json not found (humanization)")
+
+    # Reliable common knowledge may explain copy without becoming an SKU claim
+    execution_file = os.path.join(skill_root, "references", "execution", "execution-reliability.md")
+    if os.path.isfile(execution_file):
+        with open(execution_file, "r", encoding="utf-8") as f:
+            execution = f.read()
+        required_common_knowledge = [
+            "Common Knowledge Admission Gate", "真实常识可以写",
+            "从常识跳到 SKU 结论不可以", "配料", "检测值", "功效",
+        ]
+        missing = [term for term in required_common_knowledge if term not in execution]
+        if missing:
+            failed("Common knowledge admission gate incomplete", ", ".join(missing))
+        else:
+            passed("Reliable common knowledge admission and SKU boundary defined")
+    else:
+        failed("execution-reliability.md not found (common knowledge)")
+
+    platform_file = os.path.join(skill_root, "references", "modes", "platforms.md")
+    if os.path.isfile(platform_file):
+        with open(platform_file, "r", encoding="utf-8") as f:
+            platform_content = f.read()
+        required_platform_terms = [
+            "四平台可靠常识表达", "抖音", "小红书", "公众号", "视频号",
+            "真实常识默认保留", "常识 → SKU 专属结论",
+        ]
+        missing = [term for term in required_platform_terms if term not in platform_content]
+        if missing:
+            failed("Four-platform common knowledge policy incomplete", ", ".join(missing))
+        else:
+            passed("Four-platform common knowledge expression policy defined")
+    else:
+        failed("platforms.md not found (common knowledge)")
+
 
 # ============================================================
 # Suite: Compliance
