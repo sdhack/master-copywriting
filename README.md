@@ -1,256 +1,162 @@
-# Master Copywriting Skill v4.19.0
+# Master Copywriting Skill
 
-> **一个规范大脑，统治所有 Agent。**
-> _跨 Agent 可移植的文案决策与生成系统 —— 让任何 LLM Agent 都能产出平台原生、目标对齐、事实完整的高转化文案。_
+> v4.24.0 · 跨 Agent 的事实约束、平台路由与自然化文案生成系统
 
-```
-╔══════════════════════════════════════════════════════════════════╗
-║                                                                  ║
-║   ███╗   ███╗ █████╗ ███████╗████████╗███████╗██████╗            ║
-║   ████╗ ████║██╔══██╗██╔════╝╚══██╔══╝██╔════╝██╔══██╗           ║
-║   ██╔████╔██║███████║███████╗   ██║   █████╗  ██████╔╝           ║
-║   ██║╚██╔╝██║██╔══██║╚════██║   ██║   ██╔══╝  ██╔══██╗           ║
-║   ██║ ╚═╝ ██║██║  ██║███████║   ██║   ███████╗██║  ██║           ║
-║   ╚═╝     ╚═╝╚═╝  ╚═╝╚══════╝   ╚═╝   ╚══════╝╚═╝  ╚═╝           ║
-║                                                                  ║
-║   一个规范大脑 · 统治所有 Agent · 吞噬内容世界                     ║
-║                                                                  ║
-╚══════════════════════════════════════════════════════════════════╝
-```
+[![Version](https://img.shields.io/badge/version-4.24.0-2563eb?style=flat-square)](CHANGELOG.md)
+[![Platforms](https://img.shields.io/badge/platforms-Douyin%20%7C%20XHS%20%7C%20OA%20%7C%20Channels-0f766e?style=flat-square)](SKILL.md)
+[![Static validation](https://img.shields.io/badge/static%20validation-0%20errors-16a34a?style=flat-square)](scripts/validate_skill.py)
+[![License](https://img.shields.io/badge/license-internal-6b7280?style=flat-square)](LICENSE)
 
-[![版本](https://img.shields.io/badge/version-4.19.0-6B46C1?style=flat-square)]()
-[![Agent](https://img.shields.io/badge/Agent-CLAUDE%20%7C%20OpenAI%20%7C%20Gemini%20%7C%20Copilot-10B981?style=flat-square)]()
-[![平台](https://img.shields.io/badge/%E5%B9%B3%E5%8F%B0-%E6%8A%96%E9%9F%B3%20%7C%20%E5%B0%8F%E7%BA%A2%E4%B9%A6%20%7C%20%E8%A7%86%E9%A2%91%E5%8F%B7%20%7C%20%E5%85%AC%E4%BC%97%E5%8F%B7-3B82F6?style=flat-square)]()
-[![模式](https://img.shields.io/badge/%E6%A8%A1%E5%BC%8F-24%20%E7%A7%8D%E5%86%99%E4%BD%9C%E6%A8%A1%E5%BC%8F-F59E0B?style=flat-square)]()
-[![规则](https://img.shields.io/badge/%E5%90%88%E8%A7%84%E8%A7%84%E5%88%99-2104%20%E6%9D%A1-EF4444?style=flat-square)]()
-[![测试](https://img.shields.io/badge/%E5%9B%9E%E5%BD%92%E6%B5%8B%E8%AF%95-102%2F102-10B981?style=flat-square)]()
-[![状态](https://img.shields.io/badge/%E7%8A%B6%E6%80%81-%E7%94%9F%E4%BA%A7%E7%BA%A7-10B981?style=flat-square)]()
+Master Copywriting 不是一组万能模板，而是一层可组合的文案决策系统：先判断平台、目的、事实和 CTA 权限，再生成平台原生内容；生成后经过两次去 AI 味、G1-G12 审计和只读不变量核验。
 
----
+## 能解决什么
 
-## 它为什么无敌
+- 抖音、小红书、公众号、视频号的内容、种草、卖货和跨平台改写
+- 短视频口播、直播引流、笔记、长文、标题和多版本文案
+- 产品事实、IP 事实、外部事实与可靠常识的分账使用
+- 账号声音画像：只从真实样本提取，不凭空编造人设
+- 内容指纹防重复、最小规则包加载和隐私友好的运行遥测
 
-这不是提示词库，也不是模板合集。**它是内容创作的核武器** —— 一个单一事实来源的写作智能层，用同一套产品事实，驱动任何 Agent 产出一致、平台原生、高转化的文案。
+## 核心流程
 
-**别人在猜爆款，你在按图索骥。别人在人工审合规，你在生成阶段就拦截违规。别人换 Agent 就换风格，你一个规范大脑统治所有载体。**
-
-| 对比维度 | 传统做法 | 本技能 |
-|---|---|---|
-| **一致性** | 每个 Agent 写得都不一样 | 1 个规范大脑，N 个 Agent 载体 |
-| **平台适配** | 通用模板 | 4 套平台专属引擎 + 2026 爆款内容图谱 |
-| **合规** | 人工审核 | 10 级硬门禁系统，自动过滤 |
-| **CTA 控制** | 到处"立即购买" | 4 档隐式收口权限系统 |
-| **可移植性** | 仅限 Claude | 6 个适配器，从 FULL 到 TEXT_ONLY |
-| **质量** | 主观评审 | 回归测试 + 指纹校验 |
-| **规模** | 几千字规则 | 37,683 行规范代码 |
-
----
-
-## 五大核心能力
-
-### 1. 平台原生引擎 —— 一个平台一套打法
-
-4 套平台专属引擎（抖音 / 小红书 / 视频号 / 公众号），每套内置算法专属内容类型、分发机制与电商策略。**不是"一套模板走天下"，而是"一个平台一套打法"。** 抖音吃情绪钩子，小红书吃真实种草，视频号吃信任背书，公众号吃深度长文 —— 引擎替你分好工。
-
-### 2. 10 级硬门禁系统 —— 违规在生成前就死掉
-
-从产品事实完整性到平台合规，10 道硬门禁层层把关。**合规规则 2104 条**，覆盖 17 大行业、7 大平台。绝对化用语、功效暗示、虚假承诺、无证据主张 —— 全部在生成阶段被拦截，而不是发布后翻车、罚款、封号。
-
-### 3. 高级隐式收口 —— 卖得高级，卖得自然
-
-5 个收口家族默认全部隐式：无动作词、无目的地、无时间限定。**不是"不让你卖货"，而是"卖得高级、卖得自然"。** 只有命中封闭白名单才解锁显式 CTA —— 把"赶紧下单"变成"懂的人自然会懂"。
-
-### 4. 2026 爆款内容图谱 —— 爆款不是玄学
-
-交叉验证 8 份 2026 权威报告，提炼 3 条跨平台爆款规律：**情绪先行、真实大于精致、信任×场景电商**。你的文案不是"猜爆款"，而是"按图索骥" —— 每一句都踩在算法的节奏上。
-
-### 5. AI 味检测与拟人化 —— 让 AI 不像 AI
-
-检测 LLM 典型表达，AI 味评分 >35 自动拟人化改写，>60 从内容骨架层重写。**让 AI 写出来的东西，读起来像人写的** —— 有判断、有取舍、有语气、有呼吸感。
-
----
-
-## 架构
-
-```
-Canonical Core (SKILL.md)
-├── 能力协商 → 运行时模式检测
-├── 路由器 → 24 模式任务分类
-├── 执行顺序 → 分步工作流
-├── 硬门禁 → 10 级门禁系统
-└── 渐进式披露 → 参考文件加载图谱
-
-References/（单一事实来源 · 35 个文件）
-├── modes/（24 模式、平台、2026 爆款内容图谱、八大人群EATM、对标拆解、反季清仓）
-├── angle/（动态角度、自然深度）
-├── external/（外部情报）
-├── cross-platform/（跨平台重构协议）
-├── execution/（硬门禁、目的完整性、表达权限）
-├── quality/（反套路化、长度引擎、成品标准）
-├── account/（账号级系统）
-├── craft/（钩子、公式、示例、CTA、黄金3秒台词库、千川爆款素材SOP、800个短视频爆款开头钩子、千川素材创作爆量手册拆解）
-└── templates/（输出模板 —— 强制套用）
-
-Adapters/（平台适配，不改规则）
-├── generic（仅 Markdown 基线）
-├── claude / openai / gemini / copilot / limited-agent
-
-Schemas/（面向高能力 Agent 的结构化 I/O）
-├── product-facts.schema.json
-├── ip-facts.schema.json
-├── route-instance.schema.json
-├── research-brief.schema.json
-└── content-fingerprint.schema.json
+```text
+Route
+  ↓
+Minimal route bundle
+  ↓
+Draft
+  ↓
+H1 de-AI
+  ↓
+G1-G12 review / repair
+  ↓
+H2 de-AI
+  ↓
+Read-only invariant check
+  ↓
+Sanitize → deliver
 ```
 
-**设计哲学：** 规则与载体解耦。`References/` 是唯一事实来源，`Adapters/` 只做平台适配、永不改规则。换 Agent 不换脑，换平台不换魂。
+流程顺序是发布级约束。H2 只能改善表达，不能掩盖事实、目的或平台问题；最终只读核验失败时，回到对应修复阶段，而不是在核验阶段偷偷改稿。
 
----
+## 设计原则
 
-## 核心创新
+| 原则 | 实际行为 |
+| --- | --- |
+| 事实优先 | 不虚构 SKU、数字、来源、履历、体验、见证或效果保证 |
+| 平台原生 | 四个平台重新立题，不做同稿换语气 |
+| 常识可用 | 可靠常识可帮助表达场景，但不能升级成当前产品事实 |
+| CTA 有权限 | 默认 `IMPLICIT_ONLY`；只有 Closed Explicit CTA Allowlist 命中才允许显式 CTA |
+| 自然完成 | 自然停笔优先于硬塞收口、万能金句或固定模板 |
+| 可降级 | 工具缺失时减少证据能力，不假装搜索、读取、计算或记忆 |
 
-### v4.19.0 —— 机械式CTA反模式修复（最新）
-- **判断留白机械句反模式族**：识别"自己判断/自己心里有数/你自己定/你自己掂量/值不值/合不合适"等万能收口，禁止作为收口
-- **互换性测试**：收口换产品仍成立 = 机械句，必须重写
-- **合格示例修正**：cta.md 中 10+ 条被误标为合格的机械示例全部修正
-- **scripts.json 收口模板去机械化**：5 条机械收口模板重写为承接具体卖点的变体
-- **反模板化检测升级**：anti-patternization.md 新增句末机械判断句检测
+## 审计等级
 
-### v4.18.0 —— 千川素材创作爆量手册拆解（前一个版本）
-- **15 万字实战体系**：第三方数据中心《千川素材创作爆量手册》拆解，25 章方法论提炼为可执行结构
-- **要素组合体系**：创作手法 3 × 素材类型 7 × 脚本创意 11 × 开头三秒 9 × 中间卖点 12 × 尾部结尾 5 选型矩阵
-- **卖点 12 招 + 排序方法论**：外观/材料/工艺/功能/价格/场景/方法/地域/人群/背书/情怀/稀缺 + 用户视角优先/竞品对比/重复度重构
-- **完播 7 法 + 视觉化 10 技 + 模板生命周期**：爆点画面前置/三级分镜/静态文字钉/情绪价值前置；小于大/数量多/动起来/微观特写/时间压缩；模板衰退 4 因素与"撸到死"裂变管理
-- **合规红线隔离**：手册中「逼近极限/无中生有/虚假宣传是善意谎言」等观点与技能硬底线冲突，一律不采纳为生成规则，仅保留结构价值
+- `BLOCK`：事实、身份、证据、权限或不变量失败，修复前不得交付
+- `REPAIR`：目的、平台、自然度、信息顺序或商业路径问题，默认自动修复
+- `ADVISORY`：可选的节奏和措辞优化，不影响可交付性
 
-### v4.17.0 —— 800个短视频爆款开头钩子库（前一个版本）
-- **800 条分类钩子句式**：第三方数据中心 PDF《800个短视频爆款开头钩子》拆解，10 大类（痛点共鸣/内幕揭秘/利益诱惑/稀缺紧迫/夸张安利/警示避雷/人群定向/对比挑战/实战经历/提问互动）
-- **安全标签全覆盖**：每条句式带 SAFE / CONDITIONAL / AVOID 三级标签，与 hooks.md 体系完全兼容
-- **与黄金3秒台词库互补**：需要"按大类快速出钩子"查本库，需要"基于真实投放数据的套路优先级"查 gold3s-database.md
+G1-G12 的定义位于 [execution-reliability.md](references/execution/execution-reliability.md)，等级处置位于 [audit-severity.md](references/execution/audit-severity.md)。
 
-### v4.16.0 —— 千川爆款素材SOP + 八大人群EATM模型（前一个版本）
-- **千川爆款素材SOP**：四维定位 + 21式开头×6种草×6结尾三段式组合 + 爆款基因复刻（高光3秒/话术/脚本三榜）+ AI素材能力矩阵
-- **八大人群EATM模型**：环境场景/人设形象/文案方向/内容主题四维对齐，精准人群定向（小镇新贵/GenZ/精致妈妈/新锐白领等8大圈层）
-- **对标拆解方法论**：无效拆解误区 + 竞品对标五维 + 品牌对标五维，从"抄表面"到"拆底层"
-- **反季清仓策略**：逆向盈利四步法（货品优化/心智种草/直播承接/测款补量）
+## 目录结构
 
-### v4.15.0 —— 黄金3秒台词库（前一个版本）
-- **1499 条付费广告实证**：第三方数据平台黄金3秒台词榜单，30 页真实投放数据
-- **23 种套路频次排序**：点名产品 44% 居首，组合套路占 71%
-- **TOP 句式结构库**：10 个高频套路各配可迁移句式 + 高赞示例
-- **3 条组合黄金公式**：点名产品+福利优惠、点名产品+警告避坑、点名受众+产品+效果
-- **hooks.md 升级**：抖音黄金三秒从 4 条通用机制升级为 10 条数据驱动套路
-
-### v4.14.0 —— 强制模板
-- **强制输出模板**：每篇文案自动套用结构化表格模板
-- **自动生成文件**：交付时自动生成 `{平台}-{产品}-{行动}-{YYMMDDHHMM}.md` 文件
-- **3 种模板类型**：单版、多版、多平台
-
-### v4.13.0 —— 2026 爆款内容图谱
-- **3 条跨平台爆款规律**：情绪先行、真实大于精致、信任×场景电商
-- **4 套平台爆款打法**：算法专属内容类型、分发机制、电商策略
-- **实证数据层**：交叉验证 8 份 2026 权威报告
-
-### v4.12.0 —— 全口径高级隐式收口
-- **零指令 CTA**：5 个收口家族默认全部隐式 —— 无动作词、无目的地、无时间限定
-- **收口六项质检**：每条收口必须通过框架检查才能输出
-- **封闭白名单**：只有白名单才能解锁显式 CTA（卖货/高意向不再自动解锁）
-
-### v4.11.x —— 门禁系统与合规
-- **10 级硬门禁系统**：从产品事实完整性到平台合规
-- **AI 味评分**：检测 LLM 典型表达，>35 自动拟人化改写
-- **电商合规引擎**：17 大行业、7 大平台、2104 条规则
-
----
-
-## 运行时模式
-
-| 模式 | 能力 | 适用场景 |
-|---|---|---|
-| **FULL** | 联网 + 文件 + 代码 + MCP + 记忆 + 结构化 | 高能力 Agent，完整系统 |
-| **GROUNDED** | 文件 + 结构化（不联网） | 工作区 Agent，无需联网 |
-| **WEB_ONLY** | 联网 + 结构化（无文件） | 可搜索的对话 Agent |
-| **TEXT_ONLY** | 仅 Markdown | 基础 Agent，安全基线 |
-
-通过能力协商自动检测，无需手动配置。**能力越强，火力越全；能力越弱，自动降级 —— 永不崩盘。**
-
----
-
-## 分发包
-
-### 标准包
-`SKILL.md` + `references/` + `assets/` —— 适用于任何支持 Markdown 的 Agent，零依赖。**约 309 KB（v4.19.0）**
-
-### Agentic 包
-标准包 + `adapters/` + `schemas/` + `tests/` + `scripts/` —— 适用于支持工具调用、代码执行和结构化输出的高能力 Agent。**约 469 KB（v4.19.0）**
-
----
-
-## 质量保障
-
-```
-validate_skill.py     → 0 错误（v4.19.0）
-run_regression.py     → 102/102 通过
-build_package.py      → 标准包 + Agentic 包
-content-fingerprint   → 格式合规
+```text
+SKILL.md                         # 精简入口：路由、不变量、加载地图
+references/                      # 按需读取的单一事实来源
+  modes/                         # 平台与 24 种任务模式
+  execution/                    # 事实、声明、目的、CTA、审计与执行可靠性
+  quality/                      # 去 AI 味、输出、合规、声音画像
+  cross-platform/               # 跨平台重新立题
+  craft/                        # 钩子、公式、示例与表达素材
+adapters/                       # Agent 能力映射，不改规范规则
+schemas/                        # 产品、IP、路由、研究和内容指纹接口
+scripts/                        # 验证、回归、编译、指纹和遥测工具
+tests/                          # 静态、可移植性和行为回归材料
 ```
 
-**不是"写完就算"，而是"测过才交付"。** 每个版本都经过回归测试、指纹校验、合规验证三重关卡，确保升级不破坏任何既有能力。
+## 快速使用
 
----
+直接把 `SKILL.md` 加载到支持 Markdown 的 Agent。复杂任务再按 [reference-index.md](references/reference-index.md) 读取命中的引用文件，不要默认加载全库。
 
-## 安装
+### 编译最小路由包
 
-### Claude
-将技能文件夹复制到 Claude skills 目录，通过 `SKILL.md` 自动加载。详见 `adapters/claude.md`。
+```bash
+python scripts/compile_route_bundle.py --route route.json
+```
 
-### OpenAI / Assistants API
-上传 `SKILL.md` + references 作为文件，启用文件搜索 + 代码解释器。详见 `adapters/openai.md`。
+示例 `route.json`：
 
-### Gemini
-将 `SKILL.md` 加入系统指令，上传 references 到 Drive，启用 Google 搜索。详见 `adapters/gemini.md`。
+```json
+{
+  "platform": "douyin",
+  "purpose": "sell",
+  "task_type": "short_video",
+  "ip_mode": "standard",
+  "humanization_pipeline": "DOUBLE_AUDIT"
+}
+```
 
-### Copilot / VS Code
-将文件夹放入工作区，通过 Copilot Chat 访问。详见 `adapters/copilot.md`。
+### 内容指纹
 
-### 任意 Agent
-直接阅读 `SKILL.md` 即可，适用于任何支持 Markdown 的 LLM。详见 `adapters/generic.md`。
+```bash
+python scripts/content_fingerprint.py add \
+  --store .master-copywriting/fingerprints.jsonl \
+  --input fingerprint.json
+python scripts/content_fingerprint.py check \
+  --store .master-copywriting/fingerprints.jsonl \
+  --input fingerprint.json
+```
 
----
+指纹默认只保存结构化字段，不保存原文。相似度是确定性的 token/Jaccard 检查，不能替代人工或模型判断。
 
-## 数据一览
+### 运行遥测
 
-| 指标 | 数值 |
-|---|---|
-| 已发布版本 | 19+（v4.0.0 → v4.19.0） |
-| 平台引擎 | 4（抖音 / 小红书 / 视频号 / 公众号） |
-| 写作模式 | 24 |
-| 合规规则 | 2104 |
-| 参考文件 | 35 |
-| Agent 适配器 | 6 |
-| 回归测试 | 102 |
-| CTA 家族 | 5（默认全部隐式） |
-| 代码总量 | 37,930 行 |
+```bash
+python scripts/runtime_telemetry.py log \
+  --store .master-copywriting/telemetry.jsonl \
+  --input event.json
+python scripts/runtime_telemetry.py summary \
+  --store .master-copywriting/telemetry.jsonl
+```
 
----
+遥测记录阶段耗时、引用数量、编辑比例、审核数量、修复循环和最终不变量状态；默认过滤原文和密钥。
 
-## 版本管理
+## 验证与证据边界
 
-**语义化版本：**
-- **主版本**：规范行为变更
-- **次版本**：新能力 / 平台适配器
-- **补丁**：规则修复、事实门禁修复
+```bash
+python scripts/validate_skill.py
+python scripts/run_regression.py --all
+python scripts/run_behavioral_regression.py
+```
 
-[完整更新日志](CHANGELOG.md) · [迁移指南](MIGRATION.md)
+当前静态契约回归结果：`107 pass / 0 fail / 1 skip`。行为回归没有配置真实模型时会明确显示 `BEHAVIORAL REGRESSION = NOT RUN`，不会把静态检查冒充模型证据。配置真实 OpenAI-compatible 模型后：
 
----
+```bash
+set MASTER_COPYWRITING_MODEL=openai:<model>
+set BEHAVIORAL_API_KEY=<key>
+python scripts/run_behavioral_regression.py
+```
+
+密钥只通过环境变量提供，不要写入 route、fixture、README 或提交历史。
+
+## 适配器
+
+- [generic](adapters/generic.md)：仅 Markdown 的最低能力基线
+- [claude](adapters/claude.md)、[openai](adapters/openai.md)、[gemini](adapters/gemini.md)、[copilot](adapters/copilot.md)：工具能力映射
+- [limited-agent](adapters/limited-agent.md)：受限环境下的安全降级
+
+适配器只说明能力，不重定义事实、目的、CTA 或硬门禁。
+
+## 版本与治理
+
+- 入口版本：`4.24.0`
+- 变更记录：[CHANGELOG.md](CHANGELOG.md)
+- 迁移说明：[MIGRATION.md](MIGRATION.md)
+- 内容指纹接口：[content-fingerprint.schema.json](schemas/content-fingerprint.schema.json)
+- 账号声音证据：[voice-profile.md](references/quality/voice-profile.md)
+
+当前账号声音样本和真实模型行为证据均属于 `missing evidence`，不会在文档中虚构成已验证能力。
 
 ## 许可证
 
-内部使用。
-
----
-
-_同一套规则，不同 Agent 根据自己的工具、上下文和执行环境发挥最大能力。_
-
-_一个规范大脑，统治所有 Agent。_
+内部使用，详见 [LICENSE](LICENSE)。

@@ -541,9 +541,10 @@ def check_no_temp_files(skill_root):
 
     found_temp = []
     for root, dirs, files in os.walk(skill_root):
-        # Skip .git
+        # Skip repository metadata entirely; it is not a package artifact.
         if ".git" in root:
             continue
+        dirs[:] = [d for d in dirs if d != ".git"]
         rel_root = os.path.relpath(root, skill_root).replace("\\", "/")
 
         for d in dirs:
