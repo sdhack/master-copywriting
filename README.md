@@ -1,18 +1,19 @@
 # Master Copywriting Skill
 
-> v4.24.0 · 跨 Agent 的事实约束、平台路由与自然化文案生成系统
+> v4.29.0 · 跨 Agent 的事实约束、平台路由与自然化文案生成系统
 
-[![Version](https://img.shields.io/badge/version-4.24.0-2563eb?style=flat-square)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-4.29.0-2563eb?style=flat-square)](CHANGELOG.md)
 [![Platforms](https://img.shields.io/badge/platforms-Douyin%20%7C%20XHS%20%7C%20OA%20%7C%20Channels-0f766e?style=flat-square)](SKILL.md)
 [![Static validation](https://img.shields.io/badge/static%20validation-0%20errors-16a34a?style=flat-square)](scripts/validate_skill.py)
 [![License](https://img.shields.io/badge/license-internal-6b7280?style=flat-square)](LICENSE)
 
-Master Copywriting 不是一组万能模板，而是一层可组合的文案决策系统：先判断平台、目的、事实和 CTA 权限，再生成平台原生内容；生成后经过两次去 AI 味、G1-G12 审计和只读不变量核验。
+Master Copywriting 不是一组万能模板，而是一层可组合的文案决策系统：先判断平台、目的、事实和 CTA 权限，再按段落作用生成平台原生内容；成稿先经 H1 口语校准转为顺口表达，再过 G1-G12 审计，随后 H2 去 AI 打散拆掉模板感（含收口动词一致性、补语搭配合法性、同音干扰三条可判定硬检查），最后只读不变量核验。
 
 ## 能解决什么
 
 - 抖音、小红书、公众号、视频号的内容、种草、卖货和跨平台改写
 - 短视频口播、直播引流、笔记、长文、标题和多版本文案
+- 段落作用拆解与结构保真：改表达不改论证链，参考稿素材归属不转移
 - 产品事实、IP 事实、外部事实与可靠常识的分账使用
 - 账号声音画像：只从真实样本提取，不凭空编造人设
 - 内容指纹防重复、最小规则包加载和隐私友好的运行遥测
@@ -48,6 +49,8 @@ Sanitize → deliver
 | 常识可用 | 可靠常识可帮助表达场景，但不能升级成当前产品事实 |
 | CTA 有权限 | 默认 `IMPLICIT_ONLY`；只有 Closed Explicit CTA Allowlist 命中才允许显式 CTA |
 | 自然完成 | 自然停笔优先于硬塞收口、万能金句或固定模板 |
+| 结构保真 | 六项段落作用拆解；冲突时按「核心判断→因果推进→案例证明→位置作用→情绪强度→表面措辞」取舍 |
+| 人声两遍分工 | H1 只做口语校准，事实核验完全归 G1-G12；H2 只打散模板感，不碰已修复事实与已校准口语 |
 | 可降级 | 工具缺失时减少证据能力，不假装搜索、读取、计算或记忆 |
 
 ## 审计等级
