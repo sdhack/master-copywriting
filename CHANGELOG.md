@@ -1,5 +1,31 @@
 # Changelog
 
+## [4.29.0] - 2026-08-23
+
+### Added
+- **H2 新增三条可判定硬检查**（源自"做得住"漏检案例）：①收口句动词一致性（结尾概括必须沿用前文概念动词，禁止换词）；②补语搭配合法性（V+得/不+住/了/动/起 结构逐个核对常规搭配，生造组合替换）；③同音干扰检查（口播收口句出声朗读，与高频同音词打架必须换词）。将原"朗读预测测试"从语感判断升级为逐项机械判定。
+
+## [4.28.0] - 2026-08-23
+
+### Changed
+- **H1 精简为纯口语校准**：移除事实核验职责（逐句核对术语/数字/归属、不可确认归属处理、第一人称归属核查），事实核验完全由 G1-G12 承担（G1 产品事实 / G2 数字 / G3 身份 / G4 外部声明 / G11 语义声明）。H1 保留口语转换、删重复铺垫、段落作用保真、情绪强度保持；新增创作约束（改写不得新增事实数字来源）与疑点移交接口（发现事实疑点只标记送审，不在人声层处置）。同步 SKILL.md、human-voice-pass.md、execution-reliability.md、external-humanization-orchestration.md、README.md、compile_route_bundle.py。
+
+## [4.27.0] - 2026-08-23
+
+### Changed
+- **H1/H2 顺序对调**：事实与口语校准前置为 H1（Draft 后、G 审核前执行），去 AI 打散后置为 H2（G 审核通过后执行）。同步重构 `human-voice-pass.md`（原「四维 AI 痕迹诊断」「最小修复流程」并入 H2 章节，消除重复），更新 SKILL.md 执行顺序、execution-reliability.md 管线、external-humanization-orchestration.md 双遍协议、README 流程图与 compile_route_bundle.py 输出。H2 新增硬约束：不得破坏 G 审核已修复的事实表述与 H1 已校准的口语表达。
+
+## [4.26.0] - 2026-08-23
+
+### Added
+- **5.3 Structure Role Preservation（段落作用与结构保真）**：吸收 water-koubo（M02/M03/M05/M07/M08）方法——六项段落作用拆解、冲突取舍优先级、案例证明密度、归属转换（G3 执行动作）、开头/爆点/结尾位置校准与提前爆点禁令；Draft 开稿前拆解作用，改稿时按优先级保结构。
+
+## [4.25.0] - 2026-08-23
+
+### Changed
+- **H2 重构为「事实与口语校准」**：吸收 water-koubo（M09/Q05）方法，取代原泛化的第二遍去 AI 味。事实层逐句核对术语、数字、事实归属（只核对不改写），口语层将书面解释转为顺口表达、删除重复铺垫与空泛总结，同时保持情绪强度与段落证明作用；最多 5 轮、问题解决即停。规则定义于 `references/quality/human-voice-pass.md`。
+- 修复 SKILL.md 中失效的 humanization-engine.md 引用链接（实际文件为 human-voice-pass.md）。
+
 ## [4.24.0] - 2026-08-20
 
 ### Added

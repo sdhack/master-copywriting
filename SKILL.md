@@ -1,6 +1,6 @@
 ---
 name: master-copywriting
-version: 4.24.0
+version: 4.29.0
 description: >
   全栈文案决策与生成系统。按平台、目的、IP模式和任务形态路由，支持抖音、小红书、公众号、视频号的广告、种草、卖货、短视频、长文和多平台内容。先生成，再去AI味，完整复审修复，最后二次去AI味。CTA 默认 IMPLICIT_ONLY，仅 Closed Allowlist 允许显式 CTA。
 author: 规范技能包
@@ -47,10 +47,10 @@ tags: [文案, 营销, 抖音, 小红书, 微信, IP, 种草, 卖货]
 
 1. 路由与事实账本；必要时 PRE-GATE 0。
 2. 编译最小规则包，加载命中引用。
-3. Draft：按平台逻辑完成目的。
-4. H1 de-AI：打散匀速结构、套路词和过度完整。
+3. Draft：按平台逻辑完成目的；开稿前按 5.3 完成段落作用拆解，改稿时按 5.3 保结构。
+4. H1 口语校准：书面解释转为顺口的自然口语，删除重复铺垫与空泛总结，保持情绪强度与段落证明作用；事实核验不在本遍执行，由第 5 步 G1-G12 承担；口语化改写不得新增事实、数字或来源。规则见 [Human Voice Pass](references/quality/human-voice-pass.md) 的「H1 · 口语校准」。
 5. G1-G12 full review/repair：按 `BLOCK / REPAIR / ADVISORY` 分级，修到无 BLOCK。
-6. H2 de-AI：事实与目的不漂移，再去一次 AI 味。
+6. H2 de-AI：打散匀速结构、套路词和过度完整；不得破坏 G 审核已修复的事实与合规表述，也不得破坏已校准的口语表达。规则见 [Human Voice Pass](references/quality/human-voice-pass.md) 的「H2 · 去 AI 打散」。
 7. Read-only invariant check：只核对，不继续润色。
 8. Final Output Sanitizer 后交付。
 
@@ -69,7 +69,18 @@ tags: [文案, 营销, 抖音, 小红书, 微信, IP, 种草, 卖货]
 
 互动必须来自正文中的真实分歧或选择，提供可直接置顶的具体评论问题；第 6 图给出自然的后续内容理由，不使用机械“点赞关注”。
 
-顺序不可改。H2 不得掩盖事实或目的问题。遥测调用 `scripts/runtime_telemetry.py`，默认不保存原文或密钥。
+顺序不可改。两遍人声处理都不得掩盖事实或目的问题，也不得引入新声明；H2 打散若导致事实漂移，只读不变量检查会判 FAIL 并回到对应修复阶段。遥测调用 `scripts/runtime_telemetry.py`，默认不保存原文或密钥。
+
+## 5.3 Structure Role Preservation（段落作用与结构保真）
+
+> v4.26.0 起吸收 water-koubo 方法，作用于 Draft 与 G 审核修复。改表达不改结构，改结构先过取舍优先级。
+
+- **六项作用拆解**：开稿前按顺序识别每段承担的作用——核心判断与限定、因果推进、开头功能、案例证明、爆点位置、结尾意义。不得只摘关键词或概括主题；必须知道每段在做什么、为什么出现在当前位置。
+- **冲突取舍优先级**：表达与其他要求冲突时按此取舍——核心判断与成立条件 → 因果推进与段落顺序 → 案例的证明作用 → 开头、爆点和结尾的位置作用 → 情绪强度与篇幅 → 表面措辞。低层级永远为高层级让路。
+- **案例证明密度**：尽量维持案例数量、出现位置和证明强度；替换案例时至少保留原案例中负责证明判断的对象、关键动作、过程变化和结果关系。不为扩大文字差异删掉关键证据，也不把具体案例改成空泛口号；无法保留具体数字时，用可确认的过程关系承担证明，不编造新数字。
+- **归属转换**：参考稿、样例或用户素材中的第一人称经历、客户、收入、数据和结果，不得写成使用者亲历（G3 Identity Truth 的执行动作）。当前对话中用户明确授权的等价事实可以替换并保留证明作用；没有等价事实时改成外部案例或普通场景，保留对象、关键动作、变化和结果关系，删除无法确认的具体成绩，不向用户索要替代案例。
+- **位置校准**：开头保留其留人功能组合（冲突、结果、悬念、反常识或受众筛选）并重写具体句子；爆点保持在原稿对应的相对位置，让前文继续为它积累信息和情绪；结尾保留最后一层意义并回应开头，不添加与正文无关的行动口号。标题和封面文字从正文最强判断中提取，不添加正文没有兑现的承诺。
+- **提前爆点禁令**：不得提前后面的爆点、移动案例原本的证明位置、合并必要的推进步骤，或把结尾换成无关的点赞关注口号。
 
 ## 6. Progressive Disclosure
 [Reference Index](references/reference-index.md) 是加载入口，只读命中文件：
@@ -80,7 +91,7 @@ tags: [文案, 营销, 抖音, 小红书, 微信, IP, 种草, 卖货]
 - Pain Translation / Implication Ladder / Semantic Destination Test：[Implicit Benefit & Pain](references/execution/implicit-benefit-pain.md)
 - Commercial Expression Freedom / Semantic Back-Translation / G6.7 Expression Freedom Validation：[Commercial Expression](references/execution/commercial-expression-freedom.md)
 - Anxiety & Pain Scenification / Anxiety Legitimacy Gate / G6.8 Anxiety & Pain Scenification：[Anxiety Scenification](references/execution/anxiety-pain-scenification.md)
-- 去 AI 味：[Humanization](references/quality/humanization-engine.md)
+- 去 AI 味：[Human Voice Pass](references/quality/human-voice-pass.md)（含 H1 · 口语校准、H2 · 去 AI 打散）
 - 声音证据：[Voice Profile](references/quality/voice-profile.md)，无样本标记 `missing evidence`
 - 审核：[Audit Severity](references/execution/audit-severity.md)、[Execution Reliability](references/execution/execution-reliability.md)
 - 多平台：[Cross-platform Re-conception](references/cross-platform/cross-platform-reconception.md)，重新立题，不做同稿换语气。
@@ -119,7 +130,7 @@ Voice Profile 必须来自 10-20 条推荐样本或用户确认特征；样本�
 
 CTA 以 [CTA](references/craft/cta.md) 为唯一事实源。全口径默认高级隐式收口；默认 `IMPLICIT_ONLY`，Closed Explicit CTA Allowlist 命中才为 `EXPLICIT_ALLOWED`。No closing sentence is better than a forced closing sentence.
 
-最终 read-only invariant check：事实未漂移、目的完成、平台成立、CTA 有权限、无假体验、H2 未引入新声明、输出已 sanitization。
+最终 read-only invariant check：事实未漂移、目的完成、平台成立、CTA 有权限、无假体验、两遍人声处理均未引入新声明、输出已 sanitization。
 
 ## 11. Quality Infrastructure
 - 路由包：`python scripts/compile_route_bundle.py --route route.json`
@@ -131,4 +142,4 @@ CTA 以 [CTA](references/craft/cta.md) 为唯一事实源。全口径默认高�
 静态检查不等于行为模型测试。无真实模型或密钥必须报告 `BEHAVIORAL REGRESSION = NOT RUN`，不得伪报 PASS。
 
 ## 12. Quick Start
-Route → minimal bundle → Draft → H1 de-AI → G1-G12 review/repair → H2 de-AI → read-only invariant check → sanitize → deliver。
+Route → minimal bundle → Draft → H1 口语校准 → G1-G12 review/repair → H2 de-AI → read-only invariant check → sanitize → deliver。

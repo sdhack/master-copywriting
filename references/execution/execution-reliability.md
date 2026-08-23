@@ -1,8 +1,8 @@
 # Execution Reliability Patch（执行可靠性补丁）
 
-## Canonical Publish-ready Pipeline (v4.24.0)
+## Canonical Publish-ready Pipeline (v4.28.0)
 
-Required order: `Draft -> H1 de-AI -> G1-G12 full review/repair -> H2 de-AI -> read-only invariant check -> sanitizer -> delivery`. This section supersedes older G1-G10-only sequences below.
+Required order: `Draft -> H1 口语校准 -> G1-G12 full review/repair（事实核验在此执行） -> H2 de-AI（去 AI 打散） -> read-only invariant check -> sanitizer -> delivery`. Both pass rules are defined in [Human Voice Pass](../quality/human-voice-pass.md)（H1 · 口语校准 / H2 · 去 AI 打散）; structure preservation during repair follows SKILL.md §5.3. This section supersedes older G1-G10-only sequences below.
 
 G1 Product Truth; G2 Numeric Integrity; G3 Identity Truth; G4 External Claim Admission; G5 Demonstration & Comparison Truth; G6 Purpose Integrity; G7 Platform Native; G8 Naturalness; G9 Diversity; G10 Output Sanitizer; G11 Semantic Claim Audit; G12 Review Risk Audit.
 

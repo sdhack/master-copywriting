@@ -48,15 +48,15 @@
 
 ### 2. H1：初稿第一次去 AI
 
-初稿完成后立即 Detect → Repair。检测结果统一为内部结构：`risk`（LOW/MEDIUM/HIGH）、`span`、`signal`、`reason`、`suggested_action`。单个词、单个破折号、语法正确或单次三段式属于弱信号；至少两个信号成簇，或该片段确实低信息，才进入修订队列。先删无信息内容，再局部改句，最后才整体重写。
+初稿完成后先执行内部 H1 口语校准（见 [Human Voice Pass](human-voice-pass.md)），再进入外部 Detect → Repair。检测结果统一为内部结构：`risk`（LOW/MEDIUM/HIGH）、`span`、`signal`、`reason`、`suggested_action`。单个词、单个破折号、语法正确或单次三段式属于弱信号；至少两个信号成簇，或该片段确实低信息，才进入修订队列。先删无信息内容，再局部改句，最后才整体重写。
 
 ### 3. Full Review：技能全面复审并修错
 
 H1 候选必须重新通过完整 G1-G12，而非只审 AI 味。检查事实、数字、身份、外部主张、演示真伪、目的完成、商业价值、痛点翻译、平台原生、版本差异、输出净化、语义 Claim 与平台风险。发现问题必须先修错；修错可以破坏文风，因此本阶段不把“已经 H1”视为完成。
 
-### 4. H2：修错稿第二次去 AI
+### 4. H2：修错稿去 AI 打散
 
-对完成修错的稿件再次 Detect → Repair。H2 只清理复审修订带来的拼接感、解释性补丁、机械过渡、节奏变平和新套话；优先最小编辑。禁止重新选角度、重排商业策略、补充新事实、删除核心购买理由或改变 CTA Permission。`stop-slop` 产出候选后，使用 `humanizer` 或 `writing-style` 保住具体细节和句长波动。
+对完成修错的稿件执行第二遍打散（内部规则见 [Human Voice Pass](human-voice-pass.md) §「H2 · 去 AI 打散」；外部管线中等价于再次 Detect → Repair）。H2 只清理复审修订带来的拼接感、解释性补丁、机械过渡、节奏变平和新套话；最多 5 轮、问题解决即停；优先最小编辑。禁止重新选角度、重排商业策略、补充新事实、删除核心购买理由或改变 CTA Permission；不得破坏 G 审核已修复的事实与合规表述，也不得破坏 H1 已校准的口语表达。`stop-slop` 产出候选后，使用 `humanizer` 或 `writing-style` 保住具体细节和句长波动。
 
 ### 5. Final Invariant Check：第二遍之后只校验
 

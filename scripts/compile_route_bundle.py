@@ -13,7 +13,7 @@ def compile_bundle(route):
     refs = [
         "references/execution/execution-reliability.md",
         "references/execution/audit-severity.md",
-        "references/quality/humanization-engine.md",
+        "references/quality/human-voice-pass.md",
         "references/quality/final-output.md",
         "references/craft/cta.md",
         "references/modes/platforms.md",
@@ -23,8 +23,11 @@ def compile_bundle(route):
     if route.get("ip_mode") == "ip": refs.append("references/quality/voice-profile.md")
     if route.get("product_fact_sufficiency") == "insufficient": refs.append("references/execution/product-acquisition.md")
     refs = list(dict.fromkeys(refs))
+    missing = [r for r in refs if not Path(__file__).resolve().parent.parent.joinpath(r).is_file()]
+    if missing:
+        raise FileNotFoundError(f"route bundle references missing files: {missing}")
     pipeline = route.get("humanization_pipeline") or ("DOUBLE_AUDIT" if route.get("paid_commercial") else "CHINESE_NATIVE")
-    return {"route": route, "references": refs, "gates": [f"G{i}" for i in range(1, 13)], "humanization": ["Draft", "H1", "G1-G12 repair", "H2", "read-only invariant check"], "pipeline": pipeline, "output": "user-facing copy only", "exclusions": ["internal route", "scores", "audit trace", "unsupported facts"]}
+    return {"route": route, "references": refs, "gates": [f"G{i}" for i in range(1, 13)], "humanization": ["Draft", "H1 口语校准", "G1-G12 repair", "H2 de-AI", "read-only invariant check"], "pipeline": pipeline, "output": "user-facing copy only", "exclusions": ["internal route", "scores", "audit trace", "unsupported facts"]}
 
 def main():
     p = argparse.ArgumentParser()

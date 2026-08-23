@@ -26,18 +26,18 @@ Minimal route bundle
   ↓
 Draft
   ↓
-H1 de-AI
+H1 口语校准
   ↓
 G1-G12 review / repair
   ↓
-H2 de-AI
+H2 de-AI（去 AI 打散）
   ↓
 Read-only invariant check
   ↓
 Sanitize → deliver
 ```
 
-流程顺序是发布级约束。H2 只能改善表达，不能掩盖事实、目的或平台问题；最终只读核验失败时，回到对应修复阶段，而不是在核验阶段偷偷改稿。
+流程顺序是发布级约束。H2 只能改善表达（术语、数字、事实归属不动摇），不能掩盖事实、目的或平台问题；最终只读核验失败时，回到对应修复阶段，而不是在核验阶段偷偷改稿。
 
 ## 设计原则
 
