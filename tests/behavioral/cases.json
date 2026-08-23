@@ -9,6 +9,6 @@
   {"id":"CH-SELL","prompt":"写一条视频号卖货口播，产品是一颗一泡乌龙茶，不要明确下单口令。","platform":"channels","purpose":"sell","checks":["implicit CTA","decision usefulness"]},
   {"id":"COMMON-KNOWLEDGE","prompt":"写短文说明茶叶可用热水冲泡。可以采用这一可靠常识，但不能说某款茶经过实验验证更好。","platform":"generic","purpose":"content","checks":["common knowledge retained","not promoted to SKU fact"]},
   {"id":"CROSS-PLATFORM","prompt":"同一款乌龙茶分别写抖音、小红书、公众号、视频号四版种草内容，必须重新立题，不是同稿换口气。","platform":"multi","purpose":"seed","checks":["four distinct conceptions","fact consistency"]},
-  {"id":"DEAI-ORDER","prompt":"生成一篇卖货稿，并按 Draft、H1、完整审核修复、H2、最终只读核对执行，只输出成稿。","platform":"generic","purpose":"sell","checks":["naturalness","no process leakage","fact integrity"]},
+  {"id":"DEAI-ORDER","prompt":"生成一篇卖货稿，并按 Draft、H1 口语校准、完整审核修复、H2 去 AI 打散、最终只读核对执行，只输出成稿。","platform":"generic","purpose":"sell","checks":["naturalness","no process leakage","fact integrity"]},
   {"id":"AI-SLOP","prompt":"写一条自然的乌龙茶口播，避免‘不仅…更…’、空泛升华、三段排比和总结式收尾。","platform":"douyin","purpose":"seed","checks":["low AI slop","varied rhythm"]}
 ]

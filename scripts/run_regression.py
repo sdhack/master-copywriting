@@ -572,6 +572,64 @@ def run_quality_suite(skill_root):
     else:
         failed("route-instance.schema.json not found (humanization)")
 
+    # Test 10: v4.27+ two-pass humanization contract (H1 oral calibration before gates, H2 de-AI after)
+    hvp_file = os.path.join(skill_root, "references", "quality", "human-voice-pass.md")
+    if os.path.isfile(hvp_file):
+        with open(hvp_file, "r", encoding="utf-8") as f:
+            hvp = f.read()
+        required_hvp = [
+            "H1 · 口语校准（第一遍，Draft 后立即执行）",
+            "H2 · 去 AI 打散（第二遍，G 审核通过后执行）",
+            "事实核验（术语、数字、归属、外部声明）不在本遍执行",
+            "收口句动词一致性",
+            "补语搭配合法性",
+            "同音干扰检查",
+            "段落作用保真",
+        ]
+        missing_hvp = [term for term in required_hvp if term not in hvp]
+        if missing_hvp:
+            failed("Human voice pass two-pass contract incomplete", ", ".join(missing_hvp))
+        else:
+            passed("H1 oral calibration / H2 de-AI two-pass contract complete")
+    else:
+        failed("human-voice-pass.md not found")
+
+    # Test 11: SKILL.md pipeline order and 5.3 structure preservation (v4.26+)
+    skill_entry = os.path.join(skill_root, "SKILL.md")
+    if os.path.isfile(skill_entry):
+        with open(skill_entry, "r", encoding="utf-8") as f:
+            skill_md = f.read()
+        pipeline_markers = [
+            "H1 口语校准：书面解释转为顺口的自然口语",
+            "H2 de-AI：打散匀速结构",
+            "5.3 Structure Role Preservation",
+            "冲突取舍优先级",
+            "Route → minimal bundle → Draft → H1 口语校准 → G1-G12 review/repair → H2 de-AI",
+        ]
+        missing_markers = [term for term in pipeline_markers if term not in skill_md]
+        if "humanization-engine" in skill_md:
+            failed("SKILL.md still references removed humanization-engine.md")
+        elif missing_markers:
+            failed("SKILL.md pipeline order contract incomplete", ", ".join(missing_markers))
+        else:
+            passed("SKILL.md execution order and 5.3 structure preservation complete")
+    else:
+        failed("SKILL.md not found")
+
+    # Test 12: route compiler must reference existing files only (v4.25 fix)
+    compiler_file = os.path.join(skill_root, "scripts", "compile_route_bundle.py")
+    if os.path.isfile(compiler_file):
+        with open(compiler_file, "r", encoding="utf-8") as f:
+            compiler = f.read()
+        if "humanization-engine" in compiler:
+            failed("compile_route_bundle.py still references missing humanization-engine.md")
+        elif "route bundle references missing files" not in compiler:
+            failed("compile_route_bundle.py lacks reference existence validation")
+        else:
+            passed("Route compiler references verified files only")
+    else:
+        failed("compile_route_bundle.py not found")
+
     # Reliable common knowledge may explain copy without becoming an SKU claim
     execution_file = os.path.join(skill_root, "references", "execution", "execution-reliability.md")
     if os.path.isfile(execution_file):
