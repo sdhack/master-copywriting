@@ -25,7 +25,7 @@ Route
   ↓
 Minimal route bundle
   ↓
-Draft
+Draft（含 5.3 段落作用拆解）
   ↓
 H1 口语校准
   ↓
@@ -38,7 +38,7 @@ Read-only invariant check
 Sanitize → deliver
 ```
 
-流程顺序是发布级约束。H2 只能改善表达（术语、数字、事实归属不动摇），不能掩盖事实、目的或平台问题；最终只读核验失败时，回到对应修复阶段，而不是在核验阶段偷偷改稿。
+流程顺序是发布级约束。H1 只做口语校准，事实核验完全由 G1-G12 承担；H2 只打散模板感，不改术语、数字与合规表述。任何一遍都不得掩盖事实、目的或平台问题；最终只读核验失败时，回到对应修复阶段，而不是在核验阶段偷偷改稿。
 
 ## 设计原则
 
@@ -152,7 +152,7 @@ python scripts/run_behavioral_regression.py
 
 ## 版本与治理
 
-- 入口版本：`4.24.0`
+- 入口版本：`4.29.0`
 - 变更记录：[CHANGELOG.md](CHANGELOG.md)
 - 迁移说明：[MIGRATION.md](MIGRATION.md)
 - 内容指纹接口：[content-fingerprint.schema.json](schemas/content-fingerprint.schema.json)
