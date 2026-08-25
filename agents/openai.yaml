@@ -1,0 +1,7 @@
+interface:
+  display_name: "全栈商业文案"
+  short_description: "按平台、目标和人设生成并审核商业内容文案"
+  default_prompt: "使用 $master-copywriting 为指定平台和目标生成一份可发布的商业文案。"
+
+policy:
+  allow_implicit_invocation: true
