@@ -1,4 +1,4 @@
-﻿# 文案公式库与候选池路由（references/formulas.md）
+# 文案公式库与候选池路由（references/formulas.md）
 
 > **Source of Truth：公式。** 来源：`ecommerce-copywriting-book-library` 的 86 个经典文案公式（`strategy-cards/classic-formulas.jsonl`）。
 > 用法：**先判断任务，再进入候选池，再选一个主结构。** 最多一个主结构 + 一个辅助机制，禁止"公式拼盘"。

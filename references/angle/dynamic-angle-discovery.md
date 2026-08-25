@@ -1,4 +1,4 @@
-﻿# 动态角度发现引擎 Dynamic Angle Discovery Engine（references/dynamic-angle-discovery.md）
+# 动态角度发现引擎 Dynamic Angle Discovery Engine（references/dynamic-angle-discovery.md）
 
 > **Source of Truth：动态角度发现引擎。** 主 SKILL.md 只保留简要调用；本文件是 Dynamic Angle Discovery 的唯一 Source of Truth。
 > 适用范围：**所有平台、所有类型（普通/IP）、所有目的（内容/种草/卖货）的多版本生成。**

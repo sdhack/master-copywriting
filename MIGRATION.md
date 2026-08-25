@@ -1,4 +1,4 @@
-﻿# Migration Guide: v3.x → v4.0
+# Migration Guide: v3.x → v4.0
 
 This guide helps you migrate from Master Copywriting v3.x to the v4.0
 Portable Skill Package.

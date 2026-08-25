@@ -1,6 +1,6 @@
 ---
 name: master-copywriting
-version: 4.29.0
+version: 4.29.2
 description: >
   全栈文案决策与生成系统。按平台、目的、IP模式和任务形态路由，支持抖音、小红书、公众号、视频号的广告、种草、卖货、短视频、长文和多平台内容。先生成，再去AI味，完整复审修复，最后二次去AI味。CTA 默认 IMPLICIT_ONLY，仅 Closed Allowlist 允许显式 CTA。
 author: 规范技能包
@@ -143,3 +143,11 @@ CTA 以 [CTA](references/craft/cta.md) 为唯一事实源。全口径默认高�
 
 ## 12. Quick Start
 Route → minimal bundle → Draft → H1 口语校准 → G1-G12 review/repair → H2 de-AI → read-only invariant check → sanitize → deliver。
+
+## 版本同步
+
+任何 Agent 更新本技能时，必须同步递增 `agents/openai.yaml` 中 `interface.display_name` 的版本号。展示名格式固定为 `GM 中文用途 V版本号`；不得只更新技能内容而遗漏列表版本。
+
+## 文件编码
+
+技能内的文本文件必须使用 **UTF-8（无 BOM）** 保存。读取、生成或校验中文文件时，必须显式指定 UTF-8；在 Windows 上运行 Python 校验器时使用 `python -X utf8` 或设置 `PYTHONUTF8=1`，不得依赖系统默认 GBK 编码。

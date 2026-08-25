@@ -1,4 +1,4 @@
-﻿# 合规规则（references/compliance.md）
+# 合规规则（references/compliance.md）
 
 > **Source of Truth：合规与事实边界。** 来源：`ecommerce-copywriting-book-library` 的合规规则库（`compliance-rules/rules.json`，v4.12）与广告法知识库。
 > 用法：涉及功效、极限词、数据、稀缺、背书、健康食品时必查。**安全、法律、监管、平台硬性规则是规则优先级 Level 1（最高），事实真实性与证据边界是 Level 2。用户明确要求（Level 3）只有在不违反 Level 1-2 时才执行。**

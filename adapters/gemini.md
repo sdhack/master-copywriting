@@ -1,4 +1,4 @@
-﻿# Adapter: Gemini
+# Adapter: Gemini
 
 > **Target**: Google Gemini agents / Gemini API
 > **Default Mode**: FULL (when all tools available)

@@ -1,4 +1,4 @@
-﻿# 心理学说服原则库（references/psychology.md）
+# 心理学说服原则库（references/psychology.md）
 
 > **Source of Truth：说服心理。** 来源：`ecommerce-copywriting-book-library` 的 15 个说服原则（`psychology/psychology-principles.jsonl`）。
 > 用法：与钩子机制联动。每个钩子的底层机制都对应到这里的原则。**心理学是沟通工具，不是操控。产品必须真实帮助用户，禁止用认知偏差卖用户不需要的东西。稀缺/权威/数据必须真实可核验。**

@@ -1,4 +1,4 @@
-﻿# 反模板化层 Anti-Patternization Layer（references/anti-patternization.md）
+# 反模板化层 Anti-Patternization Layer（references/anti-patternization.md）
 
 > **Source of Truth：反模板化层 Anti-Patternization。** 主 SKILL.md 只保留简要调用；本文件是 Anti-Patternization 的唯一 Source of Truth。
 > 适用范围：**所有平台、所有类型（普通/IP）、所有目的（内容/种草/卖货）的文案生成与多版本生成。**

@@ -1,4 +1,4 @@
-﻿# Activation Regression Tests
+# Activation Regression Tests
 
 > Test whether the skill activates correctly for the right prompts and doesn't activate for wrong ones.
 > Important because agent skill activation heavily depends on name + description matching.

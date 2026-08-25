@@ -1,4 +1,4 @@
-﻿# 语气基线（references/voice.md）
+# 语气基线（references/voice.md）
 
 > **Source of Truth：表达风格。** 来源：`ecommerce-copywriting-book-library` 的资深策划语气基线。
 > 用法：去 AI 味时参考。**不要使用过度机械的统一数字标准**，量化基线仅作参考，按平台与形式调整。自然语言优先于量化形式指标。

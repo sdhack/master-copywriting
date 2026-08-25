@@ -1,5 +1,6 @@
+# 版本维护：每次更新此技能时，必须同步提升下方 display_name 中的版本号。
 interface:
-  display_name: "全栈商业文案"
+  display_name: "GM 多平台商业文案创作 V4.29.2"
   short_description: "按平台、目标和人设生成并审核商业内容文案"
   default_prompt: "使用 $master-copywriting 为指定平台和目标生成一份可发布的商业文案。"
 

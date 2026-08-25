@@ -1,4 +1,4 @@
-﻿# 自然充分度层 Natural Depth Layer（references/natural-depth.md）
+# 自然充分度层 Natural Depth Layer（references/natural-depth.md）
 
 > **Source of Truth：自然充分度层。** 主 SKILL.md 只保留简要调用；本文件是 Natural Depth Layer 的唯一 Source of Truth。
 > 适用范围：**所有平台、所有类型（普通/IP）、所有目的（内容/种草/卖货）的文案生成。**

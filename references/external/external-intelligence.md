@@ -1,4 +1,4 @@
-﻿# 外部情报层 External Intelligence Layer（references/external-intelligence.md）
+# 外部情报层 External Intelligence Layer（references/external-intelligence.md）
 
 > **Source of Truth：外部情报层 External Intelligence。** 主 SKILL.md 只保留简要调用；本文件是 External Intelligence 的唯一 Source of Truth。
 > 适用范围：**所有平台、所有类型（普通/IP）、所有目的（内容/种草/卖货）的文案生成与内容规划。**

@@ -1,4 +1,4 @@
-﻿# 2026 爆款内容图谱 Viral Content Map（references/viral-content-map.md）
+# 2026 爆款内容图谱 Viral Content Map（references/viral-content-map.md）
 
 > **Source of Truth：平台爆款内容与电商打法图谱。** 本文件把《四大平台爆款内容图谱（2026 信源版）》的调研结论转译成可执行的写作规则。
 > 信源窗口：2026-01-01 至 2026-08-15（平台官方年度报告 / 官方战报 / 腾讯财报 / 新榜 / 飞瓜 / 千瓜 / 果集·友望 / QuestMobile 等交叉验证）。

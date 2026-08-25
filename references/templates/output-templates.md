@@ -1,4 +1,4 @@
-﻿# 输出模板与 MD 文件生成（references/templates/output-templates.md）
+# 输出模板与 MD 文件生成（references/templates/output-templates.md）
 
 > **Source of Truth：输出模板与 MD 文件生成契约。** 创作完内容之后，**强制套用本文件模板**，并**生成 `.md` 文件交付**。主 SKILL.md 与 final-output.md 只保留简要调用；本文件是模板结构与文件生成规则的唯一 Source of Truth。
 > 适用范围：**所有平台、所有类型（普通/IP）、所有目的（内容/种草/卖货）、所有版本数（单版/多版/多平台）的最终交付。**

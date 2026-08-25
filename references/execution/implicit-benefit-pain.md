@@ -1,4 +1,4 @@
-﻿# Implicit Benefit & Pain Translation（暗示利益与痛点翻译层）
+# Implicit Benefit & Pain Translation（暗示利益与痛点翻译层）
 
 > **Source of Truth：暗示利益与痛点翻译 Implicit Benefit & Pain Translation。** 主 SKILL.md 只保留简要调用；本文件是该层的唯一 Source of Truth。
 > **版本**：v4.11.4 更新（功效暗示永不过滤：I5-B/C 默认保留 / CONTEXT_PAIN 可作主卖点 / 语义回译保留强度）

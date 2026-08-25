@@ -1,4 +1,4 @@
-﻿# Capability Matrix
+# Capability Matrix
 
 > Maps abstract capabilities to runtime modes and adapter implementations.
 

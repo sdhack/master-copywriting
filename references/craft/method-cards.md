@@ -1,4 +1,4 @@
-﻿# 57 方法卡索引（references/method-cards.md）
+# 57 方法卡索引（references/method-cards.md）
 
 > **Source of Truth：方法。** 来源：`ecommerce-copywriting-book-library` 的 57 张 verified 方法卡（`method-cards/method-cards.jsonl`）。
 > 用法：需要方法细节时按 ID 查用。M1-M8 只做意图定位，不替代 57 卡路由；一张方法卡可服务多个意图。

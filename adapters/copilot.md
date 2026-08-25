@@ -1,4 +1,4 @@
-﻿# Adapter: Copilot (GitHub Copilot / VS Code)
+# Adapter: Copilot (GitHub Copilot / VS Code)
 
 > **Target**: GitHub Copilot agents / VS Code environment
 > **Default Mode**: FULL (workspace with file access + terminal)

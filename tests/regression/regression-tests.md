@@ -1,4 +1,4 @@
-﻿# Regression Test Suite（tests/regression-tests.md）
+# Regression Test Suite（tests/regression-tests.md）
 
 > **用途**：v2.2 迭代完成后，用以下测试任务验证路由稳定性。每个案例包含：用户请求 / 预期路由 / 关键规则 / 禁止出现 / 通过标准。
 > **执行方式**：AI 逐条模拟执行，确认路由、规则、事实、商业关系、A/B、多平台、CTA、IP 保护、输出均符合预期。

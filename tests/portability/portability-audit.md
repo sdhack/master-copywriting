@@ -1,4 +1,4 @@
-﻿# Portability Audit Tests
+# Portability Audit Tests
 
 > Test suite for verifying cross-agent portability of the Master Copywriting skill package.
 > These tests validate that canonical rules are preserved across different agent platforms and capability levels.

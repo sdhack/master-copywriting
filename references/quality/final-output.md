@@ -1,4 +1,4 @@
-﻿# 成品真人感与平台原生层（references/final-output.md）
+# 成品真人感与平台原生层（references/final-output.md）
 
 > **Source of Truth：成品真人感与平台原生层 + Final Output Contract。** 主 SKILL.md 只保留简要调用；本文件是成品层与输出契约的唯一 Source of Truth。
 > 适用范围：**所有平台、所有类型（普通/IP）、所有目的（内容/种草/卖货）的最终成品。**

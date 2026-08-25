@@ -1,4 +1,4 @@
-﻿# 24 模式中心思想与评分标准（references/24-modes.md）
+# 24 模式中心思想与评分标准（references/24-modes.md）
 
 > **Source of Truth：24 模式中心思想。** 主 SKILL.md 只保留 Router 简要调用；本文件是 24 模式中心思想的唯一 Source of Truth。
 > 24 模式 = 4 平台 × 2 类型（普通/IP）× 3 目的（内容/种草/卖货）。

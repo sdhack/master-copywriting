@@ -1,4 +1,4 @@
-﻿# Adapter: OpenAI
+# Adapter: OpenAI
 
 > **Target**: OpenAI agents with function calling / Assistants API
 > **Default Mode**: FULL (when all tools available)

@@ -1,4 +1,4 @@
-﻿# CTA 路由与隐式收口库（v4.7.0）（references/craft/cta.md）
+# CTA 路由与隐式收口库（v4.7.0）（references/craft/cta.md）
 
 > **Source of Truth：CTA。** 来源：`ecommerce-copywriting-book-library` 的 10 收口家族（`cta-closings/cta-closings.jsonl`）与 48 CTA 模板（`cta-templates/cta-template-library.jsonl`）。
 > 用法：**CTA 首先是权限问题，其次才是写作问题。** 每个任务先确定 `CTA_PERMISSION`，再决定收口方式。

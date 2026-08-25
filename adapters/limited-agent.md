@@ -1,4 +1,4 @@
-﻿# Adapter: Limited Agent
+# Adapter: Limited Agent
 
 > **Target**: Mobile agents, chat-only agents, limited UI environments
 > **Default Mode**: TEXT_ONLY (may upgrade to WEB_ONLY if search available)

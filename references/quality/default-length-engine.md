@@ -1,4 +1,4 @@
-﻿# Default Length Engine（默认字数引擎）
+# Default Length Engine（默认字数引擎）
 
 > **版本**：v1.0（v3.7 新增）
 > **类型**：字数预算系统（不是硬 KPI，是生成预算）

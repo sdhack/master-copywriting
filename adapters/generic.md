@@ -1,4 +1,4 @@
-﻿# Adapter: Generic
+# Adapter: Generic
 
 > **Target**: Any markdown-capable agent
 > **Default Mode**: TEXT_ONLY

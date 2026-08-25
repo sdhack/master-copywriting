@@ -1,4 +1,4 @@
-﻿# Adapter: Claude (Anthropic)
+# Adapter: Claude (Anthropic)
 
 > **Target**: Claude (Anthropic) agents with tool use
 > **Default Mode**: FULL (when all tools available)

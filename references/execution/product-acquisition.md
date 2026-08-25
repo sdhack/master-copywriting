@@ -1,4 +1,4 @@
-﻿# Product Acquisition（产品事实获取层）
+# Product Acquisition（产品事实获取层）
 
 > **Source of Truth：产品事实获取 Product Acquisition。** 主 SKILL.md 只保留简要调用；本文件是 Product Acquisition 的唯一 Source of Truth。
 > **版本**：v4.6.2 新增

@@ -1,4 +1,4 @@
-﻿# 表达权威层 Expression Authority（references/expression-authority.md）
+# 表达权威层 Expression Authority（references/expression-authority.md）
 
 > **Source of Truth：表达权威层 Expression Authority。** 主 SKILL.md 只保留简要调用；本文件是 Expression Authority 的唯一 Source of Truth。
 > 适用范围：**所有平台、所有类型（普通/IP）、所有目的（内容/种草/卖货）的跨 Skill 统一数据边界。**

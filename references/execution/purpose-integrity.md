@@ -1,4 +1,4 @@
-﻿# Purpose Integrity + Demonstration / First-Person Truth
+# Purpose Integrity + Demonstration / First-Person Truth
 
 > **版本**：v1.0（v3.5 新增）
 > **解决问题 A**：种草与卖货的心理目标容易混淆（种草漂移成卖货，卖货漂移成种草）

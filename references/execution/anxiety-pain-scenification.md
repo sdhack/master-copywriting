@@ -1,4 +1,4 @@
-﻿# Anxiety Activation & Pain Scenification（焦虑激活 × 痛点场景化引擎）
+# Anxiety Activation & Pain Scenification（焦虑激活 × 痛点场景化引擎）
 
 > **Source of Truth：焦虑激活与痛点场景化 Anxiety Activation & Pain Scenification。** 主 SKILL.md 只保留简要调用；本文件是该层的唯一 Source of Truth。
 > **版本**：v4.11.0 更新（品类差异化焦虑强度 / PARTIAL_PAIN 同步 / COMMERCIAL_INTENSITY 联动）

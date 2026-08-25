@@ -1,4 +1,4 @@
-﻿# 四平台中心思想与规则（references/platforms.md）
+# 四平台中心思想与规则（references/platforms.md）
 
 > **Source of Truth：平台规律。** 平台决定用户消费心智和传播逻辑。主 SKILL.md 只保留 Router 简要调用；本文件是平台规律的唯一 Source of Truth。
 > 24 模式中心思想不在此定义，见 `24-modes.md`（Source of Truth：24 模式中心思想）。本文件只描述平台层面的规律与表达倾向。

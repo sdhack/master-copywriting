@@ -1,4 +1,4 @@
-﻿# Commercial Expression Freedom（商业表达自由层）
+# Commercial Expression Freedom（商业表达自由层）
 
 > **Source of Truth：商业表达自由 Commercial Expression Freedom。** 主 SKILL.md 只保留简要调用；本文件是该层的唯一 Source of Truth。
 > **版本**：v4.11.4 更新（功效暗示永不过滤：第二十五章默认保留条款 / AMBER 区放宽 / PARTIAL_PAIN 露出边界残留修复）

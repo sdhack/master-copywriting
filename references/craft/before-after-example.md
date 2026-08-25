@@ -1,4 +1,4 @@
-﻿# Dynamic Angle & Natural Depth Before / After 示例（references/before-after-example.md）
+# Dynamic Angle & Natural Depth Before / After 示例（references/before-after-example.md）
 
 > **Source of Truth：Dynamic Angle Discovery Engine + Natural Depth Layer 的演示样例。** 与 `references/angle/dynamic-angle-discovery.md` + `references/angle/natural-depth.md` 的配套示例。
 > 用途：展示同一任务在 v2.6（固定五版、越写越薄）与 v2.7（动态选题、自然充分）下的成品差异。**示例仅供演示表达方式，产品事实以 Sell-point Skill 为准，不得直接作为投放文案引用。**

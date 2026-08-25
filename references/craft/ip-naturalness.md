@@ -1,4 +1,4 @@
-﻿# IP 真人感与自然度（references/ip-naturalness.md）
+# IP 真人感与自然度（references/ip-naturalness.md）
 
 > **Source of Truth：IP 真人感与自然度。** 主 SKILL.md 只保留简要调用；本文件是 IP 真人感与自然度的唯一 Source of Truth。
 > 适用范围：**抖音 × IP × 卖货** 优先执行；可泛化原则同时应用于其他 IP 内容（IP 种草 / IP 内容 / 各平台 IP 表达）。

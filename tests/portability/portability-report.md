@@ -1,4 +1,4 @@
-﻿# Portability Regression Report
+# Portability Regression Report
 
 > Master Copywriting v4.6.2 Cross-Agent Portability Audit
 > Date: 2026-08-14

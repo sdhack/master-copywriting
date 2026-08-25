@@ -1,4 +1,4 @@
-﻿# Claim Authority（主张表达权限层）
+# Claim Authority（主张表达权限层）
 
 > **Source of Truth：主张表达权限 Claim Authority。** 主 SKILL.md 只保留简要调用；本文件是 Claim Authority 的唯一 Source of Truth。
 > **版本**：v4.11.4 更新（功效暗示永不过滤：I5-B/C/AMBER 默认保留 / COMMERCIAL_INTENSITY 档位联动）

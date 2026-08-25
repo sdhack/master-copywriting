@@ -1,4 +1,4 @@
-﻿# Cross-Agent Behavioral Test（跨 Agent 行为一致性测试）
+# Cross-Agent Behavioral Test（跨 Agent 行为一致性测试）
 
 > **版本**：v4.6.2（PATCH 38）
 > **目的**：验证同一批 Prompt 安装到不同 Agent 后，Canonical Decision 一致。

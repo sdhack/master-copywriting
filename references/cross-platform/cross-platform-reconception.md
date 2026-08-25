@@ -1,4 +1,4 @@
-﻿# Cross-Platform Re-conception Protocol（跨平台重新立题协议）
+# Cross-Platform Re-conception Protocol（跨平台重新立题协议）
 
 > **版本**：v1.1（v4.13.0 更新：新增三条跨平台爆款规律作为立题输入）
 > **解决问题**：Platform Styling ≠ Platform Re-conception。同一套产品事实 + 换标题/篇幅/语气/平台结构 = 同一篇商业逻辑的四种包装。
