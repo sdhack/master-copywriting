@@ -1,6 +1,6 @@
 ---
 name: master-copywriting
-version: 4.29.4
+version: 4.29.5
 description: >
   全栈文案决策与生成系统。按平台、目的、IP模式和任务形态路由，支持抖音、小红书、公众号、视频号的广告、种草、卖货、短视频、长文和多平台内容。先生成，再去AI味，完整复审修复，最后二次去AI味。CTA 默认 IMPLICIT_ONLY，仅 Closed Allowlist 允许显式 CTA。
 author: 规范技能包

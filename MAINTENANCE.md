@@ -1,6 +1,6 @@
 # 维护说明
 
-当前版本：`V4.29.4`。
+当前版本：`V4.29.5`。
 
 每次更新 `SKILL.md`、参考资料、schema、脚本、测试或 UI 元数据时，都必须递增版本、更新 `agents/openai.yaml` 的 `display_name`，并在 `CHANGELOG.md` 记录变更。展示名固定为 `GM 多平台商业文案创作 V版本号`。
 

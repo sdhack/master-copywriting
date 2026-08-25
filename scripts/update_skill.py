@@ -26,7 +26,7 @@ import urllib.request
 from datetime import datetime
 from pathlib import Path
 
-REPO_URL = "https://github.com/sdhack/master-copywriting.git"
+REPO_URL = "https://github.com/sdhack/gm-master-copywriting.git"
 RAW_URL = "https://raw.githubusercontent.com/sdhack/master-copywriting/main/SKILL.md"
 DEFAULT_BRANCH = "main"
 

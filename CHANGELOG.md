@@ -1,5 +1,10 @@
 # Changelog
 
+## [4.29.5] - 2026-08-25
+
+### Changed
+- GitHub 仓库迁移至 `gm-master-copywriting`，同步更新内置更新脚本与 README 版本信息。
+
 ## [4.29.4] - 2026-08-25
 
 ### Fixed
