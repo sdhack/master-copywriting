@@ -1,13 +1,19 @@
 # Master Copywriting Skill
 
-> v4.29.0 · 跨 Agent 的事实约束、平台路由与自然化文案生成系统
+> v4.29.3 · 跨 Agent 的事实约束、平台路由与自然化文案生成系统
 
-[![Version](https://img.shields.io/badge/version-4.29.0-2563eb?style=flat-square)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-4.29.3-2563eb?style=flat-square)](CHANGELOG.md)
 [![Platforms](https://img.shields.io/badge/platforms-Douyin%20%7C%20XHS%20%7C%20OA%20%7C%20Channels-0f766e?style=flat-square)](SKILL.md)
 [![Static validation](https://img.shields.io/badge/static%20validation-0%20errors-16a34a?style=flat-square)](scripts/validate_skill.py)
 [![License](https://img.shields.io/badge/license-internal-6b7280?style=flat-square)](LICENSE)
 
 Master Copywriting 不是一组万能模板，而是一层可组合的文案决策系统：先判断平台、目的、事实和 CTA 权限，再按段落作用生成平台原生内容；成稿先经 H1 口语校准转为顺口表达，再过 G1-G12 审计，随后 H2 去 AI 打散拆掉模板感（含收口动词一致性、补语搭配合法性、同音干扰三条可判定硬检查），最后只读不变量核验。
+
+## 先守住事实，再谈感染力
+
+这套系统把“写得好”拆成可验证的职责：路由决定该加载什么约束，Draft 保留论证和归属，H1 校准口语，G1-G12 拦截事实、数字、身份和主张风险，H2 再去掉机械感。它不承诺自动生成真实世界事实，也不会用漂亮表达替代证据。
+
+因此它适合需要多平台适配、可审计内容生产和稳定账号声音的团队；产品参数、案例、代言、功效和外部结论仍必须由调用方提供可核验来源。
 
 ## 能解决什么
 
