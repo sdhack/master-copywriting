@@ -1,8 +1,8 @@
 # Master Copywriting Skill
 
-> v4.29.3 · 跨 Agent 的事实约束、平台路由与自然化文案生成系统
+> v4.29.4 · 跨 Agent 的事实约束、平台路由与自然化文案生成系统
 
-[![Version](https://img.shields.io/badge/version-4.29.3-2563eb?style=flat-square)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-4.29.4-2563eb?style=flat-square)](CHANGELOG.md)
 [![Platforms](https://img.shields.io/badge/platforms-Douyin%20%7C%20XHS%20%7C%20OA%20%7C%20Channels-0f766e?style=flat-square)](SKILL.md)
 [![Static validation](https://img.shields.io/badge/static%20validation-0%20errors-16a34a?style=flat-square)](scripts/validate_skill.py)
 [![License](https://img.shields.io/badge/license-internal-6b7280?style=flat-square)](LICENSE)
@@ -158,8 +158,9 @@ python scripts/run_behavioral_regression.py
 
 ## 版本与治理
 
-- 入口版本：`4.29.0`
+- 入口版本：`4.29.4`
 - 变更记录：[CHANGELOG.md](CHANGELOG.md)
+- 维护规则：[MAINTENANCE.md](MAINTENANCE.md)
 - 迁移说明：[MIGRATION.md](MIGRATION.md)
 - 内容指纹接口：[content-fingerprint.schema.json](schemas/content-fingerprint.schema.json)
 - 账号声音证据：[voice-profile.md](references/quality/voice-profile.md)
