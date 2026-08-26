@@ -1,12 +1,13 @@
 ---
 name: master-copywriting
-version: 4.29.5
 description: >
   全栈文案决策与生成系统。按平台、目的、IP模式和任务形态路由，支持抖音、小红书、公众号、视频号的广告、种草、卖货、短视频、长文和多平台内容。先生成，再去AI味，完整复审修复，最后二次去AI味。CTA 默认 IMPLICIT_ONLY，仅 Closed Allowlist 允许显式 CTA。
-author: 规范技能包
 license: 内部使用
-category: 文案写作
-tags: [文案, 营销, 抖音, 小红书, 微信, IP, 种草, 卖货]
+metadata:
+  version: "4.29.5"
+  author: 规范技能包
+  category: 文案写作
+  tags: "文案, 营销, 抖音, 小红书, 微信, IP, 种草, 卖货"
 ---
 
 # Master Copywriting Skill v4
@@ -151,3 +152,8 @@ Route → minimal bundle → Draft → H1 口语校准 → G1-G12 review/repair 
 ## 文件编码
 
 技能内的文本文件必须使用 **UTF-8（无 BOM）** 保存。读取、生成或校验中文文件时，必须显式指定 UTF-8；在 Windows 上运行 Python 校验器时使用 `python -X utf8` 或设置 `PYTHONUTF8=1`，不得依赖系统默认 GBK 编码。
+
+
+## 免责声明
+
+使用本项目/技能前必须阅读仓库根目录的 [DISCLAIMER.md](DISCLAIMER.md)。使用者自行承担输入、输出、数据处理和发布责任。
