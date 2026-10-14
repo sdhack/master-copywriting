@@ -18,7 +18,7 @@ ERRORS = []
 WARNINGS = []
 
 SECTION = 0
-TOTAL_SECTIONS = 24
+TOTAL_SECTIONS = 26
 
 # Canonical capability names (PATCH 32)
 CANONICAL_CAPABILITIES = {
@@ -2038,6 +2038,173 @@ def check_full_caliber_implicit_cta(skill_root):
             error("SKILL.md missing full-caliber implicit closing rule")
 
 
+# ---------- Check 26: Persuasion Integrity contract (PATCH v4.30.0) ----------
+
+# Stale phrases that would let compliance repair delete without replacement.
+OVER_DELETION_STALE = [
+    r"删掉(越线|违规|不合规)?主张后(?:可以)?不补",
+    r"主张(?:被删|删除)后无需补",
+    r"合规优先于说服力",
+    r"说服力让位于合规",
+]
+
+
+def check_persuasion_integrity(skill_root):
+    section("Checking persuasion integrity contract (PATCH v4.30.0)")
+
+    pi_path = os.path.join(skill_root, "references", "execution", "persuasion-integrity.md")
+    skill_path = os.path.join(skill_root, "SKILL.md")
+    ca_path = os.path.join(skill_root, "references", "execution", "claim-authority.md")
+    cmp_path = os.path.join(skill_root, "references", "quality", "compliance.md")
+    rel_path = os.path.join(skill_root, "references", "execution", "execution-reliability.md")
+    idx_path = os.path.join(skill_root, "references", "reference-index.md")
+    comp_path = os.path.join(skill_root, "scripts", "compile_route_bundle.py")
+
+    def read_md(path):
+        if os.path.isfile(path):
+            with open(path, "r", encoding="utf-8") as f:
+                return f.read()
+        return None
+
+    pi = read_md(pi_path)
+    if pi is None:
+        error("references/execution/persuasion-integrity.md not found (G13)")
+        return
+
+    # 1. Five checkable G13 items must be declared
+    required_pi = [
+        "G13.1 — Burden Shift Prohibition",
+        "G13.2 — Proof Substitution",
+        "G13.3 — Assertive Claim Floor",
+        "G13.4 — No Disclaimer Content",
+        "G13.5 — Confidence Restoration Pass",
+    ]
+    missing_pi = [t for t in required_pi if t not in pi]
+    if missing_pi:
+        error(f"persuasion-integrity.md missing G13 checks: {missing_pi}")
+    else:
+        print("  ✓ persuasion-integrity.md declares all five G13 checks")
+
+    # 2. Five over-compliance failure modes must be named
+    required_modes = [
+        "Hedge Laundering",
+        "Burden Shift",
+        "Disclaimer Reformat",
+        "Deletion Without Replacement",
+        "Confidence Collapse",
+    ]
+    missing_modes = [m for m in required_modes if m not in pi]
+    if missing_modes:
+        error(f"persuasion-integrity.md missing failure modes: {missing_modes}")
+    else:
+        print("  ✓ persuasion-integrity.md names all five over-compliance failure modes")
+
+    # 3. Hedge markers list must exist (mechanical G13.3 judgment)
+    if "Hedge 标记" in pi and "因人而异" in pi:
+        print("  ✓ persuasion-integrity.md defines hedge markers for mechanical judgment")
+    else:
+        error("persuasion-integrity.md missing hedge marker list (G13.3 not mechanically checkable)")
+
+    # 4. G13 must NOT become a ceiling-relaxation channel
+    if "G13 永远不放宽 Claim Ceiling" in pi:
+        print("  ✓ G13 declared as non-ceiling-relaxing")
+    else:
+        error("persuasion-integrity.md missing 'G13 永远不放宽 Claim Ceiling' guard")
+
+    # 5. SKILL.md must run G13 between G1-G12 and H2
+    skill = read_md(skill_path)
+    if skill is None:
+        error("SKILL.md not found (persuasion integrity)")
+    else:
+        if "G13" not in skill:
+            error("SKILL.md missing G13 Persuasion Integrity")
+        else:
+            print("  ✓ SKILL.md declares G13")
+        order_ok = "G1-G12 full review/repair" in skill and "G13 说服力完整性" in skill
+        if order_ok and skill.index("G1-G12 full review/repair") < skill.index("G13 说服力完整性"):
+            print("  ✓ SKILL.md runs G13 after G1-G12")
+        else:
+            error("SKILL.md must run G13 Persuasion Integrity after G1-G12 review/repair")
+        if "G13 post-H2 recheck" in skill:
+            print("  ✓ SKILL.md declares G13 post-H2 recheck")
+        else:
+            error("SKILL.md missing G13 post-H2 recheck")
+
+    # 6. Gate table + hard-gate order must include G13
+    er = read_md(rel_path)
+    if er is None:
+        error("references/execution/execution-reliability.md not found (G13)")
+    else:
+        if "G13 | Persuasion Integrity" in er:
+            print("  ✓ execution-reliability.md Gate table includes G13")
+        else:
+            error("execution-reliability.md Gate table missing G13 row")
+        if "GATE 13 — Persuasion Integrity" in er:
+            print("  ✓ execution-reliability.md hard-gate order places G13")
+        else:
+            error("execution-reliability.md hard-gate order missing G13 placement")
+
+    # 7. claim-authority.md must carry Over-Deletion Guard
+    ca = read_md(ca_path)
+    if ca is None:
+        error("references/execution/claim-authority.md not found (over-deletion guard)")
+    else:
+        if "Over-Deletion Guard" in ca and "删掉违规主张，不等于删掉购买理由" in ca:
+            print("  ✓ claim-authority.md declares Over-Deletion Guard")
+        else:
+            error("claim-authority.md missing Over-Deletion Guard (防过度删除)")
+
+    # 8. compliance.md must state the repair quality floor
+    cmp_content = read_md(cmp_path)
+    if cmp_content is None:
+        error("references/quality/compliance.md not found (repair quality floor)")
+    else:
+        if "不要为了免责把话写空" in cmp_content and "举证责任外推" in cmp_content:
+            print("  ✓ compliance.md declares repair-action quality floor")
+        else:
+            error("compliance.md missing repair-action quality floor section")
+
+    # 9. reference-index must register the new reference
+    idx = read_md(idx_path)
+    if idx is None:
+        error("references/reference-index.md not found (G13 registration)")
+    elif "persuasion-integrity.md" in idx:
+        print("  ✓ reference-index.md registers persuasion-integrity.md")
+    else:
+        error("reference-index.md missing persuasion-integrity.md registration")
+
+    # 10. route compiler must load it for seed/sell and expose G13 gate
+    comp = read_md(comp_path)
+    if comp is None:
+        error("scripts/compile_route_bundle.py not found (G13 routing)")
+    else:
+        if "references/execution/persuasion-integrity.md" in comp:
+            print("  ✓ compile_route_bundle.py loads persuasion-integrity.md")
+        else:
+            error("compile_route_bundle.py does not load persuasion-integrity.md")
+        if "range(1, 14)" in comp:
+            print("  ✓ compile_route_bundle.py exposes gates G1-G13")
+        else:
+            error("compile_route_bundle.py gate range must cover G13 (range(1, 14))")
+
+    # 11. Stale "delete without replacement" rules must not appear as active rules
+    stale_found = []
+    for path in iter_markdown_files(skill_root):
+        rel = os.path.relpath(path, skill_root).replace("\\", "/")
+        if not is_canonical_content(rel):
+            continue
+        with open(path, "r", encoding="utf-8") as f:
+            content = f.read()
+        for pattern in OVER_DELETION_STALE:
+            for m in re.finditer(pattern, content):
+                stale_found.append(f"{rel}: {m.group(0)[:60]}")
+    if stale_found:
+        for s in stale_found[:5]:
+            error(f"stale over-deletion rule found: {s}")
+    else:
+        print("  ✓ no stale over-deletion rules (delete-without-replacement permitted)")
+
+
 # ---------- Main ----------
 
 def main():
@@ -2075,6 +2242,7 @@ def main():
     check_boundary_is_internal(skill_root)
     check_never_filter_implications(skill_root)
     check_full_caliber_implicit_cta(skill_root)
+    check_persuasion_integrity(skill_root)
 
     # Summary
     print("\n" + "=" * 60)

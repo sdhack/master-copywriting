@@ -1,5 +1,32 @@
 # Changelog
 
+## [4.30.0] - 2026-10-14
+
+### Added
+- **新增 G13 Persuasion Integrity（说服力完整性门）**：解决"合规但不可信、零转化"的过度免责问题。G13 不判断"能不能说"（G11/G12 已管），只判断**合规修复之后还剩多少购买理由**——凡被 G11/G12 删除或降级的越线主张，必须在同一叙事位置补回一条权限不低于 L2、表达强度不低于原句的主张。
+  - **G13.1 Burden Shift Prohibition**：禁止把举证责任推给读者（"备案平台上能查到""你可以自己对着成分表看""具体以官方页面为准"）。举证责任永远属于表达方。
+  - **G13.2 Proof Substitution**：删一必须补一。段落长度不变但主张密度下降 = 把销售理由蒸发掉，判FAIL。找不到替换句说明该claim 当初就不该写，问题回 Draft。
+  - **G13.3 Assertive Claim Floor**：可机械判定的直陈主张数量下限（抖音/千川 ≤200 字 ≥2 句、>200 字 ≥3 句、小红书 ≥3、长文 ≥4；Seed 取一半），并给出 18 个hedge 标记清单。hedge 可用于非主张句，但每处需由一句无 hedge 的直陈主张平衡。
+  - **G13.4 No Disclaimer Content**：把"禁止免责声明"从原则转为可机械检查的四类结构清单（自我能力否定 / 免责后缀 / 法规解释 / 说教插入）。
+  - **G13.5 Confidence Restoration Pass**：G1-G12 之后、H2 之前强制执行一遍**只加不减**的确信度恢复，禁止在恢复遍里顺手再删一句。
+- **G13 post-H2 recheck**：H2 去 AI 打散后复核一次。理由：拆长句时最容易丢掉主句谓语，留下只剩主语和状语的残句——句式自然了，主张没了。
+- **置信度 Recovery 三段替代顺序**：降主张层级 → 换证明载体 → 换场景落点 → 才允许删除。禁止直接删除、禁止换成免责句、禁止换成合规但同义的近似句（免责洗白）。
+
+### Changed
+- `SKILL.md`：执行顺序从 8 步扩为 10 步（G13 插入 G1-G12 与 H2 之间，H2 后加复核）；Hard Gates 增加 G13 并明确它**不是第二个合规门**；补顶层 `version` 字段，一并修掉 `validate_skill.py` 长期存在的 `frontmatter missing 'version'` 报错（此前 1 error，现 0 error）。
+- `claim-authority.md`：新增第十六·五节 Over-Deletion Guard（防过度删除），与第十六节 Conversion Recovery 配对——第十六节讲"越线主张怎么换"，本节讲"必须换，不能删"。
+- `compliance.md`：新增第九节"不要为了免责把话写空"，把四种过度免责形态（举证责任外推 / 只删不补 / 免责换皮 / 确信度塌陷）列为与违规同级处理。
+- `execution-reliability.md`：Gate 表新增 G13 行；硬门槛顺序图补G13 位置并说明为何不能放在 G12 之前或 H2 之后。
+- `compile_route_bundle.py`：seed/sell 路由加载 `persuasion-integrity.md`；gates 暴露范围扩为 G1-G13；humanization 链补G13 两步。
+
+### Guardrails
+- G13 **永不**放宽 Claim Ceiling。补位主张必须本来就有权限（L1-L5）；任何"为了 G13 而多说一句"导致的越线，改动回退到 G 审核由 G11/G12 判定。防止 G13 变成绕过合规的通道。
+
+### Tests
+- 回归套件新增 7 条（Case 280–286）：PI-01 Burden Shift / PI-02 Proof Substitution / PI-03 Assertive Claim Floor / PI-04 No Disclaimer Content / PI-05 Confidence Restoration / PI-06 H2 后复核 / PI-07 G13 不得放宽上限。
+- 行为用例新增 3 条：`PI-BURDEN-SHIFT`、`PI-DELETE-REPLACE`、`PI-ASSERTIVE-FLOOR`。
+- `validate_skill.py` 新增第 26 项检查（15 条断言：五个 G13 判定项、失败模式命名、hedge 清单可机械判定、不放宽上限的守卫、SKILL.md 顺序、Gate 表、Over-Deletion Guard、compliance 第九节、索引注册、路由加载、gates 范围、以及"允许只删不补"的过时规则扫描）；`TOTAL_SECTIONS` 24→26。
+
 ## [4.29.5] - 2026-08-25
 
 ### Changed

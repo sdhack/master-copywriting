@@ -1,17 +1,19 @@
 # Master Copywriting Skill
 
-> v4.29.5 · 跨 Agent 的事实约束、平台路由与自然化文案生成系统
+> v4.30.0 · 跨 Agent 的事实约束、平台路由与自然化文案生成系统
 
-[![Version](https://img.shields.io/badge/version-4.29.5-2563eb?style=flat-square)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-4.30.0-2563eb?style=flat-square)](CHANGELOG.md)
 [![Platforms](https://img.shields.io/badge/platforms-Douyin%20%7C%20XHS%20%7C%20OA%20%7C%20Channels-0f766e?style=flat-square)](SKILL.md)
 [![Static validation](https://img.shields.io/badge/static%20validation-0%20errors-16a34a?style=flat-square)](scripts/validate_skill.py)
 [![License](https://img.shields.io/badge/license-internal-6b7280?style=flat-square)](LICENSE)
 
-Master Copywriting 不是一组万能模板，而是一层可组合的文案决策系统：先判断平台、目的、事实和 CTA 权限，再按段落作用生成平台原生内容；成稿先经 H1 口语校准转为顺口表达，再过 G1-G12 审计，随后 H2 去 AI 打散拆掉模板感（含收口动词一致性、补语搭配合法性、同音干扰三条可判定硬检查），最后只读不变量核验。
+Master Copywriting 不是一组万能模板，而是一层可组合的文案决策系统：先判断平台、目的、事实和 CTA 权限，再按段落作用生成平台原生内容；成稿先经 H1 口语校准转为顺口表达，再过 G1-G12 审计，随后 G13 说服力完整性检查补回被合规删掉的购买理由，再由 H2 去 AI 打散拆掉模板感（含收口动词一致性、补语搭配合法性、同音干扰三条可判定硬检查），最后只读不变量核验。
 
 ## 先守住事实，再谈感染力
 
-这套系统把“写得好”拆成可验证的职责：路由决定该加载什么约束，Draft 保留论证和归属，H1 校准口语，G1-G12 拦截事实、数字、身份和主张风险，H2 再去掉机械感。它不承诺自动生成真实世界事实，也不会用漂亮表达替代证据。
+这套系统把“写得好”拆成可验证的职责：路由决定该加载什么约束，Draft 保留论证和归属，H1 校准口语，G1-G12 拦截事实、数字、身份和主张风险，G13 检查修复后是否还卖得动，H2 再去掉机械感。它不承诺自动生成真实世界事实，也不会用漂亮表达替代证据。
+
+**合规不是删话的刀，是划线的尺。** G13 保证被合规拦下的主张会在原位置补回一个更有权限、更直接的说法——不做“为了免责把话写空”的免责稿，也不允许借 G13 抬高主张上限。
 
 因此它适合需要多平台适配、可审计内容生产和稳定账号声音的团队；产品参数、案例、代言、功效和外部结论仍必须由调用方提供可核验来源。
 
@@ -37,14 +39,18 @@ H1 口语校准
   ↓
 G1-G12 review / repair
   ↓
+G13 说服力完整性（确信度恢复遍 + 四项判定）
+  ↓
 H2 de-AI（去 AI 打散）
+  ↓
+G13 post-H2 recheck
   ↓
 Read-only invariant check
   ↓
 Sanitize → deliver
 ```
 
-流程顺序是发布级约束。H1 只做口语校准，事实核验完全由 G1-G12 承担；H2 只打散模板感，不改术语、数字与合规表述。任何一遍都不得掩盖事实、目的或平台问题；最终只读核验失败时，回到对应修复阶段，而不是在核验阶段偷偷改稿。
+流程顺序是发布级约束。H1 只做口语校准，事实核验完全由 G1-G12 承担；G13 只补位不放宽主张上限；H2 只打散模板感，不改术语、数字与合规表述。任何一遍都不得掩盖事实、目的或平台问题；最终只读核验失败时，回到对应修复阶段，而不是在核验阶段偷偷改稿。
 
 ## 设计原则
 
@@ -57,6 +63,7 @@ Sanitize → deliver
 | 自然完成 | 自然停笔优先于硬塞收口、万能金句或固定模板 |
 | 结构保真 | 六项段落作用拆解；冲突时按「核心判断→因果推进→案例证明→位置作用→情绪强度→表面措辞」取舍 |
 | 人声两遍分工 | H1 只做口语校准，事实核验完全归 G1-G12；H2 只打散模板感，不碰已修复事实与已校准口语 |
+| 删了必须补 | G11/G12 删掉或降级任一越线主张，G13 要求在原位置补回权限不低于 L2、表达强度不低于原句的主张；只删不补判 FAIL |
 | 可降级 | 工具缺失时减少证据能力，不假装搜索、读取、计算或记忆 |
 
 ## 审计等级
@@ -65,7 +72,7 @@ Sanitize → deliver
 - `REPAIR`：目的、平台、自然度、信息顺序或商业路径问题，默认自动修复
 - `ADVISORY`：可选的节奏和措辞优化，不影响可交付性
 
-G1-G12 的定义位于 [execution-reliability.md](references/execution/execution-reliability.md)，等级处置位于 [audit-severity.md](references/execution/audit-severity.md)。
+G1-G12 的定义位于 [execution-reliability.md](references/execution/execution-reliability.md)，G13 定义位于 [persuasion-integrity.md](references/execution/persuasion-integrity.md)，等级处置位于 [audit-severity.md](references/execution/audit-severity.md)。
 
 ## 目录结构
 
@@ -158,7 +165,7 @@ python scripts/run_behavioral_regression.py
 
 ## 版本与治理
 
-- 入口版本：`4.29.5`
+- 入口版本：`4.30.0`
 - 变更记录：[CHANGELOG.md](CHANGELOG.md)
 - 维护规则：[MAINTENANCE.md](MAINTENANCE.md)
 - 迁移说明：[MIGRATION.md](MIGRATION.md)

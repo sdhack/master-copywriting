@@ -1,10 +1,11 @@
 ---
 name: master-copywriting
+version: 4.30.0
 description: >
   全栈文案决策与生成系统。按平台、目的、IP模式和任务形态路由，支持抖音、小红书、公众号、视频号的广告、种草、卖货、短视频、长文和多平台内容。先生成，再去AI味，完整复审修复，最后二次去AI味。CTA 默认 IMPLICIT_ONLY，仅 Closed Allowlist 允许显式 CTA。
 license: 内部使用
 metadata:
-  version: "4.29.5"
+  version: "4.30.0"
   author: 规范技能包
   category: 文案写作
   tags: "文案, 营销, 抖音, 小红书, 微信, IP, 种草, 卖货"
@@ -50,10 +51,12 @@ metadata:
 2. 编译最小规则包，加载命中引用。
 3. Draft：按平台逻辑完成目的；开稿前按 5.3 完成段落作用拆解，改稿时按 5.3 保结构。
 4. H1 口语校准：书面解释转为顺口的自然口语，删除重复铺垫与空泛总结，保持情绪强度与段落证明作用；事实核验不在本遍执行，由第 5 步 G1-G12 承担；口语化改写不得新增事实、数字或来源。规则见 [Human Voice Pass](references/quality/human-voice-pass.md) 的「H1 · 口语校准」。
-5. G1-G12 full review/repair：按 `BLOCK / REPAIR / ADVISORY` 分级，修到无 BLOCK。
-6. H2 de-AI：打散匀速结构、套路词和过度完整；不得破坏 G 审核已修复的事实与合规表述，也不得破坏已校准的口语表达。规则见 [Human Voice Pass](references/quality/human-voice-pass.md) 的「H2 · 去 AI 打散」。
-7. Read-only invariant check：只核对，不继续润色。
-8. Final Output Sanitizer 后交付。
+5. G1-G12 full review/repair：按 `BLOCK / REPAIR / ADVISORY` 分级，修到无 BLOCK。记录每一条被删除或降级的主张位置。
+6. G13 Persuasion Integrity：按 [Persuasion Integrity](references/execution/persuasion-integrity.md) 执行确信度恢复遍（只加不减）与四项判定（禁止举证责任外推 / 删一必须补一 / 直陈主张下限 / 免责声明不入正文）。G11/G12 删掉的越线主张，必须在同一位置补回权限不低于 L2、表达强度不低于原句的主张。补位不得放宽 Claim Ceiling。
+7. H2 de-AI：打散匀速结构、套路词和过度完整；不得破坏 G 审核已修复的事实与合规表述，也不得破坏已校准的口语表达。规则见 [Human Voice Pass](references/quality/human-voice-pass.md) 的「H2 · 去 AI 打散」。
+8. G13 post-H2 recheck：只查 H2 是否在拆分长句时削掉主句谓语与主张密度，不重复全检。
+9. Read-only invariant check：只核对，不继续润色。
+10. Final Output Sanitizer 后交付。
 
 ## 5.1 Hotspot-to-Story Protocol
 
@@ -95,6 +98,7 @@ metadata:
 - 去 AI 味：[Human Voice Pass](references/quality/human-voice-pass.md)（含 H1 · 口语校准、H2 · 去 AI 打散）
 - 声音证据：[Voice Profile](references/quality/voice-profile.md)，无样本标记 `missing evidence`
 - 审核：[Audit Severity](references/execution/audit-severity.md)、[Execution Reliability](references/execution/execution-reliability.md)
+- 说服力完整性 / 合规修复后删得太干净 / 文案合规但不可信 / 直陈主张下限 / 举证责任外推：[Persuasion Integrity](references/execution/persuasion-integrity.md)
 - 多平台：[Cross-platform Re-conception](references/cross-platform/cross-platform-reconception.md)，重新立题，不做同稿换语气。
 
 ## 7. Hard Gates
@@ -103,9 +107,11 @@ metadata:
 - G1 Product Truth；G2 Numeric Integrity；G3 Identity Truth；G4 External Claim Admission
 - G5 Demonstration & Comparison Truth；G6 Purpose Integrity（含 G6.7 / G6.8）
 - G7 Platform Native；G8 Naturalness；G9 Diversity；G10 Output Sanitizer
-- G11 Semantic Claim Audit；G12 Review Risk Audit
+- G11 Semantic Claim Audit；G12 Review Risk Audit；G13 Persuasion Integrity（说服力完整性）
 
 Claim Authority / Claim Ceiling：Maximize Persuasion Within the Claim Ceiling。禁止虚构产品事实、数字、来源、第一人称体验、见证、履历、效果保证和虚假稀缺。可靠常识是 C1 表达材料，不是 P1 产品事实。
+
+**G13 是合规修复后的质量下限，不是第二个合规门。** G11/G12 判"能不能说"，G13 判"删完之后还剩多少购买理由"。被删的越线主张必须在原位置补回有权限、更直接的主张；只删不补、举证责任外推给读者、免责声明入正文、全篇 hedge 无直陈主张，均为 FAIL。G13 永不放开 Claim Ceiling——补位主张必须本来就有权限。
 
 `BLOCK` 修复后才可交付；`REPAIR` 默认自动修复；`ADVISORY` 仅在明显提升且不破坏自然度时采用。
 
@@ -143,7 +149,7 @@ CTA 以 [CTA](references/craft/cta.md) 为唯一事实源。全口径默认高�
 静态检查不等于行为模型测试。无真实模型或密钥必须报告 `BEHAVIORAL REGRESSION = NOT RUN`，不得伪报 PASS。
 
 ## 12. Quick Start
-Route → minimal bundle → Draft → H1 口语校准 → G1-G12 review/repair → H2 de-AI → read-only invariant check → sanitize → deliver。
+Route → minimal bundle → Draft → H1 口语校准 → G1-G12 review/repair → G13 说服力完整性 → H2 de-AI → G13 post-H2 recheck → read-only invariant check → sanitize → deliver。
 
 ## 版本同步
 

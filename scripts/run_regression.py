@@ -604,7 +604,7 @@ def run_quality_suite(skill_root):
             "H2 de-AI：打散匀速结构",
             "5.3 Structure Role Preservation",
             "冲突取舍优先级",
-            "Route → minimal bundle → Draft → H1 口语校准 → G1-G12 review/repair → H2 de-AI",
+            "Route → minimal bundle → Draft → H1 口语校准 → G1-G12 review/repair → G13 说服力完整性 → H2 de-AI",
         ]
         missing_markers = [term for term in pipeline_markers if term not in skill_md]
         if "humanization-engine" in skill_md:

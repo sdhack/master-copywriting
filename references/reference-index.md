@@ -26,6 +26,7 @@ references/
 │   ├── execution-reliability.md   # Hard-Gate Execution Order, Canonical Ledger, etc.
 │   ├── product-acquisition.md     # PRE-GATE 0, Search Before Ask, Product Ledger
 │   ├── claim-authority.md        # Claim Ceiling, L0-L6, Strength Matching, Benefit Translation, COMMERCIAL_INTENSITY
+│   ├── persuasion-integrity.md  # G13 说服力完整性：禁止举证责任外推 / 删一补一 / 直陈主张下限 / 免责声明不入正文 / 确信度恢复遍
 │   ├── implicit-benefit-pain.md  # Implication Ladder I1-I4 + I5-A/B/C, Pain Translation Engine, PARTIAL_PAIN, Semantic Destination Test
 │   ├── commercial-expression-freedom.md  # Expression Layer, RHETORICAL_EXAGGERATION, Semantic Back-Translation (recoverable), Edge Expression Policy, Conversion Recovery
 │   ├── anxiety-pain-scenification.md  # Pain Chain P1-P8, Camera Test, Anxiety Types A1-A9, Anxiety Legitimacy Gate, Category-Differentiated Anxiety Intensity, Relief Contrast
@@ -67,6 +68,7 @@ references/
 | Any copy task (always) | `execution/execution-reliability.md` | execution |
 | Product facts insufficient / identity unclear / need Product Source Retrieval | `execution/product-acquisition.md` | execution |
 | 健康/营养/美妆/功效品类 / 判断主张表达权限 / 商业强度档位 | `execution/claim-authority.md` | execution |
+| 合规修复后文案不可信 / 只删不补 / 免责腔 / 举证责任推给读者 / 需要直陈主张下限 | `execution/persuasion-integrity.md` | execution |
 | 需要放宽价值暗示/痛点翻译 / 健康品类卖不动 / I5 分级 / PARTIAL_PAIN | `execution/implicit-benefit-pain.md` | execution |
 | 需要提高商业表达强度/情绪浓度/隐喻/剧情 / 文案真实但卖不动 / Edge Expression Policy | `execution/commercial-expression-freedom.md` | execution |
 | 需要痛点场景化/焦虑激活/紧迫感 / 痛点太抽象场景不具体 / 品类差异化焦虑强度 | `execution/anxiety-pain-scenification.md` | execution |

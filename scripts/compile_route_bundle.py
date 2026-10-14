@@ -18,7 +18,7 @@ def compile_bundle(route):
         "references/craft/cta.md",
         "references/modes/platforms.md",
     ]
-    if purpose in {"seed", "sell"}: refs += ["references/execution/purpose-integrity.md", "references/execution/claim-authority.md"]
+    if purpose in {"seed", "sell"}: refs += ["references/execution/purpose-integrity.md", "references/execution/claim-authority.md", "references/execution/persuasion-integrity.md"]
     if route.get("task_type") == "cross_platform": refs.append("references/cross-platform/cross-platform-reconception.md")
     if route.get("ip_mode") == "ip": refs.append("references/quality/voice-profile.md")
     if route.get("product_fact_sufficiency") == "insufficient": refs.append("references/execution/product-acquisition.md")
@@ -27,7 +27,7 @@ def compile_bundle(route):
     if missing:
         raise FileNotFoundError(f"route bundle references missing files: {missing}")
     pipeline = route.get("humanization_pipeline") or ("DOUBLE_AUDIT" if route.get("paid_commercial") else "CHINESE_NATIVE")
-    return {"route": route, "references": refs, "gates": [f"G{i}" for i in range(1, 13)], "humanization": ["Draft", "H1 口语校准", "G1-G12 repair", "H2 de-AI", "read-only invariant check"], "pipeline": pipeline, "output": "user-facing copy only", "exclusions": ["internal route", "scores", "audit trace", "unsupported facts"]}
+    return {"route": route, "references": refs, "gates": [f"G{i}" for i in range(1, 14)], "humanization": ["Draft", "H1 口语校准", "G1-G12 repair", "G13 说服力完整性", "H2 de-AI", "G13 post-H2 recheck", "read-only invariant check"], "pipeline": pipeline, "output": "user-facing copy only", "exclusions": ["internal route", "scores", "audit trace", "unsupported facts"]}
 
 def main():
     p = argparse.ArgumentParser()

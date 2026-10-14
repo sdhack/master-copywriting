@@ -2,9 +2,9 @@
 
 ## Canonical Publish-ready Pipeline (v4.28.0)
 
-Required order: `Draft -> H1 口语校准 -> G1-G12 full review/repair（事实核验在此执行） -> H2 de-AI（去 AI 打散） -> read-only invariant check -> sanitizer -> delivery`. Both pass rules are defined in [Human Voice Pass](../quality/human-voice-pass.md)（H1 · 口语校准 / H2 · 去 AI 打散）; structure preservation during repair follows SKILL.md §5.3. This section supersedes older G1-G10-only sequences below.
+Required order: `Draft -> H1 口语校准 -> G1-G12 full review/repair（事实核验在此执行） -> G13 说服力完整性 -> H2 de-AI（去 AI 打散） -> G13 post-H2 recheck -> read-only invariant check -> sanitizer -> delivery`. Both pass rules are defined in [Human Voice Pass](../quality/human-voice-pass.md)（H1 · 口语校准 / H2 · 去 AI 打散）; structure preservation during repair follows SKILL.md §5.3. G13 rules are defined in [Persuasion Integrity](persuasion-integrity.md). This section supersedes older G1-G10-only sequences below.
 
-G1 Product Truth; G2 Numeric Integrity; G3 Identity Truth; G4 External Claim Admission; G5 Demonstration & Comparison Truth; G6 Purpose Integrity; G7 Platform Native; G8 Naturalness; G9 Diversity; G10 Output Sanitizer; G11 Semantic Claim Audit; G12 Review Risk Audit.
+G1 Product Truth; G2 Numeric Integrity; G3 Identity Truth; G4 External Claim Admission; G5 Demonstration & Comparison Truth; G6 Purpose Integrity; G7 Platform Native; G8 Naturalness; G9 Diversity; G10 Output Sanitizer; G11 Semantic Claim Audit; G12 Review Risk Audit; G13 Persuasion Integrity.
 
 Classify issues with [Audit Severity](audit-severity.md). BLOCK prevents delivery, REPAIR is fixed by default, and ADVISORY is optional. The post-H2 invariant check is read-only; a failure returns to the responsible repair stage and repeats H2.
 
@@ -41,7 +41,15 @@ GATE 8 — Natural Depth / Humanization
 GATE 9 — Set-Level Diversity
   ↓
 GATE 10 — Final Output Sanitizer
+  ↓
+GATE 13 — Persuasion Integrity（在 G1-G12 之后、H2 之前；H2 之后复核一次）
 ```
+
+### G13 插入位置说明（v4.30.0）
+
+G13 不是第 11 个合规门，它插在 **G11/G12 之后**——因为它的输入正是 G11/G12 的删除与降级记录。G11/G12 每拦下一条越线主张，G13 就必须在同一位置补回有权限、更直接的主张。放在 G12 之前会拿不到修复记录，放在 H2 之后会被去 AI 打散掩盖。
+
+H2 之后必须复核一次：去 AI 打散拆分长句时，最容易顺手丢掉主句谓语，留下只剩主语和状语的残句——句式自然了，主张没了。详细规则见 [Persuasion Integrity](persuasion-integrity.md)。
 
 ### PRE-GATE 0 — Product Acquisition（产品获取预检）
 
@@ -79,6 +87,7 @@ GATE 10 — Final Output Sanitizer
 | G8 | Natural Depth / Humanization | 自然充分度、真人感、无模板感 | AI 感/模块感/产品说明书感 |
 | G9 | Set-Level Diversity | 多角度、多角色、多 IP 资产、不重复 | 伪多版本/固定五件套/角度过弱 |
 | G10 | Final Output Sanitizer | 内部 metadata 全部剥离 | 泄露内部标签/验证/路由 |
+| G13 | Persuasion Integrity | 合规修复后是否还剩购买理由：禁止举证责任外推、删一必须补一、直陈主张下限、免责声明不入正文 | 合规但不可信的免责稿 / 只删不补 / 全篇 hedge / 举证责任推给读者 |
 
 ---
 
