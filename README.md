@@ -74,6 +74,36 @@ Sanitize → deliver
 
 G1-G12 的定义位于 [execution-reliability.md](references/execution/execution-reliability.md)，G13 定义位于 [persuasion-integrity.md](references/execution/persuasion-integrity.md)，等级处置位于 [audit-severity.md](references/execution/audit-severity.md)。
 
+## G13 说服力完整性
+
+合规门只管删得干不干净，不管删完还剩几分购买理由。没有这道门时，模型会非常认真地执行合规，然后交出一份技术上零违规、实际上没人信服的免责稿。
+
+G13 判的是**合规修复之后这篇稿还卖不卖得动**。五种过度免责形态：
+
+| | 形态 | 读者实际收到的信息 |
+| --- | --- | --- |
+| F1 | Hedge Laundering 免责洗白 | "它在说自己有这个东西，又好像不太确定" |
+| F2 | Burden Shift 举证责任外推 | "品牌自己都说不清，要我自己去核对" |
+| F3 | Disclaimer Reformat 免责换皮 | "它花了很大篇幅告诉我它不干什么" |
+| F4 | Deletion Without Replacement 只删不补 | "这段广告在回避什么" |
+| F5 | Confidence Collapse 确信度塌陷 | "这个品牌什么都不敢承诺" |
+
+这五种都是**合规安全的**，所以 G1-G12 判不了FAIL——不是规则缺失，是规则只定义了"不能写什么"，没定义"删完之后必须剩下什么"。
+
+五项可机械判定的硬检查：
+
+- **G13.1 Burden Shift**：禁止把验证动作推给读者（"备案平台上能查到""你自己对着成分表看"）。举证责任永远属于表达方。
+- **G13.2 Proof Substitution**：删一必须补一。G11/G12 删掉或降级的越线主张，须在同一位置补回权限不低于 L2、强度不低于原句的主张。
+- **G13.3 Assertive Claim Floor**：直陈主张数量下限（抖音 ≤200 字 ≥2 句、>200 字 ≥3 句、小红书 ≥3、长文 ≥4；Seed 取一半），附 18 个 hedge 标记清单。
+- **G13.4 No Disclaimer Content**：把"禁止免责声明"从原则转为四类可机械检查的结构——自我能力否定 / 免责后缀 / 法规解释 / 说教插入。
+- **G13.5 Confidence Restoration Pass**：强制一遍只加不减的确信度恢复，H2 之后复核一次（拆长句时最容易丢掉主句谓语，句式自然了主张就没了）。
+
+越线主张的替换顺序是强制的：**降主张层级 → 换证明载体 → 换场景落点 → 才允许删除**。直接删除、换成免责句、换成合规同义句，分别对应 F4、F2/F3、F1。
+
+> **Compliance sets the ceiling. Copywriting must fill it.**
+> 删掉违规主张，不等于删掉购买理由。G13 永不放开 Claim Ceiling——补位主张必须本来就有权限，任何"为了 G13 而多说一句"导致的越线，改动回退 G11/G12 判定。
+
+
 ## 目录结构
 
 ```text
@@ -89,6 +119,8 @@ schemas/                        # 产品、IP、路由、研究和内容指纹�
 scripts/                        # 验证、回归、编译、指纹和遥测工具
 tests/                          # 静态、可移植性和行为回归材料
 ```
+
+规则文件的加载时机：`persuasion-integrity.md` 在 `purpose` 为 `seed` 或 `sell` 时由 `compile_route_bundle.py` 自动加入最小规则包；其他情况需显式读取。
 
 ## 快速使用
 
@@ -145,7 +177,7 @@ python scripts/run_regression.py --all
 python scripts/run_behavioral_regression.py
 ```
 
-当前静态契约回归结果：`107 pass / 0 fail / 1 skip`。行为回归没有配置真实模型时会明确显示 `BEHAVIORAL REGRESSION = NOT RUN`，不会把静态检查冒充模型证据。配置真实 OpenAI-compatible 模型后：
+当前静态契约回归结果：`110 pass / 0 fail / 1 skip`（共 111 项）。行为回归没有配置真实模型时会明确显示 `BEHAVIORAL REGRESSION = NOT RUN`，不会把静态检查冒充模型证据。配置真实 OpenAI-compatible 模型后：
 
 ```bash
 set MASTER_COPYWRITING_MODEL=openai:<model>

@@ -153,7 +153,7 @@
       "type": "integer",
       "enum": [2],
       "default": 2,
-      "description": "Publish-ready copy runs two humanization passes: H1 after drafting, H2 after the full G1-G12 review and repair."
+      "description": "Publish-ready copy runs two humanization passes: H1 after drafting, H2 after the full G1-G13 review and repair. G13 Persuasion Integrity runs between G1-G12 and H2, with one recheck after H2."
     },
     "final_invariant_check": {
       "type": "string",

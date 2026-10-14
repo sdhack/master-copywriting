@@ -1,6 +1,6 @@
 # Reference Index
 
-> Canonical reference index for Master Copywriting v4.29.0
+> Canonical reference index for Master Copywriting v4.30.0
 > Single Source of Truth — no rule duplication across adapters.
 
 ---

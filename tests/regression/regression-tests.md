@@ -2869,7 +2869,7 @@ AI 写了 320 字，达到了 Target，但 Sell 的关键信息不完整：
 
 ```text
 用户请求：生成一篇可直接发布的卖货短视频文案。
-预期顺序：初稿 → H1 第一次去 AI → G1-G12 全面复审并修错 → H2 第二次去 AI → Final Invariant Check。
+预期顺序：初稿 → H1 第一次去 AI → G1-G12 全面复审并修错 → G13 说服力完整性 → H2 第二次去 AI → G13 post-H2 recheck → Final Invariant Check。
 关键规则：H2 只清理复审修订带来的新套话、拼接感和节奏问题，不重新策划角度或改变 Meaning Lock；Final Invariant Check 只校验不润色。
 失败处理：终检 FAIL 回到全面复审，最多返修 2 轮；仍失败停止交付并报告阻塞。
 禁止：只做一次去 AI；复审修错后直接交付；H2 新增事实或删掉购买理由；终检一边检查一边改稿而产生未验收版本。

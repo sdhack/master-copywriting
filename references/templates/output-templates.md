@@ -129,7 +129,7 @@
 
 ## 五、MD 文件生成执行步骤
 
-1. 完成全部 Hard Gates（G1-G12）与 Humanization Pass。
+1. 完成全部 Hard Gates（G1-G13）与 Humanization Pass。
 2. 执行 G10 输出净化：剥离内部元数据。
 3. 按本文件模板结构组织内容（单版/多版/多平台）。
 4. 按命名规范生成文件名（`{平台}-{产品}-{行动}-{YYMMDDHHMM}.md`）。

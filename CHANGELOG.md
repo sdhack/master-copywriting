@@ -26,6 +26,17 @@
 - 回归套件新增 7 条（Case 280–286）：PI-01 Burden Shift / PI-02 Proof Substitution / PI-03 Assertive Claim Floor / PI-04 No Disclaimer Content / PI-05 Confidence Restoration / PI-06 H2 后复核 / PI-07 G13 不得放宽上限。
 - 行为用例新增 3 条：`PI-BURDEN-SHIFT`、`PI-DELETE-REPLACE`、`PI-ASSERTIVE-FLOOR`。
 - `validate_skill.py` 新增第 26 项检查（15 条断言：五个 G13 判定项、失败模式命名、hedge 清单可机械判定、不放宽上限的守卫、SKILL.md 顺序、Gate 表、Over-Deletion Guard、compliance 第九节、索引注册、路由加载、gates 范围、以及"允许只删不补"的过时规则扫描）；`TOTAL_SECTIONS` 24→26。
+- 实测结果：`validate_skill.py` **0 error / 0 warning**；`run_regression.py --all` 共 111 项，**110 pass / 0 fail / 1 skip**（skip 为 Behavioral，按 PATCH 28/39 如实报 NOT RUN，未用静态检查冒充模型证据）。
+
+### Documentation
+- `README.md`：新增「G13 说服力完整性」专章（五种过度免责形态对照表 + 五项硬检查 + 替换顺序 + Claim Ceiling 守卫）；核心流程图插入 G13 两步；回归数字由 `107 pass` 更正为实测的 `110 pass / 0 fail / 1 skip（共 111 项）`；补充 `persuasion-integrity.md` 的加载时机说明。
+- `MAINTENANCE.md`：当前版本 `V4.29.5` → `V4.30.0`。
+- `references/reference-index.md`：头部版本标注 `v4.29.0` → `v4.30.0`。
+- `references/execution/execution-reliability.md`：管线小节标注 `(v4.28.0)` → `(v4.30.0)`。
+- `references/templates/output-templates.md`：MD 生成步骤「完成全部 Hard Gates（G1-G12）」→ G1-G13。
+- `tests/portability/cross-agent-behavioral-test.md`：跨 Agent 一致性维度 `Hard Gate Result` 由 `G1-G10 PASS/FAIL` 更正为 `G1-G13 PASS/FAIL`。
+- `tests/regression/regression-tests.md`：Case 277（双遍去 AI 闭环）预期顺序补入 G13 两步，与 [Canonical Publish-ready Pipeline](references/execution/execution-reliability.md) 对齐。
+
 
 ## [4.29.5] - 2026-08-25
 

@@ -34,7 +34,7 @@
 | CTA_PERMISSION | IMPLICIT_ONLY / EXPLICIT_ALLOWED |
 | Commercial Relationship | brand_official / shop_owner / founder / collab_influencer / ... |
 | Fact Set | 使用的产品事实集合（必须一致） |
-| Hard Gate Result | G1-G10 PASS/FAIL |
+| Hard Gate Result | G1-G13 PASS/FAIL |
 
 预期：**全部一致。**
 
